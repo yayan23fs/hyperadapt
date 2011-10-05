@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="catalog">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="journal" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="title" type="xs:string"/>
+            <xs:attribute name="publisher" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="journal">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="article" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="date" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="article">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="title"/>
+                <xs:element ref="author"/>
+                <xs:element ref="text"/>
+                <xs:element ref="imageVariants" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="section">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Features"/>
+                        <xs:enumeration value="SQL"/>
+                        <xs:enumeration value="PL/SQL"/>
+                        <xs:enumeration value="JSP"/>
+                        <xs:enumeration value="XML"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="title" type="xs:string"/>
+    <xs:element name="author" type="xs:string"/>
+    <xs:element name="text">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="textFrame" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="textFrame">
+        <xs:complexType mixed="true">
+            <xs:attribute name="number" use="required" type="xs:integer"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="imageVariants">
+        <xs:complexType mixed="true">
+            <xs:choice>
+                <xs:element ref="image" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="imageDescription" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="image">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="height"/>
+                <xs:element ref="width"/>
+                <xs:element ref="url"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="height" type="xs:integer"/>
+    <xs:element name="width" type="xs:integer"/>
+    <xs:element name="url" type="xs:string"/>
+    <xs:element name="imageDescription" type="xs:string"/>
+</xs:schema>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<articleTexts>
+	<article title="XML">
+		<textFrame number="1"><test/>someTextsomeTextsomeTextsomeTextsomeTextsomeTextsomeTextsomeTextsomeTextsomeTextsomeText</textFrame>
+		<textFrame number="0">textAgaintextAgaintextAgaintextAgaintextAgain</textFrame>
+		<textFrame number="3">textText  textText  textText  textText  textText  textText  textText  </textFrame>
+		<textFrame number="2">textText  textText  textText  textText  textText  textText  textText  </textFrame>
+		
+	</article>
+</articleTexts>

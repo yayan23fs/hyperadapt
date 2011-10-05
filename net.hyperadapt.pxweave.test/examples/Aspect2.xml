@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<aspect name="DeviceAdaption" xsi:schemaLocation="http://www.hyperadapt.org/aspects ../schemas/aspectE2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.org/aspects">
+	<interface>		
+		<core id="core" type="testData/book.xsd"/>
+		<contextParameters>
+				<parameter>
+					<name>UserLocation</name>			
+				</parameter>
+		</contextParameters>
+		<documentParameters>
+			<documentParameter>
+				<name>ad</name>
+				<uri>file:examples/container.xml</uri>		
+			</documentParameter>	
+		</documentParameters>
+	</interface>
+	<adviceGroup>
+		<scope>
+			<xpath>bookList</xpath>	
+		</scope>
+		<advices>		
+<changeValue>
+<!-- ersetzt textContent in textFrame durch attributValue number -->
+	<pointcut>book/attribute::price</pointcut>
+	<value>
+		<varDecl>
+			<var>
+				<name>price</name>
+				<xpath>//book[1]/attribute::price</xpath>		
+			</var>
+		</varDecl>
+		<textTemplate>concat($price,"blub","blub2")</textTemplate>
+		<!-- <textTemplate>if ($UserLocation="USA") then $joinPoint else $joinPoint+2.50</textTemplate> 
+		-->
+	</value>
+</changeValue>
+
+<insertElement position="-1">
+	<pointcut>.</pointcut>
+	<value>
+		<elementTemplate><a>$deviceType</a></elementTemplate>
+	</value>
+</insertElement>
+		</advices>
+	</adviceGroup>
+</aspect>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<aspect name="aspectChangeValue"
+	xsi:schemaLocation="http://www.hyperadapt.net/pxweave/aspects ../../../net.hyperadapt.pxweave/schemas/aspectE2.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.net/pxweave/aspects">
+	<interface>
+		<core id="core" type="http://books" />
+	</interface>
+	<adviceGroup>
+		<scope>
+			<xpath>/books:bookList</xpath>
+		</scope>
+		<advices>
+			<changeValue>
+				<pointcut>books:book/attribute::price</pointcut>
+				<value>
+					<textTemplate>$joinPoint*2</textTemplate>
+				</value>
+			</changeValue>
+		</advices>
+	</adviceGroup>
+</aspect>

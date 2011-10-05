@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<aspect name="AddSomeBooks"
+	xsi:schemaLocation="http://www.hyperadapt.net/pxweave/aspects ../../../net.hyperadapt.pxweave/schemas/aspectE2.xsd http://books ../book.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:books="http://books"
+    xmlns="http://www.hyperadapt.net/pxweave/aspects">
+	<interface>
+		<core id="core" type="http://books"/>
+	</interface>
+	<adviceGroup>
+		<depends>
+			<boolExpr>1+1=2</boolExpr>
+		</depends>
+		<scope>
+			<xpath>/books:bookList</xpath>
+			<joinpoint name="SomeStage" locator="before"/>
+		</scope>
+		<advices>
+			<insertElement position="1">
+				<pointcut>.</pointcut>
+				<value>
+				<elementTemplate>
+					<books:book inStock="Yes" price="15.95">
+						<books:title>Full Dark, No Stars</books:title>
+						<books:author>
+							<books:name>Stephen</books:name>	
+							<books:lastName>King</books:lastName>
+						</books:author>
+						<books:ISBN>1444712543</books:ISBN>
+						<books:edition>First</books:edition>
+						<books:publisher>Hodder and Stoughton</books:publisher>
+  					</books:book>				
+				</elementTemplate>
+				</value>
+			</insertElement>
+		</advices>
+	</adviceGroup>
+		<adviceGroup>
+		<depends>
+			<boolExpr>3+6=9</boolExpr>
+		</depends>
+		<scope>
+			<xpath>/books:bookList</xpath>
+			<joinpoint name="SomeStage" locator="after"/>
+		</scope>
+		<advices>
+			<insertElement position="1">
+				<pointcut>.</pointcut>
+				<value>
+				<elementTemplate>
+					<books:book inStock="No" price="16.95">
+						<books:title>Under The Dome: A Novel</books:title>
+						<books:author>
+							<books:name>Stephen</books:name>	
+							<books:lastName>King</books:lastName>
+						</books:author>
+						<books:ISBN>0340992565</books:ISBN>
+						<books:edition>First</books:edition>
+						<books:publisher>Hodder and Stoughton</books:publisher>
+  					</books:book>				
+				</elementTemplate>
+				</value>
+			</insertElement>
+		</advices>
+	</adviceGroup>
+</aspect>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><bookList xmlns="http://books" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://books book.xsd">
+  <book inStock="Yes" price="64.14">
+  	<title><img>Principles: How they got lost.-cover.jpg</img></title>
+	<author>  
+		<name>Sam</name>
+			<lastName>Freek</lastName>
+	</author>
+	<ISBN>0-201-12188-6</ISBN>
+	<edition>Second</edition>
+	<publisher>VVM</publisher>
+  </book>
+  <book inStock="Yes" price="39.22">
+	<title><img>The Moon Story-cover.jpg</img></title>
+	<author><name>M.</name>	
+		<lastName>Rainsburg</lastName>
+	</author>
+	<ISBN>0-251-16135-2</ISBN>
+	<edition>Second</edition>
+	<publisher>RS Media</publisher>
+  </book>
+  <book inStock="No" price="44.98">
+	<title><img>Some Title-cover.jpg</img></title> 
+	<author>mixedContent<name>A</name><lastName>Name</lastName></author>
+	<ISBN>0-251-16135-2</ISBN>
+	<edition>Second</edition>
+	<publisher>RS Media</publisher>
+  </book>
+  </bookList>

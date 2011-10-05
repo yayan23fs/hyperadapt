@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<aspect name="Translation"
+	xsi:schemaLocation="http://www.hyperadapt.net/pxweave/aspects ../../../net.hyperadapt.pxweave/schemas/aspectE2.xsd" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.net/pxweave/aspects">
+	<interface> 
+		<core id="core" type="http://www.hyperadapt.net/amacont/2008/AmaComponent" />
+		<contextParameters>
+			<parameter>
+				<name>language</name>
+			</parameter>
+		</contextParameters>
+	</interface>
+	<adviceGroup>
+		<depends>
+			<boolExpr>$language='EN'</boolExpr>
+		</depends>
+		<scope>
+			<joinpoint locator="before" name="T_WebService"/>
+		</scope>
+		<advices>
+			<changeValue>
+				<pointcut>/aco:AmaWebPageComponent//*[@name='content_boxes']/aco:SubComponents/aco:AmaSetComponent/aco:SubComponents/aco:AmaListComponent//aco:AmaStructuredTextComponent/attribute::name|
+						  /aco:AmaWebPageComponent//*[@name='introduction']|
+						  /aco:AmaWebPageComponent//*[@name='disclaimer']|
+						  /aco:AmaWebPageComponent//*[@name='navbar']//aco:AmaTextComponent|
+						  /aco:AmaWebPageComponent//*[@name='metainfo']//aco:AmaStructuredTextComponent
+				</pointcut>	
+				<value>
+					<textTemplate>concat($joinPoint,'_en')</textTemplate>
+				</value>
+			</changeValue>
+		</advices>
+	</adviceGroup>
+</aspect>

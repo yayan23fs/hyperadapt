@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?><catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" publisher="Oracle Publishing" title="Oracle Magazine" xsi:noNamespaceSchemaLocation="catalogSalamiSlice.xsd">
+
+
+	<journal date="November-December 2003">
+		<article section="XML">
+			<title>Updating XQuery</title>
+			<author>Jason Hunter</author>
+			<text>justText<textFrame number="1">
+					Parsing XML with the DOM API This section  explains how to parse an XML document
+						(the XML document created in the previous section)  with a DOM parser.
+						DOM parsing creates an in-memory tree that mirrors the structure of
+						the parsed XML document. Subsequently, you can navigate the tree using
+						the DOM API. In this  case, you'll see how to iterate over the parsed
+						JDeveloper, and import the two packages.
+				</textFrame><textFrame number="2">You can iterate over the resulting NodeList to output the element namespace,
+						element, prefix, element tag name, and/or element text. The method calls
+						are fairly self-explanatory; for example, the getNamespaceURI() method
+						returns the namespace URI of an element,  the getPrefix() method returns
+						the prefix of an element in a namespace, and the  getTagName() method
+						returns the element tag name.
+				</textFrame>TextAgain<textFrame number="3">To be continued soon.</textFrame></text>
+		</article>
+		<article section="XML">
+			<title>Dom+Xquery</title>
+			<author>Jason Hunter</author>
+			<text><textFrame number="1">DOM parsing creates an in-memory tree that mirrors the structure of  the parsed
+						XML document. Subsequently, you can navigate the tree using the DOM
+						API. In this  case, you'll see how to iterate over the parsed XML document
+						and output element and  attribute node values. 
+				</textFrame><textFrame number="2">You can obtain an element's text by first  retrieving the text node from the
+						element node and then requesting the value of the text node.
+				</textFrame><textFrame number="3">...and do fancy stuff with it.
+				</textFrame><textFrame number="4">The DOM parsing API classes
+						are in the oracle.xml.parser.v2 package  and the DOM parser factory
+						and parser classes are in the oracle.xml.jaxp package.
+				</textFrame></text>
+		</article>
+		<article section="JSP">
+			<title>Servlets and JSP Step Up</title>
+			<author>Budi Kurniawan</author>
+			<text><textFrame number="1">Article coming soon</textFrame>
+			</text><imageVariants>
+				<image>
+					<height>120</height>
+					<width>200</width>
+					<url>mainPage/img_small.jpg</url>
+				</image>
+				<image>
+					<height>180</height>
+					<width>300</width>
+					<url>mainPage/img_medium.jpg</url>
+				</image>
+				<image>
+					<height>240</height>
+					<width>400</width>
+					<url>mainPage/img_large.jpg</url>
+				</image>
+			</imageVariants>
+		</article>
+		<article>
+		<title>someTitle</title>	
+		<author>unknown</author>
+		<text>
+			<textFrame number="0"/>
+			<textFrame number="1"/>
+			<textFrame number="2"/>		
+		</text>	
+		</article>
+	</journal>
+</catalog>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<book inStock="Yes" price="64.28"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://books book.xsd"
+xmlns="http://books">
+<title>Compilers: Principles, Techniques, and Tools</title>
+<ISBN>0-201-10088-6</ISBN>
+<edition>Second</edition>
+<publisher>Addison Wesley</publisher>
+</book>
+

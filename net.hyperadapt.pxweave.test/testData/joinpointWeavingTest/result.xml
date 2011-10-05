@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><bookList xmlns="http://books" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://books book.xsd">
+  <books:book xmlns:books="http://books" xmlns="http://www.hyperadapt.net/pxweave/aspects" inStock="No" price="16.95"><books:title>Under The Dome: A Novel</books:title><books:author><books:name>Stephen</books:name><books:lastName>King</books:lastName></books:author><books:ISBN>0340992565</books:ISBN><books:edition>First</books:edition><books:publisher>Hodder and Stoughton</books:publisher></books:book><books:book xmlns:books="http://books" xmlns="http://www.hyperadapt.net/pxweave/aspects" inStock="Yes" price="15.95"><books:title>Full Dark, No Stars</books:title><books:author><books:name>Stephen</books:name><books:lastName>King</books:lastName></books:author><books:ISBN>1444712543</books:ISBN><books:edition>First</books:edition><books:publisher>Hodder and Stoughton</books:publisher></books:book><book inStock="Yes" price="64.14">
+  	<title>Principles: How they got lost.</title>
+	<author>  
+		<name>Sam</name>
+			<lastName>Freek</lastName>
+	</author>
+	<ISBN>0-201-12188-6</ISBN>
+	<edition>Second</edition>
+	<publisher>VVM</publisher>
+  </book>
+  <book inStock="Yes" price="39.22">
+	<title>The Moon Story</title>
+	<author><name>M.</name>	
+		<lastName>Rainsburg</lastName>
+	</author>
+	<ISBN>0-251-16135-2</ISBN>
+	<edition>Second</edition>
+	<publisher>RS Media</publisher>
+  </book>
+  <book inStock="No" price="44.98">
+	<title>Some Title</title> 
+	<author>mixedContent<name>A</name><lastName>Name</lastName></author>
+	<ISBN>0-251-16135-2</ISBN>
+	<edition>Second</edition>
+	<publisher>RS Media</publisher>
+  </book>
+  </bookList>

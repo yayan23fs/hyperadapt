@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?><aco:AmaWebPageComponent xmlns:aco="http://www.hyperadapt.net/amacont/2008/AmaComponent" xmlns:asem="http://www.hyperadapt.net/amacont/2008/AmaSemantics" xmlns:mpeg7="http://www.mpeg7.org/2001/MPEG-7_Schema" xmlns:aada="http://www.hyperadapt.net/amacont/2008/AmaAdaptation" xmlns:alay="http://www.hyperadapt.net/amacont/2008/AmaLayout" xmlns:amet="http://www.hyperadapt.net/amacont/2008/AmaMetaInformation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="ok2hvhrs" layer="DocumentComponent" name="Website" template="simple" xsi:schemaLocation="http://www.hyperadapt.net/amacont/2008/AmaComponent http://www.hyperadapt.net/amacont/2008/AmaComponent.xsd"> 
+    <aco:MetaInformation>
+        <amet:LayoutProperties>
+            <alay:LayoutManager>
+            	<alay:BoxLayout axis="yAxis" border="0px" space="0px"> 
+                 	<alay:ComponentRef align="left" valign="middle">header</alay:ComponentRef> 
+                 	<alay:ComponentRef align="left" valign="middle">center</alay:ComponentRef> 
+                 	<alay:ComponentRef align="left" ratio="25px" valign="middle">footer</alay:ComponentRef> 
+                </alay:BoxLayout>                   	
+            </alay:LayoutManager>
+        </amet:LayoutProperties>
+    </aco:MetaInformation>
+    <aco:SubComponents>
+        <aco:AmaSetComponent id="l84y6kh0" layer="DocumentComponent" name="header" template="none"> 
+            <aco:SubComponents>
+                <aco:AmaAccessElement layer="ContentUnit" name="logo" template="simple"> 
+                    <aco:Hyperlinks>
+                        <aco:AmaComponentLinkComponent layer="Hyperlink" name="h1"> 
+                            <aco:MetaInformation>
+                                <amet:LinkComponentMetaData>
+                                    <amet:linktype>Navigationslink</amet:linktype> 
+                                </amet:LinkComponentMetaData>
+                            </aco:MetaInformation>
+                            <aco:From component="logo_img"/> 
+                            <aco:To base="index.ama"/> 
+                        </aco:AmaComponentLinkComponent>
+                    </aco:Hyperlinks>
+                    <aco:SubComponents>
+                   	    <aco:AmaImageComponent id="m30b997m" layer="Media" name="logo_img"> 
+                           	<aco:MetaInformation>
+                             	<amet:ImageMetaData>
+                            		<amet:source>images/logo.png</amet:source> 
+                            		<amet:alt>SoundNexus Logo</amet:alt>
+                            	</amet:ImageMetaData>
+                           	</aco:MetaInformation>
+                       	</aco:AmaImageComponent>
+                    </aco:SubComponents>
+                </aco:AmaAccessElement>
+            </aco:SubComponents>
+        </aco:AmaSetComponent>
+        <aco:AmaSetComponent id="xpv6ol3l" layer="DocumentComponent" name="center" template="simple"> 
+            <aco:MetaInformation>
+                <amet:LayoutProperties>
+                    <alay:LayoutManager>
+                       	<alay:BoxLayout axis="xAxis" border="0px" height="100%" space="20px" width="100%"> 
+                           	 <alay:ComponentRef align="left" ratio="153px" valign="top">navigation</alay:ComponentRef> 
+                            <alay:ComponentRef align="left" valign="top">content</alay:ComponentRef> 
+                        </alay:BoxLayout>                        	
+                    </alay:LayoutManager>
+                </amet:LayoutProperties>
+            </aco:MetaInformation>
+            <aco:SubComponents>
+                <aco:AmaSetComponent id="j91t3sk7" layer="DocumentComponent" name="navigation"> 
+                    <aco:SubComponents>
+                        <aco:AmaAccessElement id="zf82w9az" layer="ContentUnit" name="navbar" template="simple">
+							<aco:Hyperlinks>
+								<aco:AmaComponentLinkComponent id="ny15s6lf" layer="Hyperlink" name="h2">
+									<aco:MetaInformation>
+										<amet:LinkComponentMetaData>
+											<amet:linktype>Strukturlink</amet:linktype>
+										</amet:LinkComponentMetaData>
+									</aco:MetaInformation>
+									<aco:From component="wkmgmynb"/>
+									<aco:To base="index.ama"/>
+								</aco:AmaComponentLinkComponent>
+								<aco:AmaComponentLinkComponent id="a4167rg8" layer="Hyperlink" name="h3">
+									<aco:MetaInformation>
+										<amet:LinkComponentMetaData>
+											<amet:linktype>Strukturlink</amet:linktype>
+										</amet:LinkComponentMetaData>
+									</aco:MetaInformation>
+									<aco:From component="uqc5rp8w4m"/>
+									<aco:To base="genres.ama"/>
+								</aco:AmaComponentLinkComponent>
+								<aco:AmaComponentLinkComponent id="fg66hdsd" layer="Hyperlink" name="h4">
+									<aco:MetaInformation>
+										<amet:LinkComponentMetaData>
+											<amet:linktype>Strukturlink</amet:linktype>
+										</amet:LinkComponentMetaData>
+									</aco:MetaInformation>
+									<aco:From component="g2br6xyjn"/>
+									<aco:To base="interprets.ama"/>
+								</aco:AmaComponentLinkComponent>
+								<aco:AmaComponentLinkComponent id="kmzu7egu" layer="Hyperlink" name="h5">
+									<aco:MetaInformation>
+										<amet:LinkComponentMetaData>
+											<amet:linktype>Strukturlink</amet:linktype>
+										</amet:LinkComponentMetaData>
+									</aco:MetaInformation>
+									<aco:From component="pb0wnlwgkl"/>
+									<aco:To base="javascript:amaSettings.toggleSettingsDialog()"/>
+								</aco:AmaComponentLinkComponent>
+							</aco:Hyperlinks>
+							<aco:MetaInformation>
+								<amet:LayoutProperties>
+									<alay:LayoutManager>
+										<alay:BoxLayout axis="yAxis">
+											<alay:ComponentRef>wkmgmynb</alay:ComponentRef>
+											<alay:ComponentRef>uqc5rp8w4m</alay:ComponentRef>
+											<alay:ComponentRef>g2br6xyjn</alay:ComponentRef>	
+											<alay:ComponentRef>pb0wnlwgkl</alay:ComponentRef>											
+										</alay:BoxLayout>
+									</alay:LayoutManager>
+								</amet:LayoutProperties>
+							</aco:MetaInformation>
+							<aco:SubComponents>
+								<aco:AmaImageComponent id="aqwrz6if" layer="Media" name="wkmgmynb">
+									<aco:MetaInformation>
+										<amet:ImageMetaData>
+											<amet:source>stuff</amet:source>
+											<amet:alt>Startseite</amet:alt>
+										</amet:ImageMetaData>
+									</aco:MetaInformation>
+								</aco:AmaImageComponent>
+								<aco:AmaImageComponent id="jk8tbbfr" layer="Media" name="uqc5rp8w4m">
+									<aco:MetaInformation>
+										<amet:ImageMetaData>
+											<amet:source>images/genres.png</amet:source>
+											<amet:alt>Genres</amet:alt>
+										</amet:ImageMetaData>
+									</aco:MetaInformation>
+								</aco:AmaImageComponent>
+								<aco:AmaImageComponent id="ui57689j" layer="Media" name="g2br6xyjn">
+									<aco:MetaInformation>
+										<amet:ImageMetaData>
+											<amet:source>images/interprets.png</amet:source>
+											<amet:alt>Interpreten</amet:alt>
+										</amet:ImageMetaData>
+									</aco:MetaInformation>
+								</aco:AmaImageComponent>
+								<aco:AmaImageComponent id="mmz9rhg" layer="Media" name="pb0wnlwgkl">
+									<aco:MetaInformation>
+										<amet:ImageMetaData>
+											<amet:source>images/options.png</amet:source>
+											<amet:alt>Optionen</amet:alt>
+										</amet:ImageMetaData>
+									</aco:MetaInformation>
+								</aco:AmaImageComponent>
+							</aco:SubComponents>
+						</aco:AmaAccessElement>
+                    </aco:SubComponents>
+                </aco:AmaSetComponent>
+                <aco:AmaSetComponent id="fbth6zki" layer="DocumentComponent" name="content"> 
+                    <aco:MetaInformation>
+                        <amet:LayoutProperties>
+                            <alay:LayoutManager>
+                                <alay:BoxLayout axis="yAxis" border="0px" space="20px"> 
+                                    <alay:ComponentRef align="left" valign="top">intro_text_dc</alay:ComponentRef> 
+                                    <alay:ComponentRef align="left" valign="top">content_boxes</alay:ComponentRef> 
+                                </alay:BoxLayout>
+                            </alay:LayoutManager>
+                        </amet:LayoutProperties>
+                    </aco:MetaInformation>
+                    <aco:SubComponents>
+                        <aco:AmaSetComponent id="bt766zh" layer="DocumentComponent" name="intro_text_dc"> 
+                            <aco:MetaInformation>
+                                <amet:LayoutProperties>
+                                    <alay:LayoutManager>
+                                        <alay:BoxLayout axis="yAxis" border="0px" height="100%" space="0px" width="100%"> 
+                                            <alay:ComponentRef align="left" ratio="100%" valign="middle">intro_text_cu</alay:ComponentRef> 
+                                        </alay:BoxLayout>
+                                    </alay:LayoutManager>
+                                </amet:LayoutProperties>
+                            </aco:MetaInformation>
+                            <aco:SubComponents>
+                                <aco:AmaListComponent layer="ContentUnit" name="intro_text_cu"> 
+                                    <aco:SubComponents>
+                                        <aco:AmaStructuredTextComponent id="grzt5zrg" layer="Media" name="introduction"> 
+                                            
+                                                
+                                        	   		Willkommen bei SoundNexus, Ihrem persönlichen Musikportal! SoundNexus macht es Ihnen leicht, Musik zu finden, die Sie mögen. Geben Sie einfach nur Ihr bevorzugtes Genre ein und SoundNexus präsentiert Ihnen Interpreten und Alben, die diesem Genre entsprechen. Außerdem verfügt SoundNexus über eine tagesaktuelle Top10-Liste aller Alben. Was für Musik Sie auch mögen – SoundNexus kennt sie alle!
+                                                
+                                            
+                                        _en<aco:MetaInformation>
+                                                <amet:TextMetaData>
+                                        	   		<amet:value>Willkommen bei SoundNexus, Ihrem persönlichen Musikportal! SoundNexus macht es Ihnen leicht, Musik zu finden, die Sie mögen. Geben Sie einfach nur Ihr bevorzugtes Genre ein und SoundNexus präsentiert Ihnen Interpreten und Alben, die diesem Genre entsprechen. Außerdem verfügt SoundNexus über eine tagesaktuelle Top10-Liste aller Alben. Was für Musik Sie auch mögen – SoundNexus kennt sie alle!</amet:value>
+                                                </amet:TextMetaData>
+                                            </aco:MetaInformation></aco:AmaStructuredTextComponent>                                        
+                                    </aco:SubComponents>
+                                </aco:AmaListComponent>
+                            </aco:SubComponents>
+                        </aco:AmaSetComponent>
+                        <aco:AmaSetComponent id="kjlio8z7" layer="DocumentComponent" name="content_boxes" template="simple"> 
+                            <aco:MetaInformation>
+                                <amet:LayoutProperties>
+                                    <alay:LayoutManager>
+                              	    	<alay:BoxLayout axis="xAxis" border="0px" space="30px"> 
+		                                    <alay:ComponentRef align="center" ratio="31%" valign="top">top10</alay:ComponentRef> 
+        		                            <alay:ComponentRef align="center" ratio="31%" valign="top">best_rated</alay:ComponentRef> 
+                			                <alay:ComponentRef align="center" ratio="31%" valign="top">favorites</alay:ComponentRef> 
+                                    	</alay:BoxLayout>				                        	                  
+                                    </alay:LayoutManager>
+                                </amet:LayoutProperties>
+                            </aco:MetaInformation>
+                            <aco:SubComponents>
+                                <aco:AmaSetComponent id="th6tz654" idField="id" layer="DocumentComponent" name="top10" query="SELECT album.id,album.name,album.bild_src,bild_src_small,album.genre FROM album ORDER BY jahr DESC LIMIT 8" template="simple"> 
+                                    <aco:SubComponents>
+                                        <aco:AmaListComponent id="ththr55z" layer="ContentUnit" name="top10_headline_cu"> 
+                                            <aco:SubComponents>
+                                                <aco:AmaStructuredTextComponent id="jzhdasfh6" layer="Media" name="top10_headline_en"> 
+		                                        	<aco:MetaInformation>
+                                                        <amet:TextMetaData>
+                                                            <amet:value>
+                                                                <h1>Charts</h1> 
+                                                            </amet:value>
+                                                        </amet:TextMetaData>
+                                                    </aco:MetaInformation>
+                                                </aco:AmaStructuredTextComponent>
+                                            </aco:SubComponents>
+                                        </aco:AmaListComponent>
+                                        <aco:AmaSetComponent id="qqr449tr" layer="DocumentComponent" name="top10_entries"> 
+                                            <aco:MetaInformation>
+                                                <amet:LayoutProperties>
+                                                    <alay:LayoutManager>
+                                                        <alay:BoxLayout axis="yAxis" space="2px"> 
+                                                            <alay:ComponentRef template="iterative">wkh6gpvzcp_${query_field('id')}</alay:ComponentRef> 
+                                                        </alay:BoxLayout>
+                                                    </alay:LayoutManager>
+                                                </amet:LayoutProperties>
+                                            </aco:MetaInformation>
+                                            <aco:SubComponents>
+                                            	<aco:AmaListComponent id="chartEntry_${query_field('id')}" name="wkh6gpvzcp_${query_field('id')}" template="iterative">
+                                            		<aco:MetaInformation>                                            		
+                                                    	<amet:MetaData>
+                                                    		<genre>${query_field('genre')}</genre>
+                                                    	</amet:MetaData>
+                                            			<amet:LayoutProperties>
+                                            				<alay:LayoutManager>
+                                            					<alay:BoxLayout axis="xAxis" space="5px">
+                                            						<alay:ComponentRef ratio="100px">pimg1</alay:ComponentRef>
+                                            						<alay:ComponentRef>ptxt1</alay:ComponentRef>
+                                            					</alay:BoxLayout>
+                                            				</alay:LayoutManager>
+                                            			</amet:LayoutProperties>
+                                            		</aco:MetaInformation>
+                                            		<aco:SubComponents>
+                                            			<aco:AmaImageComponent id="chartEntry_img_${query_field('id')}" layer="Media" name="pimg1">
+                                            				<aco:Hyperlinks>
+                                                				<aco:AmaComponentLinkComponent id="chartEntry_img_link_${query_field('id')}" layer="Hyperlink" name="h6"> 
+                                                   					<aco:MetaInformation>
+                                                      					<amet:LinkComponentMetaData>
+                                                            				<amet:linktype>Navigationslink</amet:linktype> 
+                                                        				</amet:LinkComponentMetaData>
+                                                   					</aco:MetaInformation>
+                                                    				<aco:To base="album.ama"> 
+                                                        				<aco:Param name="id" value="${query_field('id')}"/> 
+                                                    				</aco:To>
+                                                				</aco:AmaComponentLinkComponent>
+                                            				</aco:Hyperlinks>
+		                                            		<aco:MetaInformation>
+        		                                    			<amet:ImageMetaData>                                  			
+        		                                    				<amet:source>images/artists/${query_field('bild_src_small')}</amet:source>
+        		                                    				<amet:alt>Cover: '${query_field('name')}'</amet:alt>
+                        		                    			</amet:ImageMetaData>
+                                		            		</aco:MetaInformation>
+                                        		    	</aco:AmaImageComponent>
+                                                		<aco:AmaStructuredTextComponent id="chartEntry_text_${query_field('id')}" layer="Media" name="ptxt1">
+                                                			<aco:Hyperlinks>
+                                                				<aco:AmaComponentLinkComponent id="chartEntry_text_link_${query_field('id')}" layer="Hyperlink" name="h6"> 
+                                                   					<aco:MetaInformation>
+                                                      					<amet:LinkComponentMetaData>
+                                                            				<amet:linktype>Navigationslink</amet:linktype> 
+                                                        				</amet:LinkComponentMetaData>
+                                                   					</aco:MetaInformation>
+                                                    				<aco:To base="album.ama"> 
+                                                        				<aco:Param name="id" value="${query_field('id')}"/> 
+                                                    				</aco:To>
+                                                				</aco:AmaComponentLinkComponent>
+                                            				</aco:Hyperlinks>
+		                                                    <aco:MetaInformation>
+		                                                    	<amet:MetaData>
+		                                                    		<genre>${query_field('genre')}</genre>
+		                                                    	</amet:MetaData>
+        		                                                <amet:TextMetaData>             							                         		
+                                           							<amet:value>${query_field('name')}</amet:value>
+                        		                                </amet:TextMetaData>
+                                		                    </aco:MetaInformation>
+                                        		        </aco:AmaStructuredTextComponent>     
+                                                	</aco:SubComponents>                                           
+                                        		</aco:AmaListComponent>
+                                            </aco:SubComponents>
+                                        </aco:AmaSetComponent>
+                                    </aco:SubComponents>
+                                </aco:AmaSetComponent>
+                                <aco:AmaSetComponent id="dfgdh6t7" idField="id" layer="DocumentComponent" name="best_rated" query="SELECT album.id,album.name,AVG(rating) AS rating,bild_src,bild_src_small,genre FROM album INNER JOIN ratings ON album.id=ratings.album_id GROUP BY album_id ORDER BY rating DESC LIMIT 8" template="simple"> 
+                                    <aco:SubComponents>
+                                        <aco:AmaListComponent id="l907uii7" layer="ContentUnit" name="best_rated_headline_cu"> 
+                                            <aco:SubComponents>
+                                                <aco:AmaStructuredTextComponent id="sngrp394" layer="Media" name="best_rated_headline_en"> 
+                                                    <aco:MetaInformation>
+                                                        <amet:TextMetaData>
+                            		            	   		<amet:value><h1>Beliebteste</h1></amet:value>
+                                                        </amet:TextMetaData>
+                                                    </aco:MetaInformation>
+                                                </aco:AmaStructuredTextComponent>                                                
+                                            </aco:SubComponents>
+                                        </aco:AmaListComponent>
+                                        <aco:AmaSetComponent id="tgfkln5k" layer="DocumentComponent" name="best_rated_entries"> 
+                                            <aco:MetaInformation>
+                                                <amet:LayoutProperties>
+                                                    <alay:LayoutManager>
+                                                        <alay:BoxLayout axis="yAxis" space="2px"> 
+                                                            <alay:ComponentRef template="iterative">p3q6up9ogd_${query_field('id')}</alay:ComponentRef> 
+                                                        </alay:BoxLayout>
+                                                    </alay:LayoutManager>
+                                                </amet:LayoutProperties>
+                                            </aco:MetaInformation>
+                                            <aco:SubComponents>
+                                                <aco:AmaListComponent id="bestRatedEntry_${query_field('id')}" layer="ContentUnit" name="p3q6up9ogd_${query_field('id')}" template="iterative">
+                                            		<aco:MetaInformation>
+                                                    	<amet:MetaData>
+                                                    		<genre>${query_field('genre')}</genre>
+                                                    	</amet:MetaData>
+                                            			<amet:LayoutProperties>
+                                            				<alay:LayoutManager>
+                                            					<alay:BoxLayout axis="xAxis" space="5px">
+                                            						<alay:ComponentRef ratio="100px">pimg2</alay:ComponentRef>
+                                            						<alay:ComponentRef>ptxt2</alay:ComponentRef>
+                                            					</alay:BoxLayout>
+                                            				</alay:LayoutManager>
+                                            			</amet:LayoutProperties>
+                                            		</aco:MetaInformation>
+                                            		<aco:SubComponents>
+                                            			<aco:AmaImageComponent id="bestRatedEntry_img_${query_field('id')}" layer="Media" name="pimg2">
+                                            				<aco:Hyperlinks>
+                                                				<aco:AmaComponentLinkComponent id="bestRatedEntry_img_link_${query_field('id')}" layer="Hyperlink" name="h6"> 
+                                                   					<aco:MetaInformation>
+                                                      					<amet:LinkComponentMetaData>
+                                                            				<amet:linktype>Navigationslink</amet:linktype> 
+                                                        				</amet:LinkComponentMetaData>
+                                                   					</aco:MetaInformation>
+                                                    				<aco:To base="album.ama"> 
+                                                        				<aco:Param name="id" value="${query_field('id')}"/> 
+                                                    				</aco:To>
+                                                				</aco:AmaComponentLinkComponent>
+                                            				</aco:Hyperlinks>
+		                                            		<aco:MetaInformation>
+        		                                    			<amet:ImageMetaData>   
+                		                            				<amet:source>images/artists/${query_field('bild_src_small')}</amet:source>
+                		                            				<amet:alt>Cover: '${query_field('name')}'</amet:alt>
+                        		                    			</amet:ImageMetaData>
+                                		            		</aco:MetaInformation>
+                                        		    	</aco:AmaImageComponent>
+                                                		<aco:AmaStructuredTextComponent id="bestRatedEntry_text_${query_field('id')}" layer="Media" name="ptxt2">
+                                                			<aco:Hyperlinks>
+                                                				<aco:AmaComponentLinkComponent id="bestRatedEntry_text_link_${query_field('id')}" layer="Hyperlink" name="h6"> 
+                                                   					<aco:MetaInformation>
+                                                      					<amet:LinkComponentMetaData>
+                                                            				<amet:linktype>Navigationslink</amet:linktype> 
+                                                        				</amet:LinkComponentMetaData>
+                                                   					</aco:MetaInformation>
+                                                    				<aco:To base="album.ama"> 
+                                                        				<aco:Param name="id" value="${query_field('id')}"/> 
+                                                    				</aco:To>
+                                                				</aco:AmaComponentLinkComponent>
+                                            				</aco:Hyperlinks>
+		                                                    <aco:MetaInformation>
+		                                                    	<amet:MetaData>
+		                                                    		<genre>${query_field('genre')}</genre>
+		                                                    	</amet:MetaData>
+        		                                                <amet:TextMetaData>
+        		                                                	<amet:value>${query_field('name')}</amet:value>
+                        		                                </amet:TextMetaData>
+                                		                    </aco:MetaInformation>
+                                        		        </aco:AmaStructuredTextComponent>     
+                                                	</aco:SubComponents>                                           
+                                        		</aco:AmaListComponent>
+                                            </aco:SubComponents>
+                                        </aco:AmaSetComponent>
+                                    </aco:SubComponents>
+                                </aco:AmaSetComponent>
+                                <!-- <aco:AmaSetComponent layer="DocumentComponent" name="favorites" query="SELECT album.id,album.name,COUNT(*) AS mostvisited FROM album INNER JOIN history ON album.id=history.album_id AND history.user_id='substitute(user_id)' GROUP BY album.id ORDER BY mostvisited DESC LIMIT 8" idField="id" template="simple"> -->
+                                <aco:AmaSetComponent id="favorites" idField="id" layer="DocumentComponent" name="favorites" query="SELECT album.id,album.name,bild_src,bild_src_small,genre FROM album LIMIT 4" template="simple"> 
+                                    <aco:SubComponents>
+                                        <aco:AmaListComponent layer="ContentUnit" name="favorites_headline_cu"> 
+                                            <aco:SubComponents>
+                                                <aco:AmaStructuredTextComponent layer="Media" name="favorites_headline_en"> 
+                                                    <aco:MetaInformation>
+                                                        <amet:TextMetaData>
+                                                            <amet:value><h1>Favoriten</h1></amet:value>
+                                                        </amet:TextMetaData>
+                                                    </aco:MetaInformation>
+                                                </aco:AmaStructuredTextComponent>
+                                            </aco:SubComponents>
+                                        </aco:AmaListComponent>
+                                        <aco:AmaSetComponent layer="DocumentComponent" name="favorites_entries"> 
+                                            <aco:MetaInformation>
+                                                <amet:LayoutProperties>
+                                                    <alay:LayoutManager>
+                                                        <alay:BoxLayout axis="yAxis" space="2px"> 
+                                                            <alay:ComponentRef template="iterative">p3q6up9ogdg_${query_field('id')}</alay:ComponentRef> 
+                                                        </alay:BoxLayout>
+                                                    </alay:LayoutManager>
+                                                </amet:LayoutProperties>
+                                            </aco:MetaInformation>
+                                            <aco:SubComponents>
+                                                <aco:AmaListComponent id="favEntry_${query_field('id')}" layer="ContentUnit" name="p3q6up9ogdg_${query_field('id')}" template="iterative">
+                                            		<aco:MetaInformation>                                            		
+                                                    	<amet:MetaData>
+                                                    		<genre>${query_field('genre')}</genre>
+                                                    	</amet:MetaData>
+                                            			<amet:LayoutProperties>
+                                            				<alay:LayoutManager>
+                                            					<alay:BoxLayout axis="xAxis" space="5px">
+                                            						<alay:ComponentRef ratio="100px">pimg3</alay:ComponentRef>
+                                            						<alay:ComponentRef>ptxt3</alay:ComponentRef>
+                                            					</alay:BoxLayout>
+                                            				</alay:LayoutManager>
+                                            			</amet:LayoutProperties>
+                                            		</aco:MetaInformation>
+                                            		<aco:SubComponents>
+                                            			<aco:AmaImageComponent id="favEntry_img_${query_field('id')}" layer="Media" name="pimg3">
+                                            				<aco:Hyperlinks>
+                                                				<aco:AmaComponentLinkComponent id="favEntry_img_link_${query_field('id')}" layer="Hyperlink" name="h6"> 
+                                                   					<aco:MetaInformation>
+                                                      					<amet:LinkComponentMetaData>
+                                                            				<amet:linktype>Navigationslink</amet:linktype> 
+                                                        				</amet:LinkComponentMetaData>
+                                                   					</aco:MetaInformation>
+                                                    				<aco:To base="album.ama"> 
+                                                        				<aco:Param name="id" value="${query_field('id')}"/> 
+                                                    				</aco:To>
+                                                				</aco:AmaComponentLinkComponent>
+                                            				</aco:Hyperlinks>
+		                                            		<aco:MetaInformation>                                  	
+        		                                    			<amet:ImageMetaData>   
+                                           							<amet:source>images/artists/${query_field('bild_src_small')}</amet:source>
+                                           							<amet:alt>Cover: '${query_field('name')}'</amet:alt>
+                        		                    			</amet:ImageMetaData>
+                                		            		</aco:MetaInformation>
+                                        		    	</aco:AmaImageComponent>
+                                                		<aco:AmaStructuredTextComponent id="favEntry_text_${query_field('id')}" layer="Media" name="ptxt3">
+                                                			<aco:Hyperlinks>
+                                                				<aco:AmaComponentLinkComponent id="favEntry_text_link_${query_field('id')}" layer="Hyperlink" name="h6"> 
+                                                   					<aco:MetaInformation>
+                                                      					<amet:LinkComponentMetaData>
+                                                            				<amet:linktype>Navigationslink</amet:linktype> 
+                                                        				</amet:LinkComponentMetaData>
+                                                   					</aco:MetaInformation>
+                                                    				<aco:To base="album.ama"> 
+                                                        				<aco:Param name="id" value="${query_field('id')}"/> 
+                                                    				</aco:To>
+                                                				</aco:AmaComponentLinkComponent>
+                                            				</aco:Hyperlinks>
+		                                                    <aco:MetaInformation>
+		                                                    	<amet:MetaData>
+		                                                    		<genre>${query_field('genre')}</genre>
+		                                                    	</amet:MetaData>
+        		                                                <amet:TextMetaData>
+        		                                                	<amet:value>${query_field('name')}</amet:value> 
+                        		                                </amet:TextMetaData>
+                                		                    </aco:MetaInformation>
+                                        		        </aco:AmaStructuredTextComponent>     
+                                                	</aco:SubComponents>                                           
+                                        		</aco:AmaListComponent>
+                                            </aco:SubComponents>
+                                        </aco:AmaSetComponent>
+                                    </aco:SubComponents>
+                                </aco:AmaSetComponent>
+                            </aco:SubComponents>
+                        </aco:AmaSetComponent>
+                    </aco:SubComponents>
+                </aco:AmaSetComponent>
+            </aco:SubComponents>
+        </aco:AmaSetComponent>
+        <aco:AmaSetComponent layer="DocumentComponent" name="footer" template="simple"> 
+            <aco:MetaInformation>
+                <amet:LayoutProperties>
+                    <alay:LayoutManager>
+                        <alay:BoxLayout axis="yAxis" border="0px" height="100%" space="10px" width="100%"> 
+                            <alay:ComponentRef align="left" ratio="100%" valign="middle">disclaimer_cu</alay:ComponentRef> 
+                        </alay:BoxLayout>
+                    </alay:LayoutManager>
+                </amet:LayoutProperties>
+            </aco:MetaInformation>
+            <aco:SubComponents>
+                <aco:AmaListComponent layer="ContentUnit" name="disclaimer_cu"> 
+                    <aco:SubComponents>
+                        <aco:AmaCSSComponent id="aa4e5ze5zea" layer="Media" name="css"> 
+                            <aco:MetaInformation>
+                                <amet:CSSMetaData>
+                                	<amet:source>style.css</amet:source>    
+                                </amet:CSSMetaData>
+                            </aco:MetaInformation>
+                        </aco:AmaCSSComponent>
+                        <aco:AmaStructuredTextComponent layer="Media" name="disclaimer" template="simple"> 
+                            
+                                
+                                    
+                                        Diese Website ist im Rahmen des HyperAdapt-Projektes entstanden. SPARQL-Test ergab:  
+                                    
+                                
+                            
+                        _en<aco:MetaInformation>
+                                <amet:TextMetaData>
+                                    <amet:value>
+                                        <small>Diese Website ist im Rahmen des HyperAdapt-Projektes entstanden. SPARQL-Test ergab: </small> 
+                                    </amet:value>
+                                </amet:TextMetaData>
+                            </aco:MetaInformation></aco:AmaStructuredTextComponent>
+                        <aco:AmaStructuredTextComponent layer="Media" name="sparql" template="simple"> 
+                            <aco:MetaInformation>
+                                <amet:TextMetaData>
+                                    <amet:value>
+                                        <small>FALSE</small> 
+                                    </amet:value>
+                                </amet:TextMetaData>
+                            </aco:MetaInformation>
+                        </aco:AmaStructuredTextComponent>
+                    </aco:SubComponents>
+                </aco:AmaListComponent>
+            </aco:SubComponents>
+        </aco:AmaSetComponent>
+        <aco:AmaSetComponent id="componentpool" name="componentpool">
+			<aco:SubComponents>
+				<aco:AmaListComponent id="aatutia" name="componentpool_cu">
+					<aco:SubComponents>						
+						<aco:AmaStructuredTextComponent id="atj6aa" layer="Media" name="disclaimer_en">
+							<aco:MetaInformation>
+								<amet:TextMetaData>
+									<amet:value>
+										<small>This website has been created within the HyperAdapt project. SPARQL test was: </small>
+									</amet:value>
+								</amet:TextMetaData>
+							</aco:MetaInformation>
+						</aco:AmaStructuredTextComponent>
+						<aco:AmaStructuredTextComponent id="aa6ur6ua" layer="Media" name="sparql_true" template="simple">
+							<aco:MetaInformation>
+								<amet:TextMetaData>
+									<amet:value>
+										<small>TRUE</small>
+									</amet:value>
+								</amet:TextMetaData>
+							</aco:MetaInformation>
+						</aco:AmaStructuredTextComponent>
+						<aco:AmaTextComponent id="aaa6ruu" layer="Media" name="wkmgmynb_en">
+							<aco:MetaInformation>
+								<amet:TextMetaData>
+									<amet:value>Home</amet:value>
+								</amet:TextMetaData>
+							</aco:MetaInformation>
+						</aco:AmaTextComponent>
+						<aco:AmaTextComponent id="aar6ura" layer="Media" name="uqc5rp8w4m_en">
+							<aco:MetaInformation>
+								<amet:TextMetaData>
+									<amet:value>Genres</amet:value>
+								</amet:TextMetaData>
+							</aco:MetaInformation>
+						</aco:AmaTextComponent>
+						<aco:AmaTextComponent id="aaru6ura" layer="Media" name="g2br6xyjn_en">
+							<aco:MetaInformation>
+								<amet:TextMetaData>
+									<amet:value>Interprets</amet:value>
+								</amet:TextMetaData>
+							</aco:MetaInformation>
+						</aco:AmaTextComponent>
+						<aco:AmaTextComponent id="aarrua" layer="Media" name="pb0wnlwgkl_en">
+							<aco:MetaInformation>
+								<amet:TextMetaData>
+									<amet:value>Options</amet:value>
+								</amet:TextMetaData>
+							</aco:MetaInformation>
+						</aco:AmaTextComponent>
+						<aco:AmaStructuredTextComponent id="aar456rua" layer="Media" name="top10_headline_en"> 
+                            <aco:MetaInformation>
+                                <amet:TextMetaData>
+                   					<amet:value><h1>Charts</h1></amet:value>
+                                </amet:TextMetaData>
+                            </aco:MetaInformation>
+                        </aco:AmaStructuredTextComponent>
+        				<aco:AmaStructuredTextComponent id="aar6356rua" layer="Media" name="best_rated_headline_en"> 
+                            <aco:MetaInformation>
+                                <amet:TextMetaData>
+                   					<amet:value><h1>Best rated</h1></amet:value>
+                                </amet:TextMetaData>
+                            </aco:MetaInformation>
+                        </aco:AmaStructuredTextComponent>
+                        <aco:AmaStructuredTextComponent id="aatrhrurrua" layer="Media" name="favorites_headline_en"> 
+                            <aco:MetaInformation>
+                                <amet:TextMetaData>
+                                    <amet:value><h1>Favorites</h1></amet:value>
+                                </amet:TextMetaData>
+                            </aco:MetaInformation>
+                        </aco:AmaStructuredTextComponent>
+                        <aco:AmaStructuredTextComponent id="ae5z45arrua" layer="Media" name="introduction_en"> 
+                            <aco:MetaInformation>
+                                <amet:TextMetaData>
+                           			<amet:value>Welcome to SoundNexus, your personal music online portal! SoundNexus lets you easily find the music you like. Just tell us your preferred music genre and SoundNexus will present you artists and albums of that genre. Additionally, SoundNexus features a live Top 10 list of all albums. Whatever music you like - SoundNexus has it all!</amet:value>
+                                </amet:TextMetaData>
+                            </aco:MetaInformation>
+                        </aco:AmaStructuredTextComponent>
+					</aco:SubComponents>
+				</aco:AmaListComponent>
+			</aco:SubComponents>
+		</aco:AmaSetComponent>
+    </aco:SubComponents>
+</aco:AmaWebPageComponent>
