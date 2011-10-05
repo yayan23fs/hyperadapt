@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?><catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" publisher="Oracle Publishing" title="Oracle Magazine" xsi:noNamespaceSchemaLocation="catalogSalamiSlice.xsd">
+
+
+	<journal date="November-December 2003">
+		
+		
+		<article section="JSP">
+			<title>Servlets and JSP Step Up</title>
+			<author>Budi Kurniawan</author>
+			<text><textFrame number="1">Article coming soon</textFrame>
+			</text><imageVariants>
+				<image>
+					<height>120</height>
+					<width>200</width>
+					<url>mainPage/img_small.jpg</url>
+				</image>
+				<image>
+					<height>180</height>
+					<width>300</width>
+					<url>mainPage/img_medium.jpg</url>
+				</image>
+				<image>
+					<height>240</height>
+					<width>400</width>
+					<url>mainPage/img_large.jpg</url>
+				</image>
+			</imageVariants>
+		</article>
+		<article>
+		<title>someTitle</title>	
+		<author>unknown</author>
+		<text>
+			<textFrame number="0"/>
+			<textFrame number="1"/>
+			<textFrame number="2"/>		
+		</text>	
+		</article>
+	</journal>
+</catalog>

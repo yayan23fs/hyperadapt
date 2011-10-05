@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="catalog">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="journal" minOccurs="0" maxOccurs="unbounded" type="journalType"/>
+            </xs:sequence>
+            <xs:attribute name="title" type="xs:string"/>
+            <xs:attribute name="publisher" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="journalType">
+        <xs:sequence>
+            <xs:element name="article" maxOccurs="unbounded" type="articleType"/>
+        </xs:sequence>
+        <xs:attribute name="date" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="articleType">
+        <xs:sequence>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="author" type="xs:string"/>
+            <xs:element name="text" type="textType"/>
+            <xs:element name="imageVariants" minOccurs="0" maxOccurs="unbounded" type="imageVariantsType"/>
+        </xs:sequence>
+        <xs:attribute name="section" type="NewNewStringType0Type0"/>
+    </xs:complexType>
+    <xs:simpleType name="NewNewStringType0Type0">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Features"/>
+            <xs:enumeration value="SQL"/>
+            <xs:enumeration value="PL/SQL"/>
+            <xs:enumeration value="JSP"/>
+            <xs:enumeration value="XML"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="textType">
+        <xs:sequence>
+            <xs:element name="textFrame" maxOccurs="unbounded" type="textFrameType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="textFrameType" mixed="true">
+        <xs:attribute name="number" use="required" type="xs:integer"/>
+    </xs:complexType>
+    <xs:complexType name="imageVariantsType">
+        <xs:sequence>
+            <xs:element name="image" maxOccurs="unbounded" type="imageType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="imageType">
+        <xs:sequence>
+            <xs:element name="height" type="xs:integer"/>
+            <xs:element name="width" type="xs:integer"/>
+            <xs:element name="url" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

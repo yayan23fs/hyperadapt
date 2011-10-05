@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"  
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://books"
+	targetNamespace="http://books" elementFormDefault="qualified">
+  <xsd:element name="bookList">
+  	<xsd:complexType>
+  		<xsd:sequence>
+  			<xsd:element maxOccurs="unbounded" ref="book"/>  		
+  		</xsd:sequence>  	
+  	</xsd:complexType>  
+  </xsd:element>
+  <xsd:element name="book">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:element ref="title"/>
+      <xsd:choice>
+         <xsd:element ref="author"/>
+         <xsd:element ref="editor"/>
+      </xsd:choice>
+      <xsd:element ref="ISBN"/>
+      <xsd:element minOccurs="0" name="edition" type="Edition"/>
+      <xsd:element ref="publisher"/>
+      <xsd:element minOccurs="0" ref="year"/>
+    </xsd:sequence>
+    <xsd:attribute name="price" type="xsd:decimal"/>
+    <xsd:attribute name="inStock" use="required">
+       <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="Yes"/>
+              <xsd:enumeration value="No"/>
+          </xsd:restriction>
+       </xsd:simpleType>
+    </xsd:attribute>
+  </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="title" type="xsd:string"/>
+  
+  <xsd:element name="author">
+     <xsd:complexType mixed="true">
+     	<xsd:sequence>
+     			<xsd:element name="name" type="xsd:string"/>
+     			<xsd:element name="lastName" type="xsd:string"/>   		
+     	</xsd:sequence>     
+     </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="ISBN" type="xsd:string"/>
+  
+  <xsd:element name="publisher" type="xsd:string"/>
+  <xsd:element name="editor" type="xsd:string"/>
+  <xsd:element name="year">
+     <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:pattern value="[0-9]{4}"/>
+        </xsd:restriction>
+     </xsd:simpleType>
+  </xsd:element>
+  
+  <xsd:simpleType name="Edition">
+     <xsd:restriction base="xsd:string">
+        <xsd:enumeration value="First"/>
+        <xsd:enumeration value="Second"/>
+        <xsd:enumeration value="Third"/>
+        <xsd:enumeration value="Fourth"/>
+        <xsd:enumeration value="Fifth"/>
+     </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

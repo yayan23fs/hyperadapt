@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<aspect name="InsertSomething"
+	xsi:schemaLocation="http://www.hyperadapt.net/pxweave/aspects schemas/aspectE2.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aco="http://www.hyperadapt.net/amacont/2008/AmaComponent"
+	xmlns:amet="http://www.hyperadapt.net/amacont/2008/AmaMetaInformation"
+	xmlns:alay="http://www.hyperadapt.net/amacont/2008/AmaLayout" xmlns="http://www.hyperadapt.net/pxweave/aspects">
+	<interface>
+		<core id="core" type="http://www.hyperadapt.net/amacont/2008/AmaComponent" />
+	</interface>
+	<!-- adviceGroup> <scope> <xpath>//aco:AmaSetComponent[@id='a56zuaa!no']</xpath> 
+		<joinpoint locator="before" name="T_WebService"/> </scope> <advices> <changeValue> 
+		<pointcut>@query</pointcut> <value> <textTemplate>'select interpret.name 
+		AS interpret,interpret.id AS id,ceil(count(album.interpret_id)/4) AS amount 
+		from interpret inner join album on interpret.id=album.interpret_id group 
+		by interpret.id order by interpret.name'</textTemplate> </value> </changeValue> 
+		<delete> <pointcut>/aco:AmaListComponent[@name='interpret_row_title_img']</pointcut> 
+		</delete> <delete> <pointcut>/alay:ComponentRef[child::text()='interpret_row_title_img']</pointcut> 
+		</delete> </advices> </adviceGroup -->
+	<!-- adviceGroup> <scope> <xpath>//aco:AmaSetComponent[@id='l84y6kh0']/aco:SubComponents</xpath> 
+		<joinpoint locator="after" name="T_WebService" /> </scope> <advices> <insertElement 
+		position="1"> <pointcut>/aco:AmaAccessElement</pointcut> <value> <elementTemplate> 
+		<aco:Hyperlinks> <aco:AmaComponentLinkComponent name="h1" layer="Hyperlink"> 
+		<aco:MetaInformation> <amet:LinkComponentMetaData> <amet:linktype>Navigationslink</amet:linktype> 
+		</amet:LinkComponentMetaData> </aco:MetaInformation> <aco:From component="logo_img_smaller" 
+		/> <aco:To base="album.ama" /> </aco:AmaComponentLinkComponent> </aco:Hyperlinks> 
+		</elementTemplate> </value> </insertElement> <insertElement position="1"> 
+		<pointcut>/aco:AmaAccessElement</pointcut> <value> <elementTemplate> <aco:SubComponents> 
+		<aco:AmaImageComponent id="m30b997s" layer="Media" name="logo_img_smaller"> 
+		<aco:MetaInformation> <amet:ImageMetaData> <amet:source>images/logo_small.png</amet:source> 
+		<amet:alt>SoundNexus smaller Logo</amet:alt> </amet:ImageMetaData> </aco:MetaInformation> 
+		</aco:AmaImageComponent> </aco:SubComponents> </elementTemplate> </value> 
+		</insertElement> </advices> </adviceGroup -->
+
+	<!--adviceGroup> <depends> <boolExpr>0 = 0</boolExpr> </depends> <scope> 
+		<xpath>//aco:AmaSetComponent[@id='j91t3sk7']/aco:SubComponents/aco:AmaAccessElement 
+		</xpath> <joinpoint locator="after" name="T_WebService" /> </scope> <advices> 
+		<moveElement position="3"> <pointcut>/aco:SubComponents/aco:AmaImageComponent[@id='aqwrz6if']/aco:MetaInformation/amet:ImageMetaData</pointcut> 
+		<to>/aco:MetaInformation/amet:LayoutProperties/alay:LayoutManager/alay:BoxLayout</to> 
+		</moveElement> <insertElement position="3"> <pointcut>/aco:Hyperlinks</pointcut> 
+		<value> <elementTemplate> <aco:AmaComponentLinkComponent id="faskzafnsdf" 
+		name="h2" layer="Hyperlink"> <aco:MetaInformation> <amet:LinkComponentMetaData> 
+		<amet:linktype>Strukturlink</amet:linktype> </amet:LinkComponentMetaData> 
+		</aco:MetaInformation> <aco:From component="w12345" /> <aco:To base="aspects.ama" 
+		/> </aco:AmaComponentLinkComponent> </elementTemplate> </value> </insertElement> 
+		<insertElement position="6"> <pointcut>/aco:MetaInformation/amet:LayoutProperties/alay:LayoutManager/alay:BoxLayout</pointcut> 
+		<value> <elementTemplate> <alay:ComponentRef>w12345</alay:ComponentRef> </elementTemplate> 
+		</value> </insertElement> <insertElement position="3"> <pointcut>/aco:SubComponents</pointcut> 
+		<value> <elementTemplate> <aco:AmaImageComponent id="asduekhc" layer="Media" 
+		name="w12345"> <aco:MetaInformation> <amet:ImageMetaData> <amet:source>images/home_en.png</amet:source> 
+		<amet:alt>ällabätsch</amet:alt> </amet:ImageMetaData> </aco:MetaInformation> 
+		</aco:AmaImageComponent> </elementTemplate> </value> </insertElement> </advices> 
+		</adviceGroup -->
+	<!--adviceGroup> <scope> <xpath>//aco:AmaSetComponent[@id='j91t3sk7']/aco:SubComponents/aco:AmaAccessElement</xpath> 
+		<joinpoint locator="before" name="T_AspectWeaverS1" /> </scope> <advices> 
+		<delete> <pointcut>/aco:Hyperlinks/aco:AmaComponentLinkComponent[./aco:From/@component='w12345']</pointcut> 
+		</delete> <delete> <pointcut>/aco:MetaInformation/amet:LayoutProperties/alay:LayoutManager/alay:BoxLayout/alay:ComponentRef[text()='w12345']</pointcut> 
+		</delete> <delete> <pointcut>/aco:SubComponents/aco:AmaImageComponent[@name='w12345']</pointcut> 
+		</delete> </advices> </adviceGroup -->
+
+	<adviceGroup>
+		<scope>
+			<xpath>//aco:AmaSetComponent[@id='j91t3sk7']/aco:SubComponents/aco:AmaAccessElement
+			</xpath>
+			<joinpoint locator="after" name="T_WebService" />
+		</scope>
+		<advices>
+			<changeValue>
+				<pointcut>/aco:SubComponents/aco:AmaImageComponent[@id='aqwrz6if']/aco:MetaInformation/amet:ImageMetaData/amet:source
+				</pointcut>
+				<value>
+					<textTemplate>"images/homeL.png"</textTemplate>
+				</value>
+			</changeValue>
+			<changeValue>
+				<pointcut>/aco:SubComponents/aco:AmaImageComponent[@id='aqwrz6if']/aco:MetaInformation/amet:ImageMetaData/amet:source[text()='images/homeL.png']</pointcut>
+				<value>
+					<textTemplate>"stuff"</textTemplate>
+				</value>
+			</changeValue>
+		</advices>
+	</adviceGroup>
+
+	<!--adviceGroup> <scope> <xpath>//aco:AmaSetComponent[@id='j91t3sk7']/aco:SubComponents/aco:AmaAccessElement</xpath> 
+		<joinpoint locator="before" name="T_AspectWeaverS1" /> </scope> <advices> 
+		<delete> <pointcut>/aco:SubComponents/aco:AmaImageComponent[@id='aqwrz6if']/aco:MetaInformation/amet:ImageMetaData/amet:source[@text='images/home.png']</pointcut> 
+		</delete> </advices> </adviceGroup -->
+
+	<!--adviceGroup> <scope> <xpath>/books:bookList</xpath> </scope> <advices> 
+		<expandElement> <pointcut>books:book/books:title</pointcut> <value> <elementTemplate> 
+		<img xmlns="http://books">{$joinPoint/text()}-cover.jpg</img> </elementTemplate> 
+		</value> </expandElement> </advices> </adviceGroup -->
+
+
+</aspect>

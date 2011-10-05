@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<aspect name="expandElement"
+	xsi:schemaLocation="http://www.hyperadapt.net/pxweave/aspects ../../../net.hyperadapt.pxweave/schemas/aspectE2.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.net/pxweave/aspects">
+	<interface>
+		<core id="core" type="http://books" />
+	</interface>
+	<adviceGroup>
+		<scope>
+			<xpath>/books:bookList</xpath>
+		</scope>
+		<advices>
+			<expandElement>
+				<pointcut>books:book/books:title</pointcut>
+				<value>
+					<elementTemplate>
+						<img xmlns="http://books">{$joinPoint/text()}-cover.jpg</img>
+					</elementTemplate>
+				</value>
+			</expandElement>
+		</advices>
+	</adviceGroup>
+</aspect>

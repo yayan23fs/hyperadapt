@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<bookList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="bookList.xsd">
+  <book inStock="Yes" price="64.14"></book>
+  <book inStock="Yes" price="39.22"></book>
+  <book inStock="No" price="44.98"></book>
+  </bookList>

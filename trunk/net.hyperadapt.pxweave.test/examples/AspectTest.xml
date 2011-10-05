@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<aspect name="DeviceAdaption" xsi:schemaLocation="http://www.hyperadapt.org/aspects
+	../schemas/aspectE2.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.hyperadapt.org/aspects">
+	<interface>
+		<core id="core" type="schemas/aspectE2.xsd"/>
+	</interface>
+	<adviceGroup>
+		<scope>
+			<xpath>.</xpath>
+		</scope>
+		<advices>
+			<insertElement position="1">
+				<pointcut>/journal[1]</pointcut>		
+				<value>
+					<elementTemplate><test><deep/></test></elementTemplate>			
+				</value>
+			</insertElement>
+		</advices>
+	</adviceGroup>
+</aspect>

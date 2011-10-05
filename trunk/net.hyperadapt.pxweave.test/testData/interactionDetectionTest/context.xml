@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<context
+	xsi:schemaLocation="http://www.hyperadapt.net/pxweave/context ../net.hyperadapt.pxweave/schemas/context.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.net/pxweave/context">
+	<integerParameter>
+		<name>hres</name>
+		<value>640</value>
+	</integerParameter>
+	<integerParameter>
+		<name>vres</name>
+		<value>640</value>
+	</integerParameter>
+	<stringParameter>
+		<name>deviceType</name>
+		<value>cellPhone</value>
+	</stringParameter>
+	<stringParameter>
+		<name>UserLocation</name>
+		<value>USA</value>
+	</stringParameter>
+	<stringParameter>
+		<name>language</name>
+		<value>EN</value>
+	</stringParameter>
+	<booleanParameter>
+		<name>smallDevice</name>
+		<value>true</value>
+	</booleanParameter>
+</context>
