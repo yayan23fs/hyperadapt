@@ -1,0 +1,83 @@
+<project name="PXWeave XML-Java Binding" default="build" basedir=".">
+	
+	<property name="base_dir" value="." />
+	<property name="dest_dir" value="${base_dir}/dist"/>
+	<property name="dest_file" value="${dest_dir}/pxweave.jar" />
+	<property name="build_dir" value="${base_dir}/bin_temp" />
+	<property name="src_dir" value="${base_dir}/src" />
+	<property name="src_gen_dir" value="${base_dir}/src-gen" />	
+	<property name="lib_dir" value="${base_dir}/lib"/>
+	<property name="schema_dir" value="${base_dir}/schemas"/>
+		
+	<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter" />
+
+	
+	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+	<classpath>
+		<pathelement location="lib-xjc/jaxb-xjc.jar"/>
+		<pathelement location="lib-xjc/jaxb-impl.jar"/>
+		<pathelement location="lib/jaxb-api"/>
+		<pathelement location="lib-xjc/relaxngDatatype"/>
+		<pathelement location="lib-xjc/resolver.jar" />
+		<pathelement location="lib-xjc/xalan.jar"/>
+		<pathelement location="lib/xercesImpl.jar"/>
+	</classpath>	
+	</taskdef>
+	
+	<target name="compile_schemas" depends="compile_aspects,compile_context,compile_config"/>
+	
+	<target name="compile_aspects">
+		<xjc schema="${schema_dir}/aspectE2.xsd" destdir="${src_gen_dir}" package="net.hyperadapt.pxweave.aspects.ast"/>
+	</target>	
+
+	<target name="compile_context">
+		<xjc schema="${schema_dir}/context.xsd" destdir="${src_gen_dir}" package="net.hyperadapt.pxweave.context.ast"/>	 
+	</target>
+	
+	<target name="compile_config">
+		<xjc schema="${schema_dir}/weaverConfig.xsd" destdir="${src_gen_dir}" package="net.hyperadapt.pxweave.config.ast"/>	 
+	</target>
+	
+	<target name="jar">
+		<mkdir dir="${dest_dir}" />
+		<jar destfile="${dest_file}">
+			<fileset dir="${build_dir}" >
+				<exclude name="**/*.ucls"/>
+			</fileset>
+			<fileset dir="${base_dir}" >
+				<include name="**/*.xsd"/>
+			</fileset>
+			<manifest>
+				<attribute name="Implementation-Vendor" value="Software Technology Group - TU Dresden Germany" />
+				<attribute name="Implementation-Title" value="HyperAdapt XML Weaver" />
+				<attribute name="Implementation-Version" value="0.1" />
+				<attribute name="Main-Class" value="net.hyperadapt.pxweave.Main"/>
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="compile">
+		<mkdir dir="${build_dir}" />
+		<javac destdir="${build_dir}" debug="on" source="1.6" target="1.6">
+			<src path="${src_dir}"/>
+    		<src path="${src_gen_dir}"/>
+			<classpath>
+				<fileset dir="${lib_dir}">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+		<copy todir="${build_dir}">
+			<fileset dir="${base_dir}/src">
+				<include name="**/logger.config"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="clean">
+		<delete dir="${build_dir}"></delete>
+	</target>
+
+	<target name="build" depends="compile,jar,clean" />
+
+</project>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.hyperadapt.net/pxweave/config" 
+		xmlns:tns="http://www.hyperadapt.net/pxweave/config"
+		elementFormDefault="qualified">
+<element name="weaverConfiguration">
+	<complexType>
+		<sequence>
+			<element name="aspectFiles" type="tns:AspectFiles"/>	
+			<element name="namespaces" type="tns:Namespaces" minOccurs="0"/>
+			<element name="validationMode" type="tns:ValidationType"/>
+		</sequence>
+		<attribute name="reportInteractions" use="optional" type="boolean"/>
+	</complexType>
+</element>
+
+<complexType name="AspectFiles">
+	<sequence>
+		<element name="aspectFile" type="string" minOccurs="1" maxOccurs="unbounded"/>
+	</sequence>
+</complexType>
+
+<simpleType name="OperationValidation">
+	<restriction base="string">
+		<enumeration value="none"/>
+		<enumeration value="DOML3"/>
+		<enumeration value="DOML3Validation"/>
+	</restriction>
+</simpleType>
+
+<complexType name="Namespaces">
+	<sequence>
+		<element name="namespace" type="tns:NamespaceDeclaration" minOccurs="1" maxOccurs="unbounded"/>
+	</sequence>
+</complexType>
+
+<complexType name="NamespaceDeclaration">
+	<attribute name="prefix" use="required" type="string"/>
+	<attribute name="name" use="required" type="anyURI"/>
+	<attribute name="definition" use="optional" type="anyURI"/>
+</complexType>
+
+<complexType name="ValidationType">
+	<simpleContent>	
+		<extension base="tns:OperationValidation">
+			<attribute name="validateBeforeWeaving" type="boolean" default="false"/>	
+			<attribute name="validateAfterWeaving" type="boolean" default="false"/>	
+		</extension>		
+	</simpleContent>
+</complexType>
+</schema>
