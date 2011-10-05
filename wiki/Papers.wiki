@@ -4,5 +4,9 @@
 == 2011 ==
 
 == 2010 ==
+S. Karol, M. Heinzerling, F. Heidenreich, und U. Aßmann, „Using feature models for creating families of documents“, in Proceedings of the 10th ACM symposium on Document engineering, New York, NY, USA, 2010, S. 259–262.
+
+S. Karol, M. Niederhausen, U. Aßmann, K. Meißner, und M. Steinfeldt, „Towards Generic Weaving of Adaptation Aspects for XML“, in Proceedings of the 2010 International Conference on Internet Computing (ICOMP’10), Las Vegas, USA, 2010, Bd. 1.
+
 
 == 2009 ==
