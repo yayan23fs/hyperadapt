@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="interaction.plugin.interactionbuilder"
+         name="Interaction Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="net.hyperadapt.pxweave.interactions.plugin.InteractionBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="interaction.plugin.interactionprojectnature"
+         name="Interaction Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="net.hyperadapt.pxweave.interactions.plugin.InteractionProjectNature">
+         </run>
+      </runtime>
+      <builder
+            id="interaction.plugin.interactionbuilder">
+      </builder>
+   </extension>
+   <extension
+         id="popoupmenutoggle"
+         name="Popup Menu Toggle"
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="interaction.plugin.objectContribution1"
+            nameFilter="*"
+            objectClass="org.eclipse.core.resources.IProject">
+         <menu
+               icon="icons/EclipseHyperadapt.png"
+               id="interaction.plugin.popupmenu.group"
+               label="Interaction Checking"
+               path="interaction">
+            <groupMarker
+                  name="content">
+            </groupMarker>
+            <separator
+                  name="interaction">
+            </separator>
+         </menu>
+         <action
+               class="net.hyperadapt.pxweave.interactions.plugin.InteractionActionManual"
+               enablesFor="+"
+               icon="icons/EclipseHyperadaptStart.png"
+               id="interaction.plugin.action4"
+               label="Analyze now!"
+               menubarPath="interaction.plugin.popupmenu.group/content">
+            <enablement>
+               <objectState
+                     name="nature"
+                     value="interaction.plugin.interactionprojectnature">
+               </objectState>
+            </enablement>
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="true"
+            id="interaction.plugin.objectContribution2"
+            nameFilter="*"
+            objectClass="org.eclipse.core.resources.IProject">
+         <action
+               class="net.hyperadapt.pxweave.interactions.plugin.InteractionAction"
+               enablesFor="1"
+               icon="icons/EclipseHyperadapt+.png"
+               id="interaction.plugin.popupmenugroupactionenable"
+               label="Enable Checking"
+               menubarPath="interaction.plugin.popupmenu.group/content">
+         </action>
+         <visibility>
+            <not>
+               <objectState
+                     name="nature"
+                     value="interaction.plugin.interactionprojectnature">
+               </objectState>
+            </not>
+         </visibility>
+      </objectContribution>
+      <objectContribution
+            adaptable="true"
+            id="interaction.plugin.objectContribution3"
+            nameFilter="*"
+            objectClass="org.eclipse.core.resources.IProject">
+         <action
+               class="net.hyperadapt.pxweave.interactions.plugin.InteractionAction"
+               enablesFor="1"
+               icon="icons/EclipseHyperadapt-.png"
+               id="interaction.plugin.popupmenugroupactiondisable"
+               label="Disable Checking"
+               menubarPath="interaction.plugin.popupmenu.group/content">
+            <enablement>
+               <objectState
+                     name="nature"
+                     value="interaction.plugin.interactionprojectnature">
+               </objectState>
+            </enablement>
+         </action>
+         <visibility>
+            <objectState
+                  name="nature"
+                  value="interaction.plugin.interactionprojectnature">
+            </objectState>
+         </visibility>
+      </objectContribution>
+   </extension>
+   <extension
+         id="AspectInterferenceErrorMarker"
+         name="Aspect Interference Error Marker"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="false">
+      </persistent>
+   </extension>
+   <extension
+         id="AspectInterferenceWarningMarker"
+         name="Aspect Interference Warning Marker"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="false">
+      </persistent>
+   </extension>
+   <extension
+         id="WrongOrEmptyConfigFile"
+         name="Wrong or empty config file"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="false">
+      </persistent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="net.hyperadapt.pxweave.interactions.plugin.WeavingPropertyPage"
+            icon="icons/EclipseHyperadapt.png"
+            id="interaction.plugin.PropertyPage"
+            name="Weaving Interferences">
+         <enabledWhen>
+            <adapt
+                  type="org.eclipse.core.resources.IProject">
+            </adapt>
+         </enabledWhen>
+         <filter
+               name="nature"
+               value="interaction.plugin.interactionprojectnature">
+         </filter>
+      </page>
+   </extension>
+
+</plugin>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="/net.hyperadapt.pxweave/lib/saxon9-dom.jar"/>
+	<classpathentry kind="lib" path="/net.hyperadapt.pxweave/lib/saxon9.jar"/>
+	<classpathentry kind="lib" path="/net.hyperadapt.pxweave/lib/validation-api.jar"/>
+	<classpathentry kind="lib" path="/net.hyperadapt.pxweave/lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="/net.hyperadapt.pxweave/lib/xml-apis.jar"/>
+	<classpathentry kind="lib" path="lib/pxweave.jar"/>
+	<classpathentry kind="lib" path="/net.hyperadapt.pxweave/lib/jaxb-api.jar"/>
+	<classpathentry kind="lib" path="/net.hyperadapt.pxweave/lib/jgrapht-jdk1.6.jar"/>
+	<classpathentry kind="lib" path="/net.hyperadapt.pxweave/lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:sitemap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://apache.org/cocoon/sitemap/1.0 http://cocoon.apache.org/schema/sitemap/cocoon-sitemap-1.0.xsd" xmlns:map="http://apache.org/cocoon/sitemap/1.0">
+
+<!-- ################################# -->
+<!-- ##### Component Definitions ##### -->
+<!-- ################################# -->
+
+	<map:components>	
+		<map:matchers default="wildcard">
+			<map:matcher name="wildcard" src="org.apache.cocoon.matching.WildcardURIMatcher" />
+			<map:matcher name="wildcardrequestparam" src="org.apache.cocoon.matching.WildcardRequestParameterMatcher" />
+		</map:matchers>
+
+		<map:selectors>
+			<map:selector name="parameter" logger="sitemap.selector.parameter" src="org.apache.cocoon.selection.ParameterSelector" />
+			<map:selector name="exception" src="org.apache.cocoon.selection.ExceptionSelector">
+				<exception name="servlet" class="javax.servlet.ServletException" unroll="true"/>
+				<exception name="resourcenotfound" class="org.apache.cocoon.ResourceNotFoundException"/>
+				<exception name="sourcenotfound" class="org.apache.excalibur.source.SourceNotFoundException"/>
+			<!-- <exception name="application" class="org.apache.cocoon.ApplicationException"/>-->
+			</map:selector>
+		</map:selectors>
+
+		<map:actions>
+			<map:action name="A_ContextBloater" src="de.tud.amacont.amaconda.context.bloaters.ContextBloaterCollection" />
+			<map:action name="A_PortalPageInjector" src="de.tud.amacont.amaconda.helper.PortalPageInjector" />
+			<map:action name="A_InferenceBloater" src="de.tud.amacont.amaconda.context.bloaters.InferenceBloater" />
+			<map:action name="A_SetOntologyParameter" src="de.tud.amacont.amaconda.context.contextontology.SetOntologyParameter" />
+			<map:action name="A_RecursiveSitemap" src="de.tud.amacont.amaconda.context.contextontology.RecursiveSitemap" />
+			<map:action name="AspectWeaverSetupAction" src="net.hyperadapt.pxweave.integration.cocoon.AspectWeaverSetupAction" />
+			<!-- LOGIN -->
+			<map:action name="A_Login" src="de.tud.amacont.amaconda.helper.LoginAction" />
+			<map:action name="A_Logout" src="de.tud.amacont.amaconda.helper.LogoutAction" />
+		</map:actions>
+
+		<map:transformers>
+			<map:transformer name="T_ElementExtractor" src="de.tud.amacont.amaconda.preprocessing.ElementExtractor" />
+			<map:transformer name="T_SAXElementExtractor" src="de.tud.amacont.amaconda.preprocessing.SAXElementExtractor" />
+			<map:transformer name="T_SAXUpdatedElementExtractor" src="de.tud.amacont.amaconda.preprocessing.SAXUpdatedElementExtractor" />
+			<map:transformer name="T_IncludeResolver" src="de.tud.amacont.amaconda.preprocessing.IncludeResolver" />
+			<map:transformer name="T_SAXIncludeResolver" src="de.tud.amacont.amaconda.preprocessing.SAXIncludeResolver" />
+			<map:transformer name="T_WebService" src="de.tud.amacont.amaconda.webservice.AmacontWSTransformer" />
+			<map:transformer name="T_Snapshot" src="de.tud.amacont.amaconda.helper.Snapshot" />
+			<map:transformer name="T_SQLTransformer" src="de.tud.amacont.amaconda.database.TemplateSQLTransformer" />
+			<map:transformer name="T_AspectWeaver" src="de.tud.amacont.amaconda.adaptation.aspectweaver.DynamicWeaver" />
+			<map:transformer name="T_AspectWeaverS1" src="de.tud.amacont.amaconda.adaptation.aspectweaver.DynamicWeaverStage1" />
+			<map:transformer name="T_VariantsAdapter" src="de.tud.amacont.amaconda.adaptation.AmacondaAdapter" />
+			<map:transformer name="T_XHTML" src="de.tud.amacont.amaconda.render.XHTMLTransformer" />
+		</map:transformers>
+
+		<map:readers default="resource">
+			<map:reader name="R_AdaptiveResource" src="de.tud.amacont.amaconda.resourcetransform.AdaptiveResourceReader" />
+			<map:reader name="R_ContextModel" src="de.tud.amacont.amaconda.context.ContextModelReader" />
+		</map:readers>
+	</map:components>
+		
+<!-- ################################ -->
+<!-- ##### Resource Definitions ##### -->
+<!-- ################################ -->
+
+	<map:resources>
+		<!-- The standard Amaconda pipeline -->
+		<map:resource name="P_Default">
+			<map:act type="AspectWeaverSetupAction"/>
+			<!-- Context modeling -->
+			<map:act type="A_ContextBloater"/>
+			<map:act type="A_InferenceBloater" />
+			
+			<!-- deliver the portal page if necessary -->
+			<map:act type="A_PortalPageInjector">
+				<map:parameter name="pageToLoad" value="resource/internal/pages/index.xml"/>
+				<map:generate src="{pageToLoad}" />
+			</map:act>
+			<!-- import the includes -->
+			<map:transform type="T_SAXIncludeResolver" />
+			<!-- Web service -->
+			<map:transform type="T_WebService" />
+			<!-- Weaver, Stage1 -->
+			<map:transform type="T_AspectWeaverS1" />
+			<map:transform type="T_SQLTransformer" />	
+			<!-- Aspect weaver -->
+			<map:transform type="T_AspectWeaver" />
+			<map:transform src="resource/internal/xslt/preamacontadapter.xslt" type="xslt" />
+			 <!-- Ersetzt Switch durch geschachtelte Ifs -->
+			<map:transform src="resource/internal/xslt/preamacontadapter-switchreplace.xslt" type="xslt" />
+			<map:transform type="T_VariantsAdapter" />
+			<map:transform src="resource/internal/xslt/postamacontadapter.xslt" type="xslt" />
+		</map:resource>
+
+		<!-- Standard pipeline with XHTML output -->
+		<map:resource name="xhtml_pipeline">
+			<map:call resource="P_Default" />
+			<!-- Element reduction for requested elements -->
+			<map:transform type="T_SAXElementExtractor" />
+			<map:transform type="T_XHTML" />
+			<map:transform src="resource/internal/xslt/emptytagfiller.xslt" type="xslt" />
+			<map:transform src="resource/internal/xslt/prettyprint.xslt" type="xslt" />
+			<map:serialize type="xhtml" />
+		</map:resource>
+		
+		<!-- Standard AJAX pipeline with XHTML output -->
+		<map:resource name="xhtml_FragmentPipeline">
+			<map:call resource="P_Default" />
+			<!-- Element reduction for AJAX requests -->
+			<map:transform type="T_SAXUpdatedElementExtractor" />
+<!--			<map:transform type="T_Snapshot">-->
+<!--				<map:parameter name="file" value="result0.xml"/>-->
+<!--			</map:transform>-->
+			<map:transform type="T_XHTML" />
+			<map:transform src="resource/internal/xslt/emptytagfiller.xslt" type="xslt" />
+			<map:transform src="resource/internal/xslt/prettyprint.xslt" type="xslt" />
+		</map:resource>
+		
+	</map:resources>
+
+<!-- ################################ -->
+<!-- ##### Pipeline Definitions ##### -->
+<!-- ################################ -->
+
+	<map:pipelines>
+		<map:pipeline id="Request_Login">
+			<map:match pattern="login.action">
+				<map:act type="A_Login">
+					<map:read src="resource/internal/pages/loginsuccess.xml" mime-type="text/xml" />
+				</map:act>
+				<map:read src="resource/internal/pages/loginfailed.xml" mime-type="text/xml" />
+			</map:match>
+		</map:pipeline>
+			
+		<map:pipeline id="Request_Logout">
+			<map:match pattern="logout.action">
+				<map:act type="A_Logout">
+					<map:read src="resource/internal/pages/logoutsuccess.xml" mime-type="text/xml" />
+				</map:act>
+			</map:match>
+		</map:pipeline>
+			
+		<map:pipeline id="Request_SetParams">
+			<map:match pattern="settings.action">
+				<map:act type="A_ContextBloater" />
+				<map:read src="resource/internal/pages/settings.xhtml" />
+			</map:match>
+		</map:pipeline>
+		
+	    <map:pipeline id="Request_ContextUpdate">
+			<map:match pattern="updateContextModel">
+				<map:act type="A_ContextBloater" />
+				<map:act type="A_InferenceBloater" />
+				<map:read src="resource/internal/pages/blank.xhtml" mime-type="text/xml" />
+			</map:match>
+		</map:pipeline>
+			
+	    <map:pipeline id="Request_GetAjaxUpdate">
+	    	<map:match type="wildcardrequestparam" pattern="*">
+	    		<map:parameter name="parameter-name" value="ajaxUpdate" />
+				<map:call resource="xhtml_FragmentPipeline" />
+				<map:serialize type="xml" />
+			</map:match>
+		</map:pipeline>
+			
+		<map:pipeline id="Request_AmacontPage">
+			<map:match type="regexp" pattern=".*\.(ama|xhtml)">
+				<map:call resource="xhtml_pipeline" />
+			</map:match>
+		</map:pipeline>
+
+		<map:pipeline id="Request_RawXML">
+			<map:match type="wildcard" pattern="**.xml">
+				<map:call resource="P_Default" />
+				<map:serialize type="xml" />
+			</map:match>
+		</map:pipeline>
+
+		<map:pipeline id="blankpage">
+			<map:match pattern="blank">
+				<map:read src="resource/internal/pages/blank.xhtml" />
+			</map:match>
+		</map:pipeline>
+
+		<map:pipeline id="contextmodel">
+			<map:match pattern="showContextModel">
+				<map:read type="R_ContextModel" mime-type="text/xml"/>
+			</map:match>
+		</map:pipeline>
+
+		<map:pipeline id="resources">
+			<map:match type="wildcard" pattern="**">
+				<map:match type="wildcardrequestparam" pattern="*">
+					<map:parameter name="parameter-name" value="transform" />
+				 	<map:act type="A_ContextBloater" />
+					<map:act type="A_InferenceBloater" />
+					<map:read type="R_AdaptiveResource" src="{../1}" />
+				</map:match>
+				<map:read type="resource" src="{1}" />
+			</map:match>
+		</map:pipeline>
+
+		<map:pipeline id="tests_ws">
+			<map:match pattern="tests/wstest.xml">
+				<map:generate src="tests/wstest.xml" />
+				<map:transform type="T_WebService" />
+				<map:serialize type="xml" />
+			</map:match>
+		</map:pipeline>
+
+		<map:pipeline id="internal-resource" internal-only="true">
+			<!--
+				Put matchers for internal (accessible only to Cocoon blocks)
+				resources here More details:
+				http://cocoon.zones.apache.org/daisy/cdocs-site-main/g2/1345.html
+			-->
+			<map:match pattern="resource/internal/**">
+				<map:read src="resource/internal/{1}" />
+			</map:match>
+		</map:pipeline>
+
+		<map:pipeline id="external-resource">
+			<!--
+				Put matchers for external (accessible to the outside world, e.g.
+				browser) resources here. More details:
+				http://cocoon.zones.apache.org/daisy/cdocs-site-main/g2/1345.html
+			-->
+			<map:match pattern="resource/external/**">
+				<map:read src="resource/external/{1}" />
+			</map:match>
+		</map:pipeline>
+
+		<map:pipeline id="service">
+			<!--
+				Put your servlet service matchers here. More details:
+				http://cocoon.zones.apache.org/daisy/cdocs-site-main/g2/1345.html
+			-->
+		</map:pipeline>
+		
+		<map:handle-errors>		
+			<map:select type="exception">
+				<map:when test="resourcenotfound">
+					<map:read src="resource/internal/pages/errors/404.xhtml"/>
+				</map:when>
+      			<map:when test="sourcenotfound">
+      				<map:read src="resource/internal/pages/errors/404.xhtml"/>
+      			</map:when>
+      			<map:when test="application">
+      				<map:read src="resource/internal/pages/errors/500.xhtml"/>
+      			</map:when>
+      			<map:otherwise>
+      				<map:read src="resource/internal/pages/errors/500.xhtml"/>
+      			</map:otherwise>
+			</map:select>
+		</map:handle-errors>
+
+	</map:pipelines>
+
+</map:sitemap>

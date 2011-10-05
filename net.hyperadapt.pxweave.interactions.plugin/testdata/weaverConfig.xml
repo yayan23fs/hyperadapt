@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<weaverConfiguration
+	xsi:schemaLocation="http://www.hyperadapt.net/pxweave/config schemas/weaverConfig.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.net/pxweave/config">
+	<aspectFiles>
+		<!-- aspectFile>DeviceIndependence.xml</aspectFile-->
+		<aspectFile>InsertSomething.xml</aspectFile>
+		<!--aspectFile>DeleteSomething.xml</aspectFile-->
+	</aspectFiles>
+	<namespaces>
+		<namespace prefix="aco" name="http://www.hyperadapt.net/amacont/2008/AmaComponent" definition="http://www.hyperadapt.net/amacont/2008/AmaComponent.xsd"/>  
+		<namespace prefix="amet" name="http://www.hyperadapt.net/amacont/2008/AmaMetaInformation" definition="http://www.hyperadapt.net/amacont/2008/AmaMetaInformation.xsd"/>  
+		<namespace prefix="alay" name="http://www.hyperadapt.net/amacont/2008/AmaLayout" definition="http://www.hyperadapt.net/amacont/2008/AmaLayout.xsd"/>  
+		<namespace prefix="aada" name="http://www.hyperadapt.net/amacont/2008/AmaAdaptation" definition="http://www.hyperadapt.net/amacont/2008/AmaAdaptation.xsd"/>  
+		<namespace prefix="asem" name="http://www.hyperadapt.net/amacont/2008/AmaSemantics" definition="http://www.hyperadapt.net/amacont/2008/AmaSemantics.xsd"/>  
+		<namespace prefix="mpeg7" name="http://www.mpeg7.org/2001/MPEG-7_Schema" definition="http://www.mpeg7.org/2001/MPEG-7_Schema/mpeg7-v1.xsd"/>  
+	</namespaces>
+	<validationMode>none</validationMode>
+</weaverConfiguration>
