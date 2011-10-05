@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.hyperadapt.net/pxweave/context" 
+		xmlns:tns="http://www.hyperadapt.net/pxweave/context"
+		elementFormDefault="qualified">
+<element name="context">
+	<complexType>
+		<choice minOccurs="0" maxOccurs="unbounded">
+			<element name="stringParameter" type="tns:StringParameter"/>	
+			<element name="integerParameter" type="tns:IntegerParameter"/>
+			<element name="booleanParameter" type="tns:BooleanParameter"/>
+			<element name="shortParameter" type="tns:ShortParameter"/>
+			<element name="floatParameter" type="tns:FloatParameter"/>
+			<element name="decimalParameter" type="tns:DecimalParameter"/>
+			<element name="byteParameter" type="tns:ByteParameter"/>
+			<element name="longParameter" type="tns:LongParameter"/>
+			<element name="timeParameter" type="tns:TimeParameter"/>
+			<element name="dateParameter" type="tns:DateParameter"/>
+			<element name="dateTimeParameter" type="tns:DateTimeParameter"/>
+			<element name="durationParameter" type="tns:DurationParameter"/>
+		</choice>
+	</complexType>
+</element>
+
+<complexType name="Parameter" abstract="true">
+	<sequence>
+		<element name="name" type="tns:Name"/>
+	</sequence>
+</complexType>
+
+<complexType name="StringParameter">
+	<complexContent>
+		<extension base= "tns:Parameter">
+			<sequence>
+				<element name="value" type="string"/> 
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="IntegerParameter">
+	<complexContent>
+		<extension base= "tns:Parameter">
+			<sequence>
+				<element name="value" type="integer"/>		
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="ShortParameter">
+	<complexContent>
+		<extension base= "tns:Parameter">
+			<sequence>
+				<element name="value" type="short"/>		
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="BooleanParameter">
+	<complexContent>
+		<extension base= "tns:Parameter">
+			<sequence>
+				<element name="value" type="boolean"/>		
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="DoubleParameter">
+	<complexContent>
+		<extension base= "tns:Parameter">
+			<sequence>
+				<element name="value" type="double"/>		
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="FloatParameter">
+	<complexContent>
+		<extension base= "tns:Parameter">
+			<sequence>
+				<element name="value" type="float"/>		
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="DecimalParameter">
+	<complexContent>
+		<extension base= "tns:Parameter">
+			<sequence>
+				<element name="value" type="decimal"/>		
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="LongParameter">
+	<complexContent>
+		<extension base= "tns:Parameter">
+			<sequence>
+				<element name="value" type="long"/>		
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="DateParameter">
+	<complexContent>
+		<extension base= "tns:Parameter">
+			<sequence>
+				<element name="value" type="integer"/>		
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="ByteParameter">
+	<complexContent>
+		<extension base= "tns:Parameter">
+			<sequence>
+				<element name="value" type="byte"/>		
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="DateTimeParameter">
+	<complexContent>
+		<extension base= "tns:Parameter">
+			<sequence>
+				<element name="value" type="dateTime"/>		
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="DurationParameter">
+	<complexContent>
+		<extension base= "tns:Parameter">
+			<sequence>
+				<element name="value" type="duration"/>		
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="TimeParameter">
+	<complexContent>
+		<extension base= "tns:Parameter">
+			<sequence>
+				<element name="value" type="time"/>		
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<simpleType name="Name">
+	<restriction base="string">
+		<pattern value="[a-zA-Z]\w*"/>	
+	</restriction>		
+</simpleType>	
+</schema>

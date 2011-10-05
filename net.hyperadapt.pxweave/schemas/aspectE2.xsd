@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.hyperadapt.net/pxweave/aspects" 
+		xmlns:tns="http://www.hyperadapt.net/pxweave/aspects"
+		elementFormDefault="qualified">
+
+<element name="aspect" type ="tns:Aspect"/>
+    <complexType name="Aspect">
+	<sequence>
+	    <element name="interface" type="tns:Interface"/>
+	    <element name="adviceGroup" minOccurs="1" maxOccurs="unbounded" type="tns:AdviceGroup"/><!--gruppiert Advices, die zum gleichen Scope und Kontext gehören-->
+	</sequence>
+    	<attribute name="name" type="string"/><!-- Name des Aspects-->
+    </complexType>
+
+
+<complexType name="AdviceGroup">
+    <sequence>
+		<element name="depends" minOccurs="0" maxOccurs="1" type="tns:Dependency"/><!--Evaluierung von Kontextvariablen um Gültigkeit der AdviceGroup festzulegen, Variablen über X-Path binden, boolscher Ausdruck-->
+		<element name="scope" minOccurs="1" maxOccurs="1" type="tns:Scope"/><!--Gültigkeitsbereich der Advices-->
+		<element name="advices" type="tns:Advice"/>
+	 </sequence>
+</complexType>
+
+<complexType name="Advice">				
+				<choice minOccurs="1" maxOccurs="unbounded"><!-- 1-n Advices-->
+				<!-- alle Advices müssen zumindest einen Joinpoint auswählen -->
+					<element name="chooseVariant" type="tns:ChooseVariant"/><!-- *  Variantenauswahl: in n ElementNodes kann ein elementwertiger Kindknoten(joinPoint zeigt auf kindknoten) gewählt werden, die restlichen 
+																				Kindknoten der ElementNodes werden entfernt, sofern sie gneauso heißen wie der joinpoint.-->																												
+					<element name="changeOrder" type="tns:ChangeOrder"/><!-- * Reihenfolge von KindKnoten (inkl.TextNodes) von n ElementNodes ändern-->
+					<element name="changeValue" type="tns:ChangeValue"/><!-- * wählt n ElementNodes oder AttributeNodes aus, ersetzt alle textNodes(ergebnis ist immer genau ein textNode/joinPoint) im ElementNode durch den evaluierten Wert bzw. ersetzt alle AttributeValues durch den gegebenen Wert-->
+					<element name="enrichContent" type="tns:EnrichContent"/><!-- *fügt in n ElementNodes einen textNode an gewählter position ein-->
+					<element name="reduceContent" type="tns:ReduceContent"/><!--* wählt n ElementNodes aus, enfernt alle textNodes oder den text aus allen textNodes, der in deletePart angegeben ist-->
+					<element name="collapseElement" type="tns:CollapseElement"/><!--*ersetzt in n elementNodes alle kindKnoten durch einen textNode-->
+					<element name="expandElement" type="tns:ExpandElement"/><!--*ersetzt in n elementNodes die textNodes durch elementNode, dh. löscht alle textNodes, ersetzt sie durch einen elementNode-->
+					<element name="insertElement" type="tns:InsertElement"/><!--*Fügt in n ElementNodes ein generierten ElementNode an der gewählten Position als KindKnoten ein, der JoinPoint ist über $joinPoint im elementTemplate verfügbar - für jeden JoinPoint kann ein spezifisches Element generiert werden-->
+					<element name="moveElement" type="tns:MoveElement"/><!--  * genau einen ElementNode auschneiden und als Kindelement eines ElementKnotens wieder einfügen, Ziel muss nicht im scope liegen, Quelle darf im Ziel nicht enthalten sein, Quelle und Ziel müssen unterschiedlich sein, Position des Neuen Kindknotens wird über Attribut Position (0.-n.pos) bestimmt->anhängen falls negativ-->
+					<element name="delete" type="tns:Delete"/><!--  * n AttributeNodes, ElementNodes oder TextNodes entfernen-->
+					<element name="fillComponentById" type="tns:FillComponentByID"/><!--  fügt in die gewählten joinPoints die Kinder aus einem korrespondierendem source node. der source node wird anhand eines joinPoin-attributs 
+																						targetID und eines source node attributs sourceID gefunden. joinPoint und source müssen elementNodes sein, für jeden joinPoint muss es genau einen source node geben-->
+				</choice>			
+</complexType>
+
+<!--******************************************* abstrakte Advices ********************************************** -->
+
+
+<complexType name="BasicAdvice" abstract="true"><!--Advice ohne "Value"-Angaben, nur Löschen/Sortieren/Auswählen von Content-->
+    <sequence>
+		<element name="pointcut" type ="tns:XPath"/>
+    </sequence>
+</complexType>
+
+<complexType name="SimpleAdvice" abstract="true"><!--SimpleValue erlaubt das Erzeugen von textContent-->
+	<complexContent>
+		<extension base="tns:BasicAdvice">
+			<sequence>
+				<element name="value" type="tns:SimpleValue"/>
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="ComplexAdvice" abstract="true"><!--ComplexValue erlaubt das Erzeugen eines elementNodes-->
+	<complexContent>
+		<extension base="tns:BasicAdvice">
+			<sequence>
+				<element name="value" type="tns:ComplexValue"/>
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+
+<!--******************************************** konkrete Advices *********************************************** -->
+<complexType name="FillComponentByID">
+	<complexContent>
+		<extension base="tns:BasicAdvice">
+ 			<sequence>
+ 			  <group ref="tns:componentGroup"/>
+ 			  <element name="source" type="tns:SourceContainer"/>
+ 			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
+
+<group name="componentGroup">
+	<sequence>
+		<element name="identifyingAttribute" type="string"/>
+	</sequence>
+</group>
+
+<complexType name="SourceContainer">
+	<sequence>
+		<element name="sourceComponents" type="tns:XPath"/>
+		<group ref="tns:componentGroup"/>
+	</sequence>
+	<attribute name="document" type="tns:Name"/>
+</complexType>
+	
+<complexType name="ChangeOrder">
+	<complexContent>
+		<extension base="tns:BasicAdvice">			
+		    <choice>
+			 	<element name="sortByName"/><!--by attr-->
+			 	<element name="reverseOrder"/>
+			 	<element name="permutation" type="tns:Permutation"/><!--Permutation gibt neue Reihenfolge der Elemente an-->
+		    </choice>
+		</extension>
+	</complexContent>
+</complexType>
+  
+<complexType name="ChooseVariant">
+	<complexContent>
+		<extension base="tns:BasicAdvice"/>
+	</complexContent>
+</complexType>
+
+<complexType name="Delete">
+	<complexContent>
+		<extension base="tns:BasicAdvice"/>
+	</complexContent>
+</complexType>
+
+<complexType name="ReduceContent">
+	<complexContent>
+		<extension base="tns:BasicAdvice">
+			<attribute name="deletePart" type="string"/>
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="ChangeValue">
+	<complexContent>
+		<extension base="tns:SimpleAdvice"/>
+	</complexContent>
+</complexType>
+
+<complexType name="EnrichContent">
+	<complexContent>
+		<extension base="tns:SimpleAdvice">
+			<attribute name="position" type="integer"/>	
+		</extension>
+	</complexContent>
+</complexType>
+
+<complexType name="CollapseElement">
+	<complexContent>
+		<extension base="tns:SimpleAdvice"/>
+	</complexContent>
+</complexType>
+
+
+<complexType name="ExpandElement">
+	<complexContent>
+		<extension base="tns:ComplexAdvice"/>
+	</complexContent>
+</complexType>
+
+<complexType name="InsertElement">
+	<complexContent>
+		<extension base="tns:ComplexAdvice">
+		<attribute name= "position" type="integer" use="required"/>	
+		</extension>	
+	</complexContent>
+</complexType>
+
+<complexType name="MoveElement">
+	<complexContent>
+		<extension base="tns:BasicAdvice">
+			<sequence>
+				<element name="to" type="tns:XPath"/>		
+			</sequence>	
+			<attribute name= "position" type="integer" use="required"/>
+		</extension>
+	</complexContent>
+</complexType>
+
+
+
+<!--******************************************** sonstiges *************************************************** -->
+<complexType name="Interface">
+    <sequence>
+		<element name="core" type="tns:Parameter"/><!-- ID und Typ (XSD) des Core-Dokuments-->
+		<element name="contextParameters" minOccurs="0" maxOccurs="1" type="tns:ContextVarDecl"/>
+		<element name="documentParameters" minOccurs="0" maxOccurs="1" type="tns:DocumentParameterDecl"/>
+		<element name="aspectOrder" type="tns:AspectOrder" minOccurs="0" maxOccurs="1"/>	
+    </sequence>
+</complexType>
+
+<complexType name="Scope">
+	<sequence>
+		<element name="xpath" type="tns:XPath" minOccurs="0" maxOccurs="unbounded"/>
+		<element name="joinpoint" type="tns:ProgrammaticScope" minOccurs="0" maxOccurs="unbounded"/>
+	</sequence>			
+</complexType>
+
+<complexType name="AspectOrder">
+	<sequence>
+		<element name="afterAspect" type="string" minOccurs="0" maxOccurs="unbounded"/>
+		<element name="beforeAspect" type="string" minOccurs="0" maxOccurs="unbounded"/>
+	</sequence>
+	<attribute name="absolutePosition" type="tns:AbsolutePosition" default="none"/>
+</complexType>
+
+<simpleType name="AbsolutePosition">
+	<restriction base="string">
+		<enumeration value="asFirst"/>
+		<enumeration value="asLast"/>
+		<enumeration value="none"/>
+	</restriction>
+</simpleType>
+
+<simpleType name="AdviceLocator">
+	<restriction base="string">
+		<enumeration value="before"/>
+		<enumeration value="after"/>
+	</restriction>
+</simpleType>
+
+<complexType name="XPath">
+    <simpleContent>
+		<extension base="string">	
+	<!--	<attribute name="type" type="tns:TypeDef" use="required"/>-->
+		<attribute name="root" type="string"/>
+		</extension>
+    </simpleContent>			
+</complexType>	
+
+<!-- inserted by skarol -->
+<complexType name="ProgrammaticScope" abstract="false">
+ 	<attribute name="name" type="string"/>
+ 	<attribute name="locator" type="tns:AdviceLocator"/>
+</complexType>
+
+<simpleType name="Permutation">
+		<restriction base="string">
+		 	<!--Tupelschreibweise der Permutation: (1 4 3 2 5)--> 
+			<pattern value="\(([1-9][0-9]*\s)+(([1-9][0-9]*))+\)"/>	
+		</restriction>
+    
+</simpleType>
+
+<complexType name="Parameter">
+    <attribute name="id" type="string" use="required"/>
+    <attribute name="type" type="string" use="required"/>
+</complexType>
+
+<complexType name="Dependency">
+    <sequence>
+		<element name="boolExpr" type = "string"/><!--boolscher Ausdruck über ausgewählte Parameter -->
+    </sequence>			
+</complexType>
+
+<complexType name="SimpleValue"><!--für konkrete Avices, die nur textwertige Änderungen vornehmen-->
+	<sequence>
+		<element name="varDecl" type="tns:VarDecl" minOccurs="0"/>
+		<element name="textTemplate" type="tns:TextTemplate"/>		
+	</sequence>	
+</complexType>
+
+<complexType name="ComplexValue"><!--für konkrete Avices, die ein Element erzeugen müssen-->
+	<sequence>
+		<element name="varDecl" type="tns:VarDecl" minOccurs="0"/>
+		<element name="elementTemplate" type="tns:ElementTemplate" />
+	</sequence>	
+</complexType>
+
+<complexType name="TextTemplate">
+	<simpleContent>
+		<extension base="string"/>
+	</simpleContent>
+</complexType>
+
+<complexType name="ElementTemplate" mixed="true">
+	<sequence minOccurs="1" maxOccurs="1">
+		<any processContents="skip"/>
+	</sequence>
+</complexType>
+
+<complexType name="VarDecl">
+	<sequence>
+		<element name="var" maxOccurs="unbounded" type="tns:Var"/>					
+	</sequence>		
+</complexType>
+
+<complexType name="ContextVarDecl">
+	<sequence>
+		<element name="parameter" minOccurs="1" maxOccurs="unbounded" type="tns:ContextParameter"/>				
+	</sequence>		
+</complexType>
+
+<complexType name="DocumentParameterDecl">
+	<sequence>
+		<element name="documentParameter" maxOccurs="unbounded" type="tns:DocumentParameter"/>
+	</sequence>
+</complexType>
+
+<complexType name="ContextParameter">
+	<sequence>
+		<element name="name" type="tns:Name"/>			
+	</sequence>
+	<!--<attribute name="type" type="tns:TypeDefContextParam" use="required"/>	-->
+</complexType>
+
+<complexType name="DocumentParameter">
+	<sequence>
+		<element name="name" type="tns:Name"/>
+		<element name="uri" type="anyURI"/>
+	</sequence>
+</complexType>
+
+<complexType name="Var">
+	<sequence>
+		<element name="name" type="tns:Name"/>
+		<element name="xpath" type="tns:XPath"/>			
+	</sequence>
+<!--	<attribute name="type" type="tns:TypeDef" use="required"/>	-->
+</complexType>
+
+<simpleType name="TypeDef">
+	<restriction base="string">
+		<enumeration value="integer"/>
+		<enumeration value="double"/>
+		<enumeration value="float"/>
+		<enumeration value="short"/>
+		<enumeration value="string"/>	
+		<enumeration value="boolean"/>
+		<enumeration value="elementNode"/>
+	</restriction>
+</simpleType>
+
+<simpleType name="TypeDefContextParam">
+	<restriction base="string">
+		<enumeration value="integer"/>
+		<enumeration value="double"/>
+		<enumeration value="float"/>
+		<enumeration value="short"/>
+		<enumeration value="string"/>	
+		<enumeration value="boolean"/>
+	</restriction>
+</simpleType>
+
+<simpleType name="Name">
+	<restriction base="string">
+		<pattern value="[a-zA-Z]\w*"/>	
+	</restriction>		
+</simpleType>		
+
+
+</schema>
+
