@@ -36,6 +36,9 @@ In this section we explain the !HyperAdapt aspect language.
 == Advice Actions (Adaptation Rules) ==
 
 === Kinds of Advice ===
+Our aspect language provides three kinds of advice actions which will be explained in this section. 
+
+*BasicAdvice* is the most common ancestor for all adaptation rules in our aspect language.
 {{{
 <complexType name="BasicAdvice" abstract="true">
     <sequence>
