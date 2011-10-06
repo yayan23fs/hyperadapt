@@ -75,7 +75,7 @@ In contrast to the above mentioned kinds of advice, *!ComplexAdvice* may contain
 
 === Basic Advice Actions ===
 ====!ChangeOrder====
-This advice allows a re-arrangement of the child nodes of an element within the set of selected joinpoints. There are three options. _sortByName_ computes an ascending, alphanumerical order of child nodes with respect to a common `name` attribute (NOTE: The order determining attribute should be selectable, as well as the kind of order itself.)
+This advice allows a re-arrangement of the child nodes of an element within the set of selected joinpoints. There are three options. _sortByName_ computes an ascending, alphanumerical order of child nodes with respect to a common `name` attribute (NOTE: The order determining attribute should be selectable, as well as the kind of order itself.) Second, _reverseOrder_ just inverts the order of child nodes. Finally, a permutation can be specified, which allows an arbitrary, user-specified re-arrangement. 
 {{{	
 <complexType name="ChangeOrder">
    <complexContent>
