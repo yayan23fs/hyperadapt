@@ -10,3 +10,4 @@ S. Karol, M. Niederhausen, U. Aßmann, K. Meißner, und M. Steinfeldt, „Toward
 
 
 == 2009 ==
+M. Niederhausen, S. Karol, U. Aßmann, und K. Meißner, „HyperAdapt: Enabling Aspects for XML“, in Web Engineering, Bd. 5648, M. Gaedke, M. Grossniklaus, und O. Díaz, Hrsg. Springer Berlin / Heidelberg, 2009, S. 461-464.
