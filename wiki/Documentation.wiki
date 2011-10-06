@@ -2,6 +2,9 @@
 = Introduction =
 
 = Aspect Language =
+In this section we explain the !HyperAdapt aspect language.
+
+== Basic Structure ==
 
 {{{
 <?xml version="1.0" encoding="UTF-8"?>
