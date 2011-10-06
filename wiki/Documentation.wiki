@@ -217,4 +217,4 @@ In this section we explain the !HyperAdapt aspect language.
 
 == Detection and Reporting at Runtime ==
 
-== Approximated, Static Conflict Detection
+== Approximated Static Conflict Detection ==
