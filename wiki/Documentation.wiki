@@ -204,6 +204,10 @@ In contrast to the above mentioned kinds of advice, *!ComplexAdvice* may contain
 </complexType>
 }}}
 
+== What can be _adviced_? ==
+
+== Examples ==
+
 = PX-Weave Weaving Engine =
 
 == Basic Configuration ==
