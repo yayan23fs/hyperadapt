@@ -60,6 +60,7 @@ Our aspect language provides three kinds of advice actions which will be explain
 </complexType>
 }}}
 
+In contrast to the above mentioned kinds of advice, *!ComplexAdvice* may contain abitrary, well-formed XML content or an XML tree.
 {{{
 <complexType name="ComplexAdvice" abstract="true">
     <complexContent>
@@ -73,38 +74,6 @@ Our aspect language provides three kinds of advice actions which will be explain
 }}}
 
 === Basic Advice Actions ===
-
-=== Advice Actions with Simple Content ===
-
-=== Advice Actions with Complex Content ===
-
-{{{
-<complexType name="FillComponentByID">
-    <complexContent>
-        <extension base="tns:BasicAdvice">
- 	    <sequence>
-               <group ref="tns:componentGroup"/>
- 	          <element name="source" type="tns:SourceContainer"/>
- 	    </sequence>
-        </extension>
-    </complexContent>
-</complexType>
-}}}
-
-{{{
-<complexType name="SourceContainer">
-   <sequence>
-      <element name="sourceComponents" type="tns:XPath"/>
-      <group name="componentGroup">
-         <sequence>
-	   <element name="identifyingAttribute" type="string"/>
-	</sequence>
-      </group>
-   </sequence>
-   <attribute name="document" type="tns:Name"/>
-</complexType>
-}}}
-
 {{{	
 <complexType name="ChangeOrder">
    <complexContent>
@@ -146,6 +115,48 @@ Our aspect language provides three kinds of advice actions which will be explain
 }}}
 
 {{{
+<complexType name="MoveElement">
+   <complexContent>
+      <extension base="tns:BasicAdvice">
+	 <sequence>
+	    <element name="to" type="tns:XPath"/>		
+	 </sequence>	
+	 <attribute name= "position" type="integer" use="required"/>
+      </extension>
+   </complexContent>
+</complexType>
+}}}
+
+{{{
+<complexType name="FillComponentByID">
+    <complexContent>
+        <extension base="tns:BasicAdvice">
+ 	    <sequence>
+               <group ref="tns:componentGroup"/>
+ 	          <element name="source" type="tns:SourceContainer"/>
+ 	    </sequence>
+        </extension>
+    </complexContent>
+</complexType>
+}}}
+
+{{{
+<complexType name="SourceContainer">
+   <sequence>
+      <element name="sourceComponents" type="tns:XPath"/>
+      <group name="componentGroup">
+         <sequence>
+	   <element name="identifyingAttribute" type="string"/>
+	</sequence>
+      </group>
+   </sequence>
+   <attribute name="document" type="tns:Name"/>
+</complexType>
+}}}
+
+=== Advice Actions with Simple Content ===
+
+{{{
 <complexType name="ChangeValue">
    <complexContent>
       <extension base="tns:SimpleAdvice"/>
@@ -171,6 +182,10 @@ Our aspect language provides three kinds of advice actions which will be explain
 </complexType>
 }}}
 
+
+
+
+=== Advice Actions with Complex Content ===
 {{{
 <complexType name="ExpandElement">
    <complexContent>
@@ -188,20 +203,6 @@ Our aspect language provides three kinds of advice actions which will be explain
    </complexContent>
 </complexType>
 }}}
-
-{{{
-<complexType name="MoveElement">
-   <complexContent>
-      <extension base="tns:BasicAdvice">
-	 <sequence>
-	    <element name="to" type="tns:XPath"/>		
-	 </sequence>	
-	 <attribute name= "position" type="integer" use="required"/>
-      </extension>
-   </complexContent>
-</complexType>
-}}}
-
 
 = PX-Weave Weaving Engine =
 
