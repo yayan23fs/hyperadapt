@@ -3,6 +3,29 @@
 
 = Aspect Language =
 
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.hyperadapt.net/pxweave/aspects">
+<element name="aspect" type ="tns:Aspect"/>
+    <complexType name="Aspect">
+	<sequence>
+	    <element 
+                name="interface" 
+                type="tns:Interface"/>
+	    <element 
+                name="adviceGroup" 
+                minOccurs="1" 
+                maxOccurs="unbounded" 
+                type="tns:AdviceGroup"/>
+	</sequence>
+    	<attribute 
+            name="name" 
+            type="string"/>
+    </complexType>
+<!-- further definitions -->
+</schema>
+}}}
+
 == Joinpoint Model ==
 
 == Advice Actions (Adaptation Rules) ==
