@@ -168,6 +168,7 @@ This advice moves selected element nodes to a new position within the document i
 
 
 ====!ReduceContent====
+This advice removes parts of the content of a text node.
 {{{
 <complexType name="ReduceContent">
    <complexContent>
@@ -178,7 +179,7 @@ This advice moves selected element nodes to a new position within the document i
 </complexType>
 }}}
 
-
+====!FillComponentByID====
 {{{
 <complexType name="FillComponentByID">
     <complexContent>
