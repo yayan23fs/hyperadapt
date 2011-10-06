@@ -101,6 +101,7 @@ The *!ChooseVariant* advice selects a variant from a list of exchangeable nodes.
 }}}
 To be applicable, a certain node pattern is required. For example:
 <table>
+
 <tr>
 <td>
 {{{
@@ -109,6 +110,13 @@ To be applicable, a certain node pattern is required. For example:
    <y/>
    <z/>
 </a>
+}}}
+</td>
+<td>
+{{{
+<chooseVariant>
+   <pointcut>/a/z</pointcut>
+</chooseVariant>
 }}}
 </td>
 <td>
