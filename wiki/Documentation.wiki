@@ -74,6 +74,7 @@ In contrast to the above mentioned kinds of advice, *!ComplexAdvice* may contain
 }}}
 
 === Basic Advice Actions ===
+====ChangeOrder====
 {{{	
 <complexType name="ChangeOrder">
    <complexContent>
