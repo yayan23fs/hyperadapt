@@ -152,7 +152,7 @@ This is a basic advice for deleting nodes in a document. The kind of deleted nod
 }}}
 
 ====!MoveElement====
-
+This advice moves selected element nodes to a new position within the document it is applied to. The source element(s) are specified by the specified pointcut xPath expression while the target is specfied by an xPath expression in the _to_ element. Position is an additional child index position at the target position.
 {{{
 <complexType name="MoveElement">
    <complexContent>
