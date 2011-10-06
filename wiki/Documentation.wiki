@@ -124,7 +124,7 @@ Result
 </root>
 }}}
 </td>
-<td>
+<td height="100%">
 {{{
 <chooseVariant>
    <pointcut>/root/a/z</pointcut>
