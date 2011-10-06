@@ -91,6 +91,7 @@ This advice allows a re-arrangement of the child nodes of an element within the 
 }}}
 
 ====!ChooseVariant====
+The *!ChooseVariant* advice selects a variant from a list of exchangeable nodes. 
 {{{  
 <complexType name="ChooseVariant">
    <complexContent>
@@ -98,6 +99,20 @@ This advice allows a re-arrangement of the child nodes of an element within the 
    </complexContent>
 </complexType>
 }}}
+To be applicable, a certain node pattern is required. For example:
+||
+{{{
+<a>
+   <x/>
+   <y/>
+   <z/>
+</a>
+}}}
+||
+{{{
+<z/>
+}}}
+|| 
 
 ====Delete====
 {{{
