@@ -100,7 +100,9 @@ The *!ChooseVariant* advice selects a variant from a list of exchangeable nodes.
 </complexType>
 }}}
 To be applicable, a certain node pattern is required. For example:
-||
+<table>
+<tr>
+<td>
 {{{
 <a>
    <x/>
@@ -108,11 +110,14 @@ To be applicable, a certain node pattern is required. For example:
    <z/>
 </a>
 }}}
-||
+</td>
+<td>
 {{{
 <z/>
 }}}
-|| 
+</td>
+</tr>
+</table>
 
 ====Delete====
 {{{
