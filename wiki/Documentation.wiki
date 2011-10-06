@@ -101,7 +101,17 @@ The *!ChooseVariant* advice selects a variant from a list of exchangeable nodes.
 }}}
 To be applicable, a certain node pattern is required. For example:
 <table>
-
+<tr>
+<th>
+Input Pattern
+<th>
+<th>
+Advice
+</th>
+<th>
+Result
+</th>
+</tr>
 <tr>
 <td>
 {{{
