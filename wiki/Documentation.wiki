@@ -38,7 +38,7 @@ In this section we explain the !HyperAdapt aspect language.
 === Kinds of Advice ===
 Our aspect language provides three kinds of advice actions which will be explained in this section. 
 
-*BasicAdvice* is the most common ancestor for all adaptation rules in our aspect language.
+*!BasicAdvice* is the common ancestor of all adaptation rule types in our aspect language. It just states that an advice can select a set of content-based joinpoints (i.e., nodes in the document) by an xPath expression.
 {{{
 <complexType name="BasicAdvice" abstract="true">
     <sequence>
@@ -47,6 +47,7 @@ Our aspect language provides three kinds of advice actions which will be explain
 </complexType>
 }}}
 
+*!SimpleAdvice* actions are used to manipulate simple content in an XML document, e.g., inserting or deleting text and changing attribute values. Its value can therefore be general text or restricted text content (e.g., a number).
 {{{
 <complexType name="SimpleAdvice" abstract="true">
     <complexContent>
