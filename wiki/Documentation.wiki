@@ -67,112 +67,127 @@ In this section we explain the !HyperAdapt aspect language.
 
 {{{
 <complexType name="FillComponentByID">
-	<complexContent>
-		<extension base="tns:BasicAdvice">
- 			<sequence>
- 			  <group ref="tns:componentGroup"/>
- 			  <element name="source" type="tns:SourceContainer"/>
- 			</sequence>
-		</extension>
-	</complexContent>
+    <complexContent>
+        <extension base="tns:BasicAdvice">
+ 	    <sequence>
+               <group ref="tns:componentGroup"/>
+ 	          <element name="source" type="tns:SourceContainer"/>
+ 	    </sequence>
+        </extension>
+    </complexContent>
 </complexType>
-
-<group name="componentGroup">
-	<sequence>
-		<element name="identifyingAttribute" type="string"/>
-	</sequence>
-</group>
-
-<complexType name="SourceContainer">
-	<sequence>
-		<element name="sourceComponents" type="tns:XPath"/>
-		<group ref="tns:componentGroup"/>
-	</sequence>
-	<attribute name="document" type="tns:Name"/>
-</complexType>
-	
-<complexType name="ChangeOrder">
-	<complexContent>
-		<extension base="tns:BasicAdvice">			
-		    <choice>
-			 	<element name="sortByName"/><!--by attr-->
-			 	<element name="reverseOrder"/>
-			 	<element name="permutation" type="tns:Permutation"/><!--Permutation gibt neue Reihenfolge der Elemente an-->
-		    </choice>
-		</extension>
-	</complexContent>
-</complexType>
-  
-<complexType name="ChooseVariant">
-	<complexContent>
-		<extension base="tns:BasicAdvice"/>
-	</complexContent>
-</complexType>
-
-<complexType name="Delete">
-	<complexContent>
-		<extension base="tns:BasicAdvice"/>
-	</complexContent>
-</complexType>
-
-<complexType name="ReduceContent">
-	<complexContent>
-		<extension base="tns:BasicAdvice">
-			<attribute name="deletePart" type="string"/>
-		</extension>
-	</complexContent>
-</complexType>
-
-<complexType name="ChangeValue">
-	<complexContent>
-		<extension base="tns:SimpleAdvice"/>
-	</complexContent>
-</complexType>
-
-<complexType name="EnrichContent">
-	<complexContent>
-		<extension base="tns:SimpleAdvice">
-			<attribute name="position" type="integer"/>	
-		</extension>
-	</complexContent>
-</complexType>
-
-<complexType name="CollapseElement">
-	<complexContent>
-		<extension base="tns:SimpleAdvice"/>
-	</complexContent>
-</complexType>
-
-
-<complexType name="ExpandElement">
-	<complexContent>
-		<extension base="tns:ComplexAdvice"/>
-	</complexContent>
-</complexType>
-
-<complexType name="InsertElement">
-	<complexContent>
-		<extension base="tns:ComplexAdvice">
-		<attribute name= "position" type="integer" use="required"/>	
-		</extension>	
-	</complexContent>
-</complexType>
-
-<complexType name="MoveElement">
-	<complexContent>
-		<extension base="tns:BasicAdvice">
-			<sequence>
-				<element name="to" type="tns:XPath"/>		
-			</sequence>	
-			<attribute name= "position" type="integer" use="required"/>
-		</extension>
-	</complexContent>
-</complexType>
-
-
-
 }}}
 
+{{{
+<complexType name="SourceContainer">
+   <sequence>
+      <element name="sourceComponents" type="tns:XPath"/>
+      <group name="componentGroup">
+         <sequence>
+	   <element name="identifyingAttribute" type="string"/>
+	</sequence>
+      </group>
+   </sequence>
+   <attribute name="document" type="tns:Name"/>
+</complexType>
+}}}
+
+{{{	
+<complexType name="ChangeOrder">
+   <complexContent>
+      <extension base="tns:BasicAdvice">			
+         <choice>
+	    <element name="sortByName"/><!--by attr-->
+	    <element name="reverseOrder"/>
+	    <element name="permutation" type="tns:Permutation"/>
+         </choice>
+      </extension>
+    </complexContent>
+</complexType>
+}}}
+
+{{{  
+<complexType name="ChooseVariant">
+   <complexContent>
+       <extension base="tns:BasicAdvice"/>
+   </complexContent>
+</complexType>
+}}}
+
+{{{
+<complexType name="Delete">
+   <complexContent>
+      <extension base="tns:BasicAdvice"/>
+   </complexContent>
+</complexType>
+}}}
+
+{{{
+<complexType name="ReduceContent">
+   <complexContent>
+      <extension base="tns:BasicAdvice">
+         <attribute name="deletePart" type="string"/>
+      </extension>
+   </complexContent>
+</complexType>
+}}}
+
+{{{
+<complexType name="ChangeValue">
+   <complexContent>
+      <extension base="tns:SimpleAdvice"/>
+   </complexContent>
+</complexType>
+}}}
+
+{{{
+<complexType name="EnrichContent">
+   <complexContent>
+      <extension base="tns:SimpleAdvice">
+         <attribute name="position" type="integer"/>	
+      </extension>
+   </complexContent>
+</complexType>
+}}}
+
+{{{
+<complexType name="CollapseElement">
+   <complexContent>
+      <extension base="tns:SimpleAdvice"/>
+   </complexContent>
+</complexType>
+}}}
+
+{{{
+<complexType name="ExpandElement">
+   <complexContent>
+      <extension base="tns:ComplexAdvice"/>
+   </complexContent>
+</complexType>
+}}}
+
+{{{
+<complexType name="InsertElement">
+   <complexContent>
+      <extension base="tns:ComplexAdvice">
+	<attribute name= "position" type="integer" use="required"/>	
+      </extension>	
+   </complexContent>
+</complexType>
+}}}
+
+{{{
+<complexType name="MoveElement">
+   <complexContent>
+      <extension base="tns:BasicAdvice">
+	 <sequence>
+	    <element name="to" type="tns:XPath"/>		
+	 </sequence>	
+	 <attribute name= "position" type="integer" use="required"/>
+      </extension>
+   </complexContent>
+</complexType>
+}}}
 
 
 = PX-Weave Weaving Engine =
