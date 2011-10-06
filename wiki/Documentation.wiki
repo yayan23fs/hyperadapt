@@ -74,7 +74,7 @@ In contrast to the above mentioned kinds of advice, *!ComplexAdvice* may contain
 }}}
 
 === Basic Advice Actions ===
-====ChangeOrder====
+====!ChangeOrder====
 {{{	
 <complexType name="ChangeOrder">
    <complexContent>
@@ -89,6 +89,7 @@ In contrast to the above mentioned kinds of advice, *!ComplexAdvice* may contain
 </complexType>
 }}}
 
+====!ChooseVariant====
 {{{  
 <complexType name="ChooseVariant">
    <complexContent>
@@ -97,6 +98,7 @@ In contrast to the above mentioned kinds of advice, *!ComplexAdvice* may contain
 </complexType>
 }}}
 
+====Delete====
 {{{
 <complexType name="Delete">
    <complexContent>
@@ -105,15 +107,7 @@ In contrast to the above mentioned kinds of advice, *!ComplexAdvice* may contain
 </complexType>
 }}}
 
-{{{
-<complexType name="ReduceContent">
-   <complexContent>
-      <extension base="tns:BasicAdvice">
-         <attribute name="deletePart" type="string"/>
-      </extension>
-   </complexContent>
-</complexType>
-}}}
+====!MoveElement====
 
 {{{
 <complexType name="MoveElement">
@@ -128,6 +122,19 @@ In contrast to the above mentioned kinds of advice, *!ComplexAdvice* may contain
 </complexType>
 }}}
 
+
+====!ReduceContent====
+{{{
+<complexType name="ReduceContent">
+   <complexContent>
+      <extension base="tns:BasicAdvice">
+         <attribute name="deletePart" type="string"/>
+      </extension>
+   </complexContent>
+</complexType>
+}}}
+
+
 {{{
 <complexType name="FillComponentByID">
     <complexContent>
@@ -139,9 +146,9 @@ In contrast to the above mentioned kinds of advice, *!ComplexAdvice* may contain
         </extension>
     </complexContent>
 </complexType>
-}}}
 
-{{{
+<!-- Source Container Helper -->
+
 <complexType name="SourceContainer">
    <sequence>
       <element name="sourceComponents" type="tns:XPath"/>
@@ -157,6 +164,7 @@ In contrast to the above mentioned kinds of advice, *!ComplexAdvice* may contain
 
 === Advice Actions with Simple Content ===
 
+====!ChangeValue====
 {{{
 <complexType name="ChangeValue">
    <complexContent>
@@ -165,6 +173,16 @@ In contrast to the above mentioned kinds of advice, *!ComplexAdvice* may contain
 </complexType>
 }}}
 
+====!CollapseElement====
+{{{
+<complexType name="CollapseElement">
+   <complexContent>
+      <extension base="tns:SimpleAdvice"/>
+   </complexContent>
+</complexType>
+}}}
+
+====!EnrichContent====
 {{{
 <complexType name="EnrichContent">
    <complexContent>
@@ -175,18 +193,10 @@ In contrast to the above mentioned kinds of advice, *!ComplexAdvice* may contain
 </complexType>
 }}}
 
-{{{
-<complexType name="CollapseElement">
-   <complexContent>
-      <extension base="tns:SimpleAdvice"/>
-   </complexContent>
-</complexType>
-}}}
-
-
-
 
 === Advice Actions with Complex Content ===
+
+====!ExpandElement====
 {{{
 <complexType name="ExpandElement">
    <complexContent>
@@ -195,6 +205,7 @@ In contrast to the above mentioned kinds of advice, *!ComplexAdvice* may contain
 </complexType>
 }}}
 
+====!InsertElement====
 {{{
 <complexType name="InsertElement">
    <complexContent>
