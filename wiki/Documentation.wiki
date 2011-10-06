@@ -105,23 +105,27 @@ To be applicable, a certain node pattern is required. For example:
 <tr>
 <td>
 {{{
-<a>
-   <x/>
-   <y/>
-   <z/>
-</a>
+<root>
+   <a>
+      <x/>
+      <y/>
+      <z/>
+   </a>
+</root>
 }}}
 </td>
 <td>
 {{{
 <chooseVariant>
-   <pointcut>/a/z</pointcut>
+   <pointcut>/root/a/z</pointcut>
 </chooseVariant>
 }}}
 </td>
 <td>
 {{{
-<z/>
+<root>
+   <z/>
+</root>
 }}}
 </td>
 </tr>
