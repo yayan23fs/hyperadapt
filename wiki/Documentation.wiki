@@ -104,7 +104,7 @@ To be applicable, a certain node pattern is required. For example:
 <tr>
 <th>
 Input Pattern
-<th>
+</th>
 <th>
 Advice
 </th>
