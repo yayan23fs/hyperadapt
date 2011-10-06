@@ -6,7 +6,7 @@
 = Aspect Language =
 In this section we explain the !HyperAdapt aspect language.
 
-http://jastemf.googlecode.com/svn/wiki/figures/taxonomy.png
+http:/hyperadapt.googlecode.com/svn/wiki/figures/taxonomy.png
 
 == Basic Structure ==
 
