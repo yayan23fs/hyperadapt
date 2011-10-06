@@ -99,7 +99,7 @@ The *!ChooseVariant* advice selects a variant from a list of exchangeable nodes.
    </complexContent>
 </complexType>
 }}}
-To be applicable, a certain node pattern is required. For example:
+To be applicable, a certain node pattern is required, e.g.:
 <table>
 <tr>
 <th>
@@ -142,6 +142,7 @@ Result
 </table>
 
 ====Delete====
+This is a basic advice for deleting nodes in a document. The kind of deleted node is determined by the specified pointcut expression which may select element, attributes or text nodes.
 {{{
 <complexType name="Delete">
    <complexContent>
