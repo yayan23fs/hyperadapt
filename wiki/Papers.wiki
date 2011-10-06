@@ -1,5 +1,6 @@
 #labels Featured
 = Publications Overview =
+This page contains scientific references to publication in the context of the HyperAdapt toolkit.
 
 == 2011 ==
 S. Karol, M. Niederhausen, D. Kadner, U. Aßmann, und K. Meißner, „Detecting and Resolving Conflicts between Adaptation Aspects in Multi-staged XML Transformations“, in DocEng  ’11: Proceedings of the 11th ACM symposium on Document engineering, New York, NY, USA, 2011, S. to appear.
