@@ -33,6 +33,7 @@ In this section we explain the !HyperAdapt aspect language.
 
 == Advice Actions (Adaptation Rules) ==
 
+=== Kinds of Advice ===
 {{{
 <complexType name="BasicAdvice" abstract="true">
     <sequence>
@@ -64,6 +65,12 @@ In this section we explain the !HyperAdapt aspect language.
     </complexContent>
 </complexType>
 }}}
+
+=== Basic Advice Actions ===
+
+=== Advice Actions with Simple Content ===
+
+=== Advice Actions with Complex Content ===
 
 {{{
 <complexType name="FillComponentByID">
