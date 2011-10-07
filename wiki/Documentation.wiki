@@ -270,6 +270,11 @@ This advice removes parts of the content of a text node.
 = PX-Weave Weaving Engine =
 
 == Basic Configuration ==
+PX-Weave can be configured via a weaver configuration file as shown below. A `weaverConfiguration` consists of three main parts. 
+
+  * aspect-locations Within the range of the `aspectFiles` element, each aspect file that should be considered by the weaving engine has to be declared by an URI pointing to its location. The URI can be relative or absolute. In the relative case, the URI will be resolved against the configuration files location.
+  * namespace-declarations To allow the xPath expressions to select nodes appropriately w.r.t. their namespace prefixes, all namespaces that occur in target document can be declared within the `namespaces` element by specifying its prefix and URI.
+  * validation PX-Weave supports several validation modes depending on the underlying XML parsing technology (by default, Apache Xcerces is used). By using the `validateBeforeWeaving` and `validateAfterWeaving` attributes it can be specified, if a schema-based validation should take place directly before or after a single weaving step.
 
 {{{
 <?xml version="1.0" encoding="UTF-8" ?>
