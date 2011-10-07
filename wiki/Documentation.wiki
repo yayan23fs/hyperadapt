@@ -275,6 +275,8 @@ This advice removes parts of the content of a text node.
 
 == Integration into Transformation Engines ==
 
+http://hyperadapt.googlecode.com/svn/wiki/figures/taxonomy.png
+
 === Integration Concept ===
 
 === Cocoon Integration ===
