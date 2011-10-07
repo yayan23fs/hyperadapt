@@ -271,6 +271,31 @@ This advice removes parts of the content of a text node.
 
 == Basic Configuration ==
 
+{{{
+<?xml version="1.0" encoding="UTF-8" ?>
+<weaverConfiguration 
+  xsi:schemaLocation="http://www.hyperadapt.org/aspects schemas/weaverConfig.xsd" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.hyperadapt.org/aspects">
+    <aspectFiles>
+       <aspectFile>path/to/aspect.xml</aspectFile>
+       <!-- add further aspects files here -->
+    </aspectFiles>
+    <namespaces> 
+       <namespaceURI prefix="prefix">
+           http://name/space/uri
+       </namespaceURI>
+       <!-- add further XML namespace declarations here -->
+    </namespaces>
+    <validationMode 
+        validateBeforeWeaving="false|true"
+        validateAfterWeaving="false|true">
+          none <!--noValidation, none, DOML3, DOML3Validation -->
+   </validationMode>
+</weaverConfiguration>
+
+}}}
+
 == Implementation of the Joinpoint Model ==
 
 == Integration into Transformation Engines ==
