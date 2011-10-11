@@ -4,7 +4,7 @@
 = Introduction =
 
 = The Document Adaptation Language (DALE) =
-In this section we explain the !HyperAdapt aspect language. The following UML like diagram gives a high-level overview of the concepts of the Document Adaptation LanguagE (DALE). Each adaptation 
+In this section we explain the !HyperAdapt aspect language. The following UML like diagram gives a high-level overview of the concepts of the Document Adaptation LanguagE (DALE). At the most abstract level, adaptation objectives can be arranged in  _adaptation concerns_ like device independence, language independence etc. . In DALE, each concern manifestates as a set of _aspect_ modules.
 
 http://hyperadapt.googlecode.com/svn/wiki/figures/taxonomy.png
 
