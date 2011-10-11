@@ -3,8 +3,8 @@
 
 = Introduction =
 
-= Aspect Language =
-In this section we explain the !HyperAdapt aspect language. The following UML like diagram gives a high-level overview of the concepts of the DALE aspect language.
+= The Document Adaptation Language (DALE) =
+In this section we explain the !HyperAdapt aspect language. The following UML like diagram gives a high-level overview of the concepts of the Document Adaptation LanguagE (DALE). Each adaptation 
 
 http://hyperadapt.googlecode.com/svn/wiki/figures/taxonomy.png
 
