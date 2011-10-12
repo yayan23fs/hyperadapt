@@ -5,7 +5,7 @@
 TODO
 
 = The Document Adaptation Language (DALE) =
-In this section we explain the !HyperAdapt aspect language. The following UML like diagram gives a high-level overview of the concepts of the Document Adaptation LanguagE (DALE). At the most abstract level, adaptation objectives can be arranged in  _adaptation concerns_ like device independence, language independence etc. . In DALE, each concern manifestates as a set of _adaptation aspect_ modules. Each module consists of an ordered set of _advice actions_---the actual adaptation rules. DALE provides a set of specific kinds of advice actions, for example for enriching or reducing XML nodes, or to model variants in XML content. A detailed description can be found in the section on Advice Actions.
+In this section we explain the !HyperAdapt aspect language. The following UML like diagram gives a high-level overview of the concepts of the Document Adaptation LanguagE (DALE). At the most abstract level, adaptation objectives can be arranged in  _adaptation concerns_ like device independence, language independence etc. . In DALE, each concern manifestates as a set of _adaptation aspect_ modules. Each module consists of an ordered set of _advice actions_---the actual adaptation rules. DALE provides a set of specific kinds of advice actions, for example for enriching or reducing XML nodes, or to model variants in XML content. A detailed description can be found in the section on [Documentation#Advice Actions (Adaptation Rules)].
 
 http://hyperadapt.googlecode.com/svn/wiki/figures/taxonomy.png
 
@@ -36,7 +36,7 @@ http://hyperadapt.googlecode.com/svn/wiki/figures/taxonomy.png
 
 == Joinpoint Model ==
 
-== Advice Actions (Adaptation Rules) ==
+==Advice Actions (Adaptation Rules)==
 
 === Kinds of Advice ===
 Our aspect language provides three kinds of advice actions which will be explained in this section. 
