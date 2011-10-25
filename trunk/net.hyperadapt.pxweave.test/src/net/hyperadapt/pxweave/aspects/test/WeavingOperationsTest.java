@@ -34,9 +34,11 @@ public class WeavingOperationsTest {
 	
 	
 	private final String in = "in:testData/book.xml";
+	private final String in_music = "in:testData/music_db.xml";
 	private final String out = "out:testData/result.xml";
 	private final String core = "coreID:core";
 	private final String[] args = { in, out, core };
+	private final String[] args_music = { in_music, out, core };
 	
 	private URI baseURI;
 	private URI contextURI;
@@ -126,6 +128,24 @@ public class WeavingOperationsTest {
 		assertEquals("Only one item left", 1, result.getLength());
 		assertTrue("The correct item is left", result.item(0).getLastChild()
 				.getNodeValue().contentEquals("Sam"));
+
+	}
+	
+	
+	@Test
+	public void testChooseVariant2() throws XMLWeaverException {
+		URI configURI = URI.create("ConfigChooseVariantMusic.xml");	
+		IEnvironment environment = Environment.create(baseURI, configURI, contextURI, matrixURI);	
+		XPathEvaluator xPathEvaluator = new XPathEvaluator(environment.getNamespaceContext());
+		List<IInterpreterArgument> arguments = Main.evaluateStringArgs(args_music); 	
+		
+		AspectWeaver.weave(environment,arguments);
+		
+		NodeList result = xPathEvaluator.evaluateXPath("//music:image/attribute::size",
+				parser.buildDOM(URI.create("testData/result.xml")));
+		assertTrue("Value should be SMALL.", result
+				.item(0).getNodeValue().equals("SMALL"));
+	
 
 	}
 	

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://music"
+	targetNamespace="http://music" elementFormDefault="qualified">
+
+	<xsd:element name="music-database">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" ref="album" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="album">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="title" />
+				<xsd:choice>
+					<xsd:element ref="artist" />
+					<xsd:element ref="compilation" />
+				</xsd:choice>
+				<xsd:element ref="id" />
+				<xsd:element minOccurs="0" name="edition" type="Edition" />
+				<xsd:element ref="publisher" />
+				<xsd:element minOccurs="0" ref="year" />
+				<xsd:element minOccurs="0" ref="image"/>
+				<xsd:element minOccurs="0" ref="media" />
+			</xsd:sequence>
+			<xsd:attribute name="price" type="xsd:decimal" />
+			<xsd:attribute name="inStock" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="Yes" />
+						<xsd:enumeration value="No" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="title" type="xsd:string" />
+
+	<xsd:element name="artist">
+		<xsd:complexType mixed="true">
+			<xsd:sequence>
+				<xsd:element name="pseudonym" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="image">
+		<xsd:complexType>
+			<xsd:attribute name="url" type="xsd:string"/>
+				<xsd:attribute name="size" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="SMALL" />
+						<xsd:enumeration value="LARGE" />
+						<xsd:enumeration value="TINY" />
+						<xsd:enumeration value="THUMBNAIL" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="media">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" ref="medium" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+		<xsd:element name="medium">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" ref="tracks" />
+			</xsd:sequence>
+			<xsd:attribute name="kind" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="CD" />
+						<xsd:enumeration value="DVD" />
+						<xsd:enumeration value="MD" />
+						<xsd:enumeration value="LP" />
+						<xsd:enumeration value="MP3" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="tracks">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="1" maxOccurs="unbounded" ref="song" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="song">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" maxOccurs="1" ref="artist" />
+			</xsd:sequence>
+			<xsd:attribute name="length" type="xsd:decimal" />
+			<xsd:attribute name="name" type="xsd:string" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="id" type="xsd:string" />
+
+	<xsd:element name="publisher" type="xsd:string" />
+	<xsd:element name="compilation" type="xsd:string" />
+	<xsd:element name="year">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:pattern value="[0-9]{4}" />
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+
+	<xsd:simpleType name="Edition">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="First" />
+			<xsd:enumeration value="Second" />
+			<xsd:enumeration value="Third" />
+			<xsd:enumeration value="Fourth" />
+			<xsd:enumeration value="Fifth" />
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>
