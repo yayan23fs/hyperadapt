@@ -130,7 +130,7 @@ public class AdviceInterpreter extends Logable {
 		final NodeList joinPoints;
 		final String subpath = advice.getPointcut().getValue();
 		
-		String fullXPath = scope==null?subpath : "/" + subpath;
+		String fullXPath = scope==null?subpath : (scope + "/" + subpath);
 		try {
 			joinPoints = xPathEvaluator.evaluateXPath(fullXPath,document);
 			if (environment.reportConflicts()) {
