@@ -280,7 +280,7 @@ PX-Weave can be configured via a weaver configuration file as shown below. A `we
 
   * *aspect-locations* Within the range of the `aspectFiles` element, each aspect file that should be considered by the weaving engine has to be declared by an URI pointing to its location. The URI can be relative or absolute. In the relative case, the URI will be resolved against the configuration files location.
   * *namespace-declarations* To allow the xPath expressions to select nodes appropriately w.r.t. their namespace prefixes, all namespaces that occur in target document can be declared within the `namespaces` element by specifying its prefix and URI.
-  * *validation* PX-Weave supports several validation modes depending on the underlying XML parsing technology (by default, Apache Xcerces is used). By using the `validateBeforeWeaving` and `validateAfterWeaving` attributes it can be specified, if a schema-based validation should take place directly before or after a single weaving step.
+  * *validation* PX-Weave supports several validation modes depending on the underlying XML parsing technology (by default, Apache Xcerces is used). By using the `validateBeforeWeaving` and `validateAfterWeaving` attributes it can be specified, if a schema-based validation should take place directly before or after a single weaving step. Validation can be disabled by setting validation mode to `none` and `validateBeforeWeaving` and `validateAfterWeaving` to false if no schema is available. The `DOML3` option enables validation before and after every weaving operation by checking the whole document against its schema. `DOML3Validation` uses the DOM level 3 validaiton API for local validation. This requires the xmlparserv2.jar from the Oracle 10g XDK, which must be downloaded seperately.
 
 {{{
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -301,7 +301,7 @@ PX-Weave can be configured via a weaver configuration file as shown below. A `we
     <validationMode 
         validateBeforeWeaving="false|true"
         validateAfterWeaving="false|true">
-          none <!--noValidation, none, DOML3, DOML3Validation -->
+          none <!--none, DOML3, DOML3Validation -->
    </validationMode>
 </weaverConfiguration>
 
