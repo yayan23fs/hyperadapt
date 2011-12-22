@@ -6,8 +6,8 @@
 		<aspectFile>AspectDelete.xml</aspectFile>
 	</aspectFiles>
 	<namespaces>
-		<namespace prefix="books" name="http://books" definition="../book.xsd"/>
+		<namespace prefix="books" name="http://books" definition="../book1.xsd"/>
 	</namespaces>
-	<validationMode validateBeforeWeaving="true"
-		validateAfterWeaving="true">none</validationMode>
+	<validationMode validateBeforeWeaving="false"
+		validateAfterWeaving="false">none</validationMode>
 </weaverConfiguration>

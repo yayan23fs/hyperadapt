@@ -9,8 +9,7 @@ import java.io.File;
 
 import net.hyperadapt.pxweave.XMLWeaverException;
 import net.hyperadapt.pxweave.util.DOMOperations;
-import net.hyperadapt.pxweave.validation.DOML3Factory;
-import net.hyperadapt.pxweave.validation.DOML3ValidationFactory;
+import net.hyperadapt.pxweave.validation.ValidationMode;
 import net.hyperadapt.pxweave.validation.IDOMFactory;
 import net.hyperadapt.pxweave.validation.IDOMParser;
 import net.hyperadapt.pxweave.validation.IDOMValidator;
@@ -32,8 +31,8 @@ public class ValidatorTest {
 	private IDOMValidator validatorVal;
 	private IDOMParser parser;
 	private IDOMValidator validator;
-	private final IDOMFactory dfVal = new DOML3ValidationFactory();
-	private final IDOMFactory df = new DOML3Factory();
+	private final IDOMFactory dfVal = ValidationMode.createDOM3ValidationAPIFactory();
+	private final IDOMFactory df = ValidationMode.createDOM3Factory();
 	private Document docVal;
 	private Document doc;
 

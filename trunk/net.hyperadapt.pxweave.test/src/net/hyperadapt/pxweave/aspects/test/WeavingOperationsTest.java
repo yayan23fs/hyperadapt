@@ -52,7 +52,7 @@ public class WeavingOperationsTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		parser = new DOML3Parser();
+		parser = new DOML3Parser(false);
 		File base = new File("./testData/weavingOperationsTest");
 		baseURI = base.toURI();
 		File matrix = new File("./patternConflicts.xml");

@@ -6,8 +6,7 @@ package net.hyperadapt.pxweave.validation.test;
 import java.io.File;
 
 import net.hyperadapt.pxweave.XMLWeaverException;
-import net.hyperadapt.pxweave.validation.DOML3Factory;
-import net.hyperadapt.pxweave.validation.DOML3ValidationFactory;
+import net.hyperadapt.pxweave.validation.ValidationMode;
 import net.hyperadapt.pxweave.validation.IDOMFactory;
 import net.hyperadapt.pxweave.validation.IDOMParser;
 
@@ -20,8 +19,8 @@ import org.w3c.dom.Document;
  * 
  */
 public class ParserTest {
-	private final IDOMFactory dfVal = new DOML3ValidationFactory();
-	private final IDOMFactory df = new DOML3Factory();
+	private final IDOMFactory dfVal = ValidationMode.createDOM3ValidationAPIFactory();
+	private final IDOMFactory df = ValidationMode.createDOM3ValidationAPIFactory();
 	private IDOMParser parser;
 	private IDOMParser parserVal;
 
