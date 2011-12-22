@@ -23,6 +23,7 @@ import org.xml.sax.SAXException;
  * schema has to be used again, no parsing is necessary anymore.
  * 
  */
+//TODO check this class
 public class SchemaValidator {
 	private final HashMap<URI, Schema> schemas = new HashMap<URI, Schema>();
 
