@@ -47,7 +47,9 @@ public abstract class DOMValidator implements IDOMValidator {
 	 * @see
 	 * net.hyperadapt.pxweave.validation.IDOMValidator#validateDocument(org.w3c.dom.
 	 * Document)
+	 *
 	 */
+	//TODO should return short value in error case instead of raising exceptions 
 	public short validateDocument(final Document document)
 			throws XMLWeaverException {
 		final short valid = documentIsValid(document);

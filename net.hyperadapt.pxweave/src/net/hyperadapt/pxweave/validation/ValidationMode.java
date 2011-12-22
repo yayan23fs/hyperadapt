@@ -1,5 +1,13 @@
 package net.hyperadapt.pxweave.validation;
 
+import java.net.URI;
+
+import net.hyperadapt.pxweave.XMLWeaverException;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.validation.NodeEditVAL;
+
 
 /**
  * 
@@ -91,9 +99,89 @@ public enum ValidationMode {
 	
 	public IDOMFactory createDOMFactory(){
 		if(this == DomLevel3ValidationAPI || this == DomLevel3ValidationAPI_noInput){
-			return new DOML3ValidationFactory();
+			return createDOM3ValidationAPIFactory();	
 		}
-		return new DOML3Factory();
+		if(this==None)
+			return createDOM3DummyFactory();
+		return createDOM3Factory();
+	}
+	
+	/**
+	 * 	Factory that creates DOM3 API parser, but only a dummy validator.
+	 * 
+	 * @return
+	 */
+	public static IDOMFactory createDOM3DummyFactory(){
+		return new IDOMFactory() {	
+			@Override
+			public IDOMValidator createDOMValidator() {
+				return new IDOMValidator() {				
+					@Override
+					public short validateElement(Element element) throws XMLWeaverException {
+						return NodeEditVAL.VAL_TRUE;
+					}
+					
+					@Override
+					public short validateDocument(Document document) throws XMLWeaverException {
+						return NodeEditVAL.VAL_TRUE;
+					}
+					
+					@Override
+					public void setSchema(URI schemaURI) {
+						//do nothing
+					}
+					
+					@Override
+					public boolean needsSchema() {
+						return false;
+					}
+				};
+			}
+			
+			@Override
+			public IDOMParser createDOMParser() {
+				return new DOML3Parser(false);
+			}
+		};
+	}
+	
+	
+	/**
+	 * 	Factory that uses DOM3 API, but not DOM Level 3 Validation API.
+	 * 
+	 * @return
+	 */
+	public static IDOMFactory createDOM3Factory(){
+		return new IDOMFactory() {	
+			@Override
+			public IDOMValidator createDOMValidator() {
+				return new DOML3Validator();
+			}
+			
+			@Override
+			public IDOMParser createDOMParser() {
+				return new DOML3Parser(true);
+			}
+		};
+	}
+	
+	/**
+	 * Factory that uses DOM-LVL3 Validation API.
+	 * 
+	 * @return
+	 */
+	public static IDOMFactory createDOM3ValidationAPIFactory(){
+		return new IDOMFactory() {
+			@Override
+			public IDOMValidator createDOMValidator() {			
+				return new DOML3ValidationValidator();
+			}
+			
+			@Override
+			public IDOMParser createDOMParser() {
+				return new DOML3ValidationParser();
+			}
+		};
 	}
 	
 }

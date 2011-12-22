@@ -19,7 +19,17 @@ import org.w3c.dom.ls.LSParser;
  * 
  * 
  */
+//TODO more transparent validation handling
 public class DOML3Parser extends AbstractDOMParser implements IDOMParser {
+	
+	private boolean validateOnLoad = true;
+	
+	public DOML3Parser(){}
+
+	
+	public DOML3Parser(boolean validateOnLoad){
+		this.validateOnLoad = validateOnLoad;
+	}
 	
 	
 	public Document buildDOM(final URI documentURI, final URI xsdURI)throws XMLWeaverException{
@@ -31,9 +41,12 @@ public class DOML3Parser extends AbstractDOMParser implements IDOMParser {
 			throws XMLWeaverException {
 			LSParser builder = this.getDefaultParser();
 			final DOMConfiguration config = builder.getDomConfig();
-			config.setParameter("validate", Boolean.TRUE);
-			config.setParameter("schema-location", xsdURI);
-			config.setParameter("schema-type","http://www.w3.org/2001/XMLSchema");
+			if(validateOnLoad){
+				config.setParameter("validate", true);
+				config.setParameter("schema-location", xsdURI);
+				config.setParameter("schema-type","http://www.w3.org/2001/XMLSchema");
+
+			}
 			try{
 				return builder.parseURI(documentURI);
 			}
