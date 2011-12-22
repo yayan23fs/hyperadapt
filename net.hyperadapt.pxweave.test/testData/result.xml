@@ -1,30 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?><music-database xmlns="http://music" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://music music.xsd">
-	<album inStock="Yes">
-		<title>How to Be a Megastar-Live!</title>
-		<artist>
-			<pseudonym>Blue Man Group</pseudonym>
-		</artist>
-		<id>B00166GLVO</id>
-		<edition>First</edition>
-		<publisher>Rhino (Warner)</publisher>
-		<image size="SMALL" url="http://www.amazon.de/gp/product/images/B001S1ZBC2/ref=dp_image_0?ie=UTF8&amp;n=77195031&amp;s=dmusic"/>
-			
-			
-		<media>
-			<medium kind="CD">
-				<tracks>
-					<song length="3.30" name="Above"/>
-					<song length="3.25" name="Drumbone"/>
-					<song length="4.22" name="Time To Start"/>
-					<song length="4.16" name="Up To The Roof"/>
-					<song length="2.23" name="Altering Appearances"/>
-					<song length="4.12" name="Persona"/>
-					<song length="4.04" name="Your Attention"/>
-					<song length="6.01" name="Piano Smasher "/>
-					<song length="4.40" name="Shirts And Hats"/>
-					<song length="3.10" name="Sing Along"/>
-				</tracks>
-			</medium>
-		</media>
-	</album>
-</music-database>
+<?xml version="1.0" encoding="UTF-8"?><bookList xmlns="http://books" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://books book.xsd">
+  <book inStock="Yes" price="64.14">
+  	<title><img>Principles: How they got lost.-cover.jpg</img></title>
+	<author>  
+		<name>Sam</name>
+			<lastName>Freek</lastName>
+	</author>
+	<ISBN>0-201-12188-6</ISBN>
+	<edition>Second</edition>
+	<publisher>VVM</publisher>
+  </book>
+  <book inStock="Yes" price="39.22">
+	<title><img>The Moon Story-cover.jpg</img></title>
+	<author><name>M.</name>	
+		<lastName>Rainsburg</lastName>
+	</author>
+	<ISBN>0-251-16135-2</ISBN>
+	<edition>Second</edition>
+	<publisher>RS Media</publisher>
+  </book>
+  <book inStock="No" price="44.98">
+	<title><img>Some Title-cover.jpg</img></title> 
+	<author>mixedContent<name>A</name><lastName>Name</lastName></author>
+	<ISBN>0-251-16135-2</ISBN>
+	<edition>Second</edition>
+	<publisher>RS Media</publisher>
+  </book>
+  </bookList>
