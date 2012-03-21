@@ -6,6 +6,9 @@ This page contains scientific references to publications and talks related to th
 S. Karol, M. Niederhausen, D. Kadner, U. Aßmann, und K. Meißner, „Detecting and Resolving Conflicts between Adaptation Aspects in Multi-staged XML Transformations“, in !DocEng  ’11: Proceedings of the 11th ACM symposium on Document engineering, New York, NY, USA, 2011, P. 229-238.
 [http://dl.acm.org/citation.cfm?doid=2034691.2034738 ACM].
 
+S. Karol „Detecting and Resolving Conflicts between Adaptation Aspects in Multi-staged XML Transformations“, Talk at !DocEng'11 and Dresden. 
+[http://code.google.com/p/hyperadapt/source/browse/wiki/slides/presentation_doceng_2011.pdf Slides].
+
 == 2010 ==
 S. Karol, M. Heinzerling, F. Heidenreich, und U. Aßmann, „Using feature models for creating families of documents“, in Proceedings of the 10th ACM symposium on Document engineering, New York, NY, USA, 2010, P. 259–262.
 
