@@ -1,51 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" 
-		targetNamespace="http://www.hyperadapt.net/pxweave/config" 
-		xmlns:tns="http://www.hyperadapt.net/pxweave/config"
-		elementFormDefault="qualified">
-<element name="weaverConfiguration">
-	<complexType>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.hyperadapt.net/pxweave/config" xmlns:tns="http://www.hyperadapt.net/pxweave/config" elementFormDefault="qualified">
+	<element name="weaverConfiguration">
+		<complexType>
+			<sequence>
+				<element name="aspectFiles" type="tns:AspectFiles">
+					<annotation>
+						<documentation xml:lang="en">Supply the weaver with files that contain one adaptation aspect each.</documentation>
+					</annotation>
+				</element>
+				<element name="namespaces" type="tns:Namespaces" minOccurs="0">
+					<annotation>
+						<documentation xml:lang="en">Define namespaces that will occur in the documents.</documentation>
+					</annotation>
+				</element>
+				<element name="validationMode" type="tns:ValidationType">
+					<annotation>
+						<documentation xml:lang="en">Choose the type of validation the weaver should use.</documentation>
+					</annotation>
+				</element>
+			</sequence>
+			<attribute name="reportInteractions" use="optional" type="boolean" />
+		</complexType>
+	</element>
+
+	<complexType name="AspectFiles">
 		<sequence>
-			<element name="aspectFiles" type="tns:AspectFiles"/>	
-			<element name="namespaces" type="tns:Namespaces" minOccurs="0"/>
-			<element name="validationMode" type="tns:ValidationType"/>
+			<element name="aspectFile" type="string" minOccurs="1" maxOccurs="unbounded">
+				<annotation>
+					<documentation xml:lang="en">Refer to the file relatively to the path of the weaver configuration.</documentation>
+				</annotation>
+			</element>
 		</sequence>
-		<attribute name="reportInteractions" use="optional" type="boolean"/>
 	</complexType>
-</element>
 
-<complexType name="AspectFiles">
-	<sequence>
-		<element name="aspectFile" type="string" minOccurs="1" maxOccurs="unbounded"/>
-	</sequence>
-</complexType>
+	<simpleType name="OperationValidation">
+		<restriction base="string">
+			<enumeration value="none">
+				<annotation>
+					<documentation xml:lang="en">Disable the validation of advice operations.</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="DOML3">
+				<annotation>
+					<documentation xml:lang="en">Validates the whole document against its schema after every advice applied.</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="DOML3Validation">
+				<annotation>
+					<documentation xml:lang="en">Uses DOM Level3 validation for advice operations. This will require a DOML3 library (e.g., Oracle 10g).</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
 
-<simpleType name="OperationValidation">
-	<restriction base="string">
-		<enumeration value="none"/>
-		<enumeration value="DOML3"/>
-		<enumeration value="DOML3Validation"/>
-	</restriction>
-</simpleType>
+	<complexType name="Namespaces">
+		<sequence>
+			<element name="namespace" type="tns:NamespaceDeclaration" minOccurs="1" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
 
-<complexType name="Namespaces">
-	<sequence>
-		<element name="namespace" type="tns:NamespaceDeclaration" minOccurs="1" maxOccurs="unbounded"/>
-	</sequence>
-</complexType>
+	<complexType name="NamespaceDeclaration">
+		<attribute name="prefix" use="required" type="string" />
+		<attribute name="name" use="required" type="anyURI" />
+		<attribute name="definition" use="optional" type="anyURI" />
+	</complexType>
 
-<complexType name="NamespaceDeclaration">
-	<attribute name="prefix" use="required" type="string"/>
-	<attribute name="name" use="required" type="anyURI"/>
-	<attribute name="definition" use="optional" type="anyURI"/>
-</complexType>
-
-<complexType name="ValidationType">
-	<simpleContent>	
-		<extension base="tns:OperationValidation">
-			<attribute name="validateBeforeWeaving" type="boolean" default="false"/>	
-			<attribute name="validateAfterWeaving" type="boolean" default="false"/>	
-		</extension>		
-	</simpleContent>
-</complexType>
+	<complexType name="ValidationType">
+		<simpleContent>
+			<extension base="tns:OperationValidation">
+				<attribute name="validateBeforeWeaving" type="boolean" default="false" />
+				<attribute name="validateAfterWeaving" type="boolean" default="false" />
+			</extension>
+		</simpleContent>
+	</complexType>
 </schema>
