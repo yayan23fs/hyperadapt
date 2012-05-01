@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<aspect name="aspectCollapse"
+	xsi:schemaLocation="http://www.hyperadapt.net/pxweave/aspects ../schemas/aspectE2.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.net/pxweave/aspects">
+	<interface>
+		<core id="core" type="http://www.w3.org/1999/xhtml" />
+	</interface>
+	<adviceGroup>
+		<depends evaluationMode="expression">
+			<boolExpr>${resolutionX} &lt; 800</boolExpr>
+			<sparql>SELECT ?resolutionX WHERE {&lt;http://mmt.inf.tu-dresden.de/crocoon/Resolution#${sessionId}&gt; &lt;http://mmt.inf.tu-dresden.de/crocoon/context-person.owl#resolutionX&gt; ?resolutionX . Filter (?resolutionX &lt; 800)}</sparql>
+		</depends>
+		<scope>
+			<xpath>/</xpath>
+			<joinpoint locator="before" name="PXWeaveAdvice"/>
+		</scope>
+		<advices>
+			<collapseElement>
+				<pointcut>h:link[@id='logoLink']</pointcut>
+				<value>
+					<textTemplate>//h:link[@id='logoLink']/h:graphicImage/attribute::alt</textTemplate>
+				</value>
+			</collapseElement>
+		</advices>
+	</adviceGroup>
+</aspect>

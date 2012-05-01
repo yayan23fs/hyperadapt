@@ -1,0 +1,14 @@
+<!DOCTYPE aspectj PUBLIC
+        "-//AspectJ//DTD//EN" "http://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<aspectj>
+    <weaver options="-verbose">
+        <!-- only weave classes in this package -->
+        <include within="org.apache.xerces.jaxp.*" />
+        <include within="javax.xml.parsers.*" />
+        <include within="net.hyperadapt.pxweave.integration.jsf.aop.*" />
+    </weaver>
+    <aspects>
+        <!-- use only this aspect for weaving -->
+        <aspect name="net.hyperadapt.pxweave.integration.jsf.aop.PXWeaveAdvice" />
+    </aspects>
+</aspectj>

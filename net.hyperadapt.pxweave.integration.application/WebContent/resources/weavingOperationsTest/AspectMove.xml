@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<aspect name="aspectMove"
+	xsi:schemaLocation="http://www.hyperadapt.net/pxweave/aspects ../schemas/aspectE2.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.net/pxweave/aspects">
+	<interface>
+		<core id="core" type="http://www.w3.org/1999/xhtml" />
+	</interface>
+	<adviceGroup>
+		<depends evaluationMode="expression">
+			<boolExpr>"${userMail}" = "Marie@gmail.de"</boolExpr>
+			<sparql>SELECT ?userMail WHERE {&lt;http://mmt.inf.tu-dresden.de/crocoon/User#${sessionId}&gt; &lt;http://mmt.inf.tu-dresden.de/crocoon/context-person.owl#mail&gt; ?userMail . Filter (?userMail = 'Marie@gmail.de')}</sparql>
+		</depends>
+		<scope>
+			<xpath>/</xpath>
+			<joinpoint locator="before" name="PostProcessing"/>
+		</scope>
+		<advices>
+			<moveElement position="1">
+				<pointcut>xhtml:table[@id='mainPage']/xhtml:tbody/xhtml:tr[2]/xhtml:td/xhtml:a</pointcut>
+				<to>//xhtml:table[@id='mainPage']/xhtml:tbody/xhtml:tr[1]/xhtml:td</to>
+			</moveElement>
+		</advices>
+	</adviceGroup>
+</aspect>
