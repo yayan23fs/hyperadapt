@@ -8,8 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.hyperadapt.pxweave.integration.generic.PreProcessingFilter;
-
 /**
  * With the help of this class, its possible to capture the adaptation times
  * regarding to the selenium test (penetration test). Its only a test class,
@@ -68,20 +66,18 @@ public class Statistic {
 				countName++;
 			}
 			FileWriter fstream = new FileWriter(fileName);
-			if (PreProcessingFilter.readyForWriting) {
+			if (readyForWriting) {
 				BufferedWriter out = new BufferedWriter(fstream);
 
 				String currentSession = "";
 
 				out.write("\nPreProcessingFilter: \n");
-				for (String entry : PreProcessingFilter.statisticMapPre
-						.keySet()) {
+				for (String entry : statisticMapPre.keySet()) {
 					if (!currentSession.equals(entry)) {
 						currentSession = entry;
 						out.write("\n\n" + currentSession + ":\n");
 					}
-					List<Long> times = PreProcessingFilter.statisticMapPre
-							.get(currentSession);
+					List<Long> times = statisticMapPre.get(currentSession);
 					Long average = 0L;
 					boolean first = true;
 					for (Long time : times) {
@@ -99,14 +95,12 @@ public class Statistic {
 
 				currentSession = "";
 				out.write("\n\nPostProcessingFilter: \n");
-				for (String entry : PreProcessingFilter.statisticMapPost
-						.keySet()) {
+				for (String entry : statisticMapPost.keySet()) {
 					if (!currentSession.equals(entry)) {
 						currentSession = entry;
 						out.write("\n\n" + currentSession + ":\n");
 					}
-					List<Long> times = PreProcessingFilter.statisticMapPost
-							.get(currentSession);
+					List<Long> times = statisticMapPost.get(currentSession);
 					int count = 0;
 					Long average = 0L;
 					boolean first = true;
@@ -125,8 +119,7 @@ public class Statistic {
 				out.write("\n\nPre- und PostProcessingFilter: \n");
 				Map<String, List<List<Long>>> fullMap = new HashMap<String, List<List<Long>>>();
 
-				for (String entry : PreProcessingFilter.statisticMapFull
-						.keySet()) {
+				for (String entry : statisticMapFull.keySet()) {
 
 					if (!currentSession.equals(entry)) {
 						currentSession = entry.replace("Start:", "")
@@ -140,8 +133,7 @@ public class Statistic {
 
 					List<Long> startList = new ArrayList<Long>();
 					List<Long> endList = new ArrayList<Long>();
-					List<Long> times = PreProcessingFilter.statisticMapFull
-							.get(entry);
+					List<Long> times = statisticMapFull.get(entry);
 					boolean first = true;
 					for (Long time : times) {
 						if (!first) {
