@@ -2,6 +2,7 @@ package net.hyperadapt.pxweave.integration.generic;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.logging.Logger;
 
 import javax.servlet.Filter;
@@ -17,6 +18,7 @@ import net.hyperadapt.pxweave.integration.common.IntegrationConstraints;
 import net.hyperadapt.pxweave.integration.util.PXWeaveHelper;
 import net.hyperadapt.pxweave.integration.util.PXWeaveIntegrationHelper;
 import net.hyperadapt.pxweave.integration.util.PropertyHelper;
+import net.hyperadapt.pxweave.integration.util.Statistic;
 
 /**
  * The PreProcessingFilter is a generic variant to integrate PX-Weave in a
@@ -110,7 +112,7 @@ public class PreProcessingFilter implements Filter {
 		/* If the parameter is set, the adaptation has been executed. */
 		Object adapted = request
 				.getParameter(IntegrationConstraints.HEADERPARAM_ADAPTED);
-		
+
 		boolean isAjax = IntegrationConstraints.HEADERPARAM_XML.equals(req
 				.getHeader(IntegrationConstraints.HEADERPARAM_AJAX))
 				|| IntegrationConstraints.HEADERPARAM_JSF_PARTIAL
