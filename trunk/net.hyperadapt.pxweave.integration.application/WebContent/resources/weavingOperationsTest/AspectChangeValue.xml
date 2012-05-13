@@ -12,7 +12,7 @@
 		</depends>
 		<scope>
 			<xpath>/</xpath>
-			<joinpoint locator="before" name="PXWeaveAdvice"/>
+			<joinpoint locator="before" name="PreProcessing"/>
 		</scope>
 		<advices>
 			<changeValue>

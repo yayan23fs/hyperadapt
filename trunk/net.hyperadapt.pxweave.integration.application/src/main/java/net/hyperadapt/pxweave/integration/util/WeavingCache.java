@@ -3,11 +3,8 @@ package net.hyperadapt.pxweave.integration.util;
 import java.util.List;
 import java.util.Map;
 
-import net.hyperadapt.pxweave.aspects.ast.AdviceGroup;
 import net.hyperadapt.pxweave.aspects.ast.Aspect;
-import net.hyperadapt.pxweave.aspects.ast.Dependency;
 import net.hyperadapt.pxweave.context.IWeavingContext;
-import net.hyperadapt.pxweave.interpreter.AspectInterpreter;
 import net.hyperadapt.pxweave.util.CallbackHelper;
 import net.hyperadapt.pxweave.util.ContextModelHelper;
 
@@ -71,26 +68,27 @@ public class WeavingCache {
 	 *         cancled).
 	 */
 	public boolean isCaching() {
-		for (Aspect aspect : aspects) {
-			List<AdviceGroup> groups = aspect.getAdviceGroup();
-			for (AdviceGroup adviceGroup : groups) {
-				Dependency depends = adviceGroup.getDepends();
-				String bool = ContextModelHelper.replaceContextParams(
-						depends.getBoolExpr(), context, true);
-				if (bool == null) {
-					adaptedID = 0L;
-					return false;
-				}
-				Boolean boolValue = AspectInterpreter.boolExpressionMap
-						.get(bool);
-				if (boolValue != null) {
-					adaptedID += boolValue.hashCode();
-				} else {
-					adaptedID += bool.hashCode();
-				}
-			}
-		}
-		return true;
+		// for (Aspect aspect : aspects) {
+		// List<AdviceGroup> groups = aspect.getAdviceGroup();
+		// for (AdviceGroup adviceGroup : groups) {
+		// Dependency depends = adviceGroup.getDepends();
+		// String bool = ContextModelHelper.replaceContextParams(
+		// depends.getBoolExpr(), context, true);
+		// if (bool == null) {
+		// adaptedID = 0L;
+		// return false;
+		// }
+		// Boolean boolValue = AspectInterpreter.boolExpressionMap
+		// .get(bool);
+		// if (boolValue != null) {
+		// adaptedID += boolValue.hashCode();
+		// } else {
+		// adaptedID += bool.hashCode();
+		// }
+		// }
+		// }
+		// return true;
+		return false;
 	}
 
 	/**

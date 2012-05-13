@@ -6,12 +6,9 @@
 		<core id="core" type="http://www.w3.org/1999/xhtml"/>
 	</interface>
 	<adviceGroup>
-		<depends evaluationMode="expression">
+		<depends evaluationMode="sparql">
 			<boolExpr>${resolutionX} &lt; 800</boolExpr>
 			<sparql>SELECT ?resolutionX WHERE {&lt;http://mmt.inf.tu-dresden.de/crocoon/Resolution#${sessionId}&gt; &lt;http://mmt.inf.tu-dresden.de/crocoon/context-person.owl#resolutionX&gt; ?resolutionX . Filter (?resolutionX &lt; 800)}</sparql>
-			
-			<!-- sparql>SELECT &lt;http://mmt.inf.tu-dresden.de/crocoon/context-person.owl#resolutionX&gt; ?resolutionX WHERE {&lt;http://mmt.inf.tu-dresden.de/crocoon/Resolution#${sessionId}&gt; &lt;http://mmt.inf.tu-dresden.de/crocoon/context-person.owl#resolutionX&gt; ?resolutionX . Filter (?resolutionX &lt; 800)}</sparql-->
-			
 		</depends>
 		<scope>
 			<xpath>/</xpath>

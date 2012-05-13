@@ -3,13 +3,19 @@
 	xsi:schemaLocation="http://www.hyperadapt.net/pxweave/config ../schemas/weaverConfig.xsd"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.net/pxweave/config">
 	<aspectFiles>
+		<!-- PreProcessing -->
 		<aspectFile>AspectDelete.xml</aspectFile>
-		<!-- aspectFile>AspectDelete2.xml</aspectFile>
-		<aspectFile>AspectChangeOrderForPXWeaveAdvice.xml</aspectFile>
+		<aspectFile>AspectCollapse.xml</aspectFile>
+		
+		<!-- PostProcessing -->
+		<aspectFile>AspectChangeOrder.xml</aspectFile>
 		<aspectFile>AspectChangeValue.xml</aspectFile>
-		<aspectFile>AspectCollapse.xml</aspectFile-->
-		<!-- aspectFile>AspectMove.xml</aspectFile-->
-		<!-- aspectFile>AspectChangeOrder.xml</aspectFile-->
+		
+		<!-- PXWeaveAdvice>
+		<aspectFile>AspectChangeOrderForPXWeaveAdvice.xml</aspectFile-->
+
+		<!-- aspectFile>AspectMove.xml</aspectFile>
+		<aspectFile>AspectDelete2.xml</aspectFile-->
 	</aspectFiles>
 	<namespaces>
 		<namespace prefix="h" name="http://java.sun.com/jsf/html"/>

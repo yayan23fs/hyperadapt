@@ -6,7 +6,7 @@
 		<core id="core" type="http://www.w3.org/1999/xhtml"/>
 	</interface>
 	<adviceGroup>
-		<depends evaluationMode="expression">
+		<depends evaluationMode="sparql">
 			<boolExpr>"${language}" = "en"</boolExpr>
 			<sparql>SELECT ?language WHERE {&lt;http://mmt.inf.tu-dresden.de/crocoon/Setting#${sessionId}&gt; &lt;http://mmt.inf.tu-dresden.de/crocoon/context-person.owl#language&gt; ?language . Filter (?language = 'en')}</sparql>	
 		</depends>
