@@ -70,7 +70,7 @@
 			</classpath>
 		</javac>
 		<copy todir="${build_dir}">
-			<fileset dir="${base_dir}/src">
+			<fileset dir="${src_dir_impl}">
 				<include name="**/logger.config"/>
 			</fileset>
 		</copy>
