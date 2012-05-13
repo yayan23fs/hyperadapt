@@ -11,7 +11,7 @@
 		</scope>
 		<advices>
 			<reduceContent>
-				<pointcut>books:book/books:author</pointcut>
+				<pointcut>/books:book/books:author</pointcut>
 			</reduceContent>
 		</advices>
 	</adviceGroup>

@@ -1,12 +1,14 @@
 package net.hyperadapt.pxweave.interactions.runtime;
 
 import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -333,19 +335,19 @@ public class DynamicAnalysis extends Logable implements IDynamicAnalysis {
 		return false;
 	}
 
-	// public static boolean isSameCPC(NodeList nl_one, NodeList nl_two) {
-	// if (nl_one.getLength() > 0 && nl_two.getLength() > 0) {
-	// for (int i = 0; i < nl_one.getLength(); i++) {
-	// Node n_one = nl_one.item(i);
-	// for (int j = 0; j < nl_two.getLength(); j++) {
-	// Node n_two = nl_two.item(j);
-	// if (!n_one.isEqualNode(n_two))
-	// return false;
-	// }
-	// }
-	// }
-	// return true;
-	// }
+	public static boolean isSameCPC(NodeList nl_one, NodeList nl_two) {
+		if (nl_one.getLength() > 0 && nl_two.getLength() > 0) {
+			for (int i = 0; i < nl_one.getLength(); i++) {
+				Node n_one = nl_one.item(i);
+				for (int j = 0; j < nl_two.getLength(); j++) {
+					Node n_two = nl_two.item(j);
+					if (!n_one.isEqualNode(n_two))
+						return false;
+				}
+			}
+		}
+		return true;
+	}
 
 	private List<Node> catchIndirectConflict(NodeList nl_one, NodeList nl_two) {
 		List<Node> indirectNodeConflicts = new ArrayList<Node>();
@@ -497,21 +499,21 @@ public class DynamicAnalysis extends Logable implements IDynamicAnalysis {
 		}
 	}
 
-	// public void printXML(Document doc) {
-	// try {
-	// DOMSource domSource = new DOMSource(doc);
-	// StringWriter writer = new StringWriter();
-	// StreamResult result = new StreamResult(writer);
-	// TransformerFactory tf = TransformerFactory.newInstance();
-	// Transformer transformer = tf.newTransformer();
-	// transformer.transform(domSource, result);
-	// System.out.println(writer.toString());
-	// } catch (TransformerException ex) {
-	// ex.printStackTrace();
-	// }
-	// }
+	public void printXML(Document doc) {
+		try {
+			DOMSource domSource = new DOMSource(doc);
+			StringWriter writer = new StringWriter();
+			StreamResult result = new StreamResult(writer);
+			TransformerFactory tf = TransformerFactory.newInstance();
+			Transformer transformer = tf.newTransformer();
+			transformer.transform(domSource, result);
+			System.out.println(writer.toString());
+		} catch (TransformerException ex) {
+			ex.printStackTrace();
+		}
+	}
 
-	// public IConflictMatrix getConflictMatrix(){
-	// return conflictMatrix;
-	// }
+	public IConflictMatrix getConflictMatrix() {
+		return conflictMatrix;
+	}
 }

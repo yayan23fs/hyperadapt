@@ -11,7 +11,7 @@ import org.w3c.dom.validation.NodeEditVAL;
 /**
  * 
  * 
- * @author msteinfeldt
+ * @author msteinfeldt,Martin Lehmann
  * 
  */
 public class ValidationMode implements IValidationMode {
@@ -125,7 +125,7 @@ public class ValidationMode implements IValidationMode {
 	 * 
 	 * @return
 	 */
-	private IDOMFactory createDOM3DummyFactory() {
+	public static IDOMFactory createDOM3DummyFactory() {
 		return new IDOMFactory() {
 
 			public IDOMValidator createDOMValidator() {
@@ -162,7 +162,7 @@ public class ValidationMode implements IValidationMode {
 	 * 
 	 * @return
 	 */
-	private IDOMFactory createDOM3Factory() {
+	public static IDOMFactory createDOM3Factory() {
 		return new IDOMFactory() {
 
 			public IDOMValidator createDOMValidator() {
@@ -180,7 +180,7 @@ public class ValidationMode implements IValidationMode {
 	 * 
 	 * @return
 	 */
-	private IDOMFactory createDOM3ValidationAPIFactory() {
+	public static IDOMFactory createDOM3ValidationAPIFactory() {
 		return new IDOMFactory() {
 
 			public IDOMValidator createDOMValidator() {

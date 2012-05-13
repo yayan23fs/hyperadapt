@@ -4,8 +4,8 @@
 	<property name="dest_dir" value="${base_dir}/dist"/>
 	<property name="dest_file" value="${dest_dir}/pxweave.jar" />
 	<property name="build_dir" value="${base_dir}/bin_temp" />
-	<property name="src_dir_api" value="${base_dir}/pxweave-api/src" />
-	<property name="src_dir_impl" value="${base_dir}/pxweave-impl/src" />
+	<property name="src_dir_api" value="${base_dir}/pxweave-api/src/main/java" />
+	<property name="src_dir_impl" value="${base_dir}/pxweave-impl/src/main/java" />
 	<property name="src_gen_dir" value="${base_dir}/src-gen" />	
 	<property name="lib_dir" value="${base_dir}/lib"/>
 	<property name="schema_dir" value="${base_dir}/schemas"/>
