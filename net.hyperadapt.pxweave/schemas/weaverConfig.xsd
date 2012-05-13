@@ -18,6 +18,7 @@
 						<documentation xml:lang="en">Choose the type of validation the weaver should use.</documentation>
 					</annotation>
 				</element>
+				<element name="contextModelEndpoint" type="tns:ContextModelEndpoint"/>
 			</sequence>
 			<attribute name="reportInteractions" use="optional" type="boolean" />
 		</complexType>
@@ -72,5 +73,12 @@
 				<attribute name="validateAfterWeaving" type="boolean" default="false" />
 			</extension>
 		</simpleContent>
+	</complexType>
+
+	<complexType name="ContextModelEndpoint">
+		<attribute name="name" type="string" use="optional"/>	
+		<attribute name="url" type="string" use="required"/>
+		<attribute name="targetNamespace" type="string" use="required"/>
+		<attribute name="operation" type="string" use="required"/>	
 	</complexType>
 </schema>
