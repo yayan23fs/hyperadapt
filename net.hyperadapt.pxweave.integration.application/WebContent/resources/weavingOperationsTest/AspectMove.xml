@@ -6,8 +6,8 @@
 		<core id="core" type="http://www.w3.org/1999/xhtml" />
 	</interface>
 	<adviceGroup>
-		<depends evaluationMode="expression">
-			<boolExpr>"${userMail}" = "Marie@gmail.de"</boolExpr>
+		<depends evaluationMode="sparql">
+			<boolExpr>"${userMail}" = "mart.lehmann@t-online.de"</boolExpr>
 			<sparql>SELECT ?userMail WHERE {&lt;http://mmt.inf.tu-dresden.de/crocoon/User#${sessionId}&gt; &lt;http://mmt.inf.tu-dresden.de/crocoon/context-person.owl#mail&gt; ?userMail . Filter (?userMail = 'Marie@gmail.de')}</sparql>
 		</depends>
 		<scope>

@@ -8,6 +8,8 @@ import java.io.OutputStream;
 import java.io.PushbackInputStream;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,6 +24,7 @@ import net.hyperadapt.pxweave.context.ast.StringParameter;
 import net.hyperadapt.pxweave.integration.common.IntegrationConstraints;
 import net.hyperadapt.pxweave.interpreter.IInterpreterArgument;
 import net.hyperadapt.pxweave.interpreter.InterpreterArgument;
+import net.hyperadapt.pxweave.util.ContextModelHelper;
 
 /**
  * The class represent the interface between the integration solutions and
@@ -237,10 +240,9 @@ public class PXWeaveHelper {
 			 */
 			if (fileStart.startsWith(IntegrationConstraints.FILE_PREFIX_XML)
 					|| fileStart
-							.startsWith(IntegrationConstraints.FILE_PREFIX_DOCTYPE)) {
+							.startsWith(IntegrationConstraints.FILE_PREFIX_DOCTYPE) /*|| fileStart.startsWith("\r")*/) {
 				WeavingCache cache = getWeavingCache(session);
 				IEnvironment environment = getEnvironment(cache);
-
 				environment.getExecutionState().setCurrentJoinpoint(
 						new PipeStageJoinpoint(coreId));
 

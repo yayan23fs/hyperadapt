@@ -8,6 +8,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.servlet.Filter;
@@ -36,6 +38,7 @@ public class PostProcessingFilter implements Filter {
 
 	private String pattern = null;
 	Logger log = Logger.getLogger("PostProcessingFilter");
+	private static Map<String, String> map = new HashMap<String, String>();
 
 	/**
 	 * Initialization of the filter with the developer configuration in the
@@ -65,6 +68,12 @@ public class PostProcessingFilter implements Filter {
 	private void callPXWeaveAfter(ServletRequest request,
 			PXWeaveResponseWrapper responseWrapper, PrintWriter out,
 			ServletResponse response) throws IOException {
+		
+//		if (map.get(((HttpServletRequest)request).getSession().getId()) != null) {
+//			out.write(map.get(((HttpServletRequest)request).getSession().getId()));
+//			//map.remove(((HttpServletRequest)request).getSession().getId());
+//			return;
+//		}
 		String strResponse = responseWrapper.toString();
 
 		InputStream inputStream = new ByteArrayInputStream(
@@ -88,6 +97,7 @@ public class PostProcessingFilter implements Filter {
 					.setContentType(IntegrationConstraints.HTML_CONTENTTYPE);
 			out.write(caw.toString());
 
+			//map.put(((HttpServletRequest)request).getSession().getId(), caw.toString());
 		}
 	}
 
@@ -121,7 +131,17 @@ public class PostProcessingFilter implements Filter {
 				|| IntegrationConstraints.HEADERPARAM_JSF_PARTIAL
 						.equals(req
 								.getHeader(IntegrationConstraints.HEADERPARAM_JSF_REQUEST));
+		
 
+		// boolean run = false;
+		// Long time = map.get(req.getSession().getId());
+		// if (time != null) {
+		// Long newTime = Calendar.getInstance().getTimeInMillis() - time;
+		// if (newTime < 2000) {
+		// run = true;
+		// }
+		// }
+		
 		/*
 		 * If the adaptation has not yet run and its not about an allocation of
 		 * a resource as well as an ajax invoke (otherwise, continue the filter
@@ -129,7 +149,7 @@ public class PostProcessingFilter implements Filter {
 		 */
 		if (PXWeaveIntegrationHelper.getInstance().isGenericIntegration()
 				&& !isRessource && adapted == null && !isAjax) {
-
+			
 			/*
 			 * Put the response in a wrapper to prevent the closing action on
 			 * the response stream from the used webframework.
