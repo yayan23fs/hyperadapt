@@ -17,6 +17,14 @@ import org.apache.axis2.context.ConfigurationContextFactory;
 import org.apache.axis2.engine.AxisServer;
 import org.apache.axis2.rpc.client.RPCServiceClient;
 
+/**
+ * The CallbackHelper proceeds and saves the context data from an extern
+ * ontologie. Futhermore it creates a axis based server to regist a callback
+ * handler for the given query.
+ * 
+ * @author Martin Lehmann
+ * 
+ */
 public class CallbackHelper {
 
 	private static CallbackHelper helper;
@@ -28,6 +36,12 @@ public class CallbackHelper {
 	private CallbackHelper() {
 	}
 
+	/**
+	 * Use of the singleton pattern to secure that there is only one
+	 * CallbackHelper registed.
+	 * 
+	 * @return
+	 */
 	public static CallbackHelper getInstance() {
 		if (helper == null) {
 			helper = new CallbackHelper();
@@ -35,6 +49,14 @@ public class CallbackHelper {
 		return helper;
 	}
 
+	/**
+	 * Add a session to a session list and contect it to a sparql query.
+	 * 
+	 * @param sparql
+	 *            - query from the ontologie
+	 * @param sessionId
+	 *            - session id from the current user
+	 */
 	private void addSparql(String sparql, String sessionId) {
 		List<String> sessionList = sparqlMap.get(sparql);
 		if (sessionList == null) {
@@ -46,12 +68,29 @@ public class CallbackHelper {
 		}
 	}
 
+	/**
+	 * Returns a Map of all session based information to refresh the context
+	 * parameter of an user.
+	 * 
+	 * @param sessionId
+	 *            - session id of the current user
+	 * @return context data
+	 */
 	public Map<String, String> getEntryForSession(String sessionId) {
 		Map<String, String> newEntries = sessionMap.get(sessionId);
 		sessionMap.remove(sessionId);
 		return newEntries;
 	}
 
+	/**
+	 * Handles the query and put it in a session map based on the session id
+	 * from a user.
+	 * 
+	 * @param sparqlQuery
+	 *            - request sparql query from the ontologie
+	 * @param result
+	 *            - the evaluated response from the ontologie
+	 */
 	public synchronized void handleQuery(final String sparqlQuery,
 			final String result) {
 		List<String> sessionList = sparqlMap.get(sparqlQuery);
@@ -71,6 +110,15 @@ public class CallbackHelper {
 		}
 	}
 
+	/**
+	 * The Method regist a callback handler on a specific endpoint to handle
+	 * changes in the ontologie.
+	 * 
+	 * @param endpoint
+	 *            - endpoint to the webservice
+	 * @throws AxisFault
+	 *             - during a fault
+	 */
 	private void registerCallbackHandler(ContextModelEndpoint endpoint)
 			throws AxisFault {
 		if (server == null) {
@@ -99,6 +147,15 @@ public class CallbackHelper {
 		}
 	}
 
+	/**
+	 * Interface to over classes, which control the callback mechanism and
+	 * invoke the webservice.
+	 * 
+	 * @param endpoint - endpoint of the webservice
+	 * @param query - query, which is send to the ontologie
+	 * @param sessionId - session id of the current user
+	 * @throws AxisFault - during a fault
+	 */
 	public synchronized void updateCallbackHandler(
 			ContextModelEndpoint endpoint, String query, String sessionId)
 			throws AxisFault {

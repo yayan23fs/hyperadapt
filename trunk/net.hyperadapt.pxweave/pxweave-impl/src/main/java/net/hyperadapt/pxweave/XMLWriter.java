@@ -57,6 +57,7 @@ public class XMLWriter extends Logable {
 
 		String pathName = argument.getOutputFile() != null ? argument
 				.getOutputFile().getAbsolutePath() : null;
+		// TODO: Abfrage fuer das Caching auslagern
 		// if (pathName == null || !new File(pathName).exists()) {
 			Document document = argument.getDocument();
 			String encoding = argument.getDocument().getXmlEncoding();

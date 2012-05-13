@@ -11,7 +11,7 @@ import net.hyperadapt.pxweave.context.ast.Parameter;
 /**
  * PXWeave's default weaving context implementation which wraps weaving context XML files.
  * 
- * @author skarol
+ * @author skarol, Martin Lehmann
  *
  */
 public class DefaultWeavingContext extends ScopedWeavingContext {		

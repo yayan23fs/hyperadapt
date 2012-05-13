@@ -66,7 +66,7 @@ public class Environment implements IEnvironment {
 	}
 	
 	public static synchronized IEnvironment create(URI baseURI, URI configURI, URI contextURI, URI patternConflictsURI) throws XMLWeaverException {
-		Logger logger = LoggerConfiguration.instance().getLogger(Main.class);
+		Logger logger = LoggerConfiguration.instance().getLogger(Environment.class);
 		checkBaseURI(baseURI);
 		URI configURL = configURI.isAbsolute()?configURI:baseURI.resolve(configURI);
 		URI patternConflictsURL = patternConflictsURI.isAbsolute()?patternConflictsURI:baseURI.resolve(patternConflictsURI);
@@ -92,7 +92,7 @@ public class Environment implements IEnvironment {
 	}
 	
 	public static IWeavingContext createWeavingContext(URI contextURI, URI baseURI) throws XMLWeaverException {
-		Logger logger = LoggerConfiguration.instance().getLogger(Main.class);
+		Logger logger = LoggerConfiguration.instance().getLogger(Environment.class);
 		URI contextURL = contextURI.isAbsolute()?contextURI:baseURI.resolve(contextURI);
 		Context context = null;
 		logger.info("Loading default context model from '" + contextURL.toString() + "'.");
@@ -119,7 +119,7 @@ public class Environment implements IEnvironment {
 	 * @throws XMLWeaverException
 	 */
 	public static synchronized IEnvironment create(URI baseURI, URI configURI, IWeavingContext weavingContext, URI patternConflictsURI) throws XMLWeaverException {
-		Logger logger = LoggerConfiguration.instance().getLogger(Main.class);
+		Logger logger = LoggerConfiguration.instance().getLogger(Environment.class);
 		checkBaseURI(baseURI);
 		
 		URI patternConflictsURL = patternConflictsURI.isAbsolute()?patternConflictsURI:baseURI.resolve(patternConflictsURI);
@@ -135,7 +135,7 @@ public class Environment implements IEnvironment {
 	
 	public static WeaverConfiguration getWeaverConfigurationFromURL(URI configURI, URI baseURI)  {
 		URI configURL = configURI.isAbsolute()?configURI:baseURI.resolve(configURI);
-		Logger logger = LoggerConfiguration.instance().getLogger(Main.class);
+		Logger logger = LoggerConfiguration.instance().getLogger(Environment.class);
 		WeaverConfiguration configuration = null;
 		try {
 			logger.info("Loading configuration from '" + configURL.toString() + "'.");
@@ -160,7 +160,7 @@ public class Environment implements IEnvironment {
 	
 	@SuppressWarnings("deprecation")
 	public static List<Aspect> getAspectsFromConfig(WeaverConfiguration configuration, URI baseURI) throws XMLWeaverException {
-		Logger logger = LoggerConfiguration.instance().getLogger(Main.class);
+		Logger logger = LoggerConfiguration.instance().getLogger(Environment.class);
 		List<Aspect> aspects = new LinkedList<Aspect>();
 		for(String aspectPath:configuration.getAspectFiles().getAspectFile()){
 			URI aspectURI = URI.create(aspectPath);
@@ -197,7 +197,7 @@ public class Environment implements IEnvironment {
 	}
 	
 	private static synchronized IEnvironment create(URI baseURI, WeaverConfiguration configuration, IWeavingContext context,IConflictMatrix conflictMatrix,List<Aspect> aspects) throws XMLWeaverException{
-		Logger logger = LoggerConfiguration.instance().getLogger(Main.class);
+		Logger logger = LoggerConfiguration.instance().getLogger(Environment.class);
 		checkBaseURI(baseURI);
 		NSContext nsContext = new NSContext();
 		if(configuration.getNamespaces()!=null){
@@ -231,7 +231,7 @@ public class Environment implements IEnvironment {
 	}
 	
 	private static synchronized IEnvironment create(URI baseURI, WeaverConfiguration configuration, IWeavingContext context,IConflictMatrix conflictMatrix,List<Aspect> aspects, IPXWeaveNamespaceContext nsContext)throws XMLWeaverException{
-		Logger logger = LoggerConfiguration.instance().getLogger(Main.class);
+		Logger logger = LoggerConfiguration.instance().getLogger(Environment.class);
 		checkBaseURI(baseURI);
 		boolean validateBefore = configuration.getValidationMode().isValidateBeforeWeaving(); 
 		boolean validateAfter = configuration.getValidationMode().isValidateAfterWeaving(); 
@@ -288,7 +288,7 @@ public class Environment implements IEnvironment {
 	}
 
 	private static void checkBaseURI(URI baseURI){
-		Logger logger = LoggerConfiguration.instance().getLogger(Main.class);
+		Logger logger = LoggerConfiguration.instance().getLogger(Environment.class);
 		if(!baseURI.isAbsolute()){
 			logger.error("Base uri must be absolute, but is '" +baseURI.toString()+ "'.");
 			throw new IllegalArgumentException();
@@ -485,6 +485,9 @@ public class Environment implements IEnvironment {
 	}
 
 	public boolean reportConflicts() {
+		if (getConfiguration() == null) {
+			return false;
+		}
 		return getConfiguration().isReportInteractions()==null?false:getConfiguration().isReportInteractions();
 	}
 

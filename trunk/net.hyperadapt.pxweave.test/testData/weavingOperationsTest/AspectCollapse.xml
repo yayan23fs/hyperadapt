@@ -6,14 +6,17 @@
 		<core id="core" type="http://books" />
 	</interface>
 	<adviceGroup>
+		<depends>
+			<boolExpr>1+1=2</boolExpr>
+		</depends>
 		<scope>
 			<xpath>/books:bookList</xpath>
 		</scope>
 		<advices>
 			<collapseElement>
-				<pointcut>books:book[3]</pointcut>
+				<pointcut>/books:book[3]</pointcut>
 				<value>
-					<textTemplate>//books:book[3]/books:title/text()</textTemplate>
+					<textTemplate>/books:bookList/books:book[3]/books:title/text()</textTemplate>
 				</value>
 			</collapseElement>
 		</advices>

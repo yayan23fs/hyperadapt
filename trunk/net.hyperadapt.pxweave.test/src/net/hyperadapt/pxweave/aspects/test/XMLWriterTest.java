@@ -9,6 +9,8 @@ import java.io.File;
 
 import net.hyperadapt.pxweave.XMLWeaverException;
 import net.hyperadapt.pxweave.XMLWriter;
+import net.hyperadapt.pxweave.interpreter.IInterpreterArgument;
+import net.hyperadapt.pxweave.interpreter.InterpreterArgument;
 import net.hyperadapt.pxweave.util.DOMOperations;
 import net.hyperadapt.pxweave.validation.DOML3Parser;
 import net.hyperadapt.pxweave.validation.IDOMParser;
@@ -44,13 +46,15 @@ public class XMLWriterTest {
 	@Test
 	public void testWriteToFile() throws XMLWeaverException {
 		IDOMParser parser = new DOML3Parser();
-		final Document document = parser.buildDOM((new File("testData/book.xml")).toURI());
+		//final Document document = parser.buildDOM((new File("testData/book.xml")).toURI());
 		final XMLWriter xmlwWriter = XMLWriter.getInstance();
-		xmlwWriter.writeToFile(document, "testData/result.xml", document
-				.getInputEncoding(), false);
+		
+		IInterpreterArgument argument = new InterpreterArgument(new File("testData/book.xml"), new File("testData/result.xml") , "1");
+		argument.loadDocument(null, false);
+		xmlwWriter.write(argument, false);
 		final Document doc = parser.buildDOM((new File("testData/result.xml")).toURI());
 		assertTrue(DOMOperations.convertNodeToString(doc).contentEquals(
-				DOMOperations.convertNodeToString(document)));
+				DOMOperations.convertNodeToString(argument.getDocument())));
 	}
 
 }

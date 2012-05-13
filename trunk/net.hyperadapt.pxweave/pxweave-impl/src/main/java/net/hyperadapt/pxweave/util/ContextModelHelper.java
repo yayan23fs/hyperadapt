@@ -57,8 +57,10 @@ public class ContextModelHelper {
 			ContextModelEndpoint endpoint, AdviceGroup adviceGroup,
 			IWeavingContext context) throws XMLWeaverException {
 
-		if (adviceGroup == null || endpoint == null) {
-			return false;
+		if (adviceGroup == null || endpoint == null
+				|| adviceGroup.getDepends() == null
+				|| adviceGroup.getDepends().getSparql() == null) {
+			return true;
 		}
 
 		Dependency dependency = adviceGroup.getDepends();
@@ -130,7 +132,7 @@ public class ContextModelHelper {
 				((StringParameter) param).setValue(resultMap.get(key));
 			}
 		}
-	
+
 	}
 
 	private static synchronized String getResponse(

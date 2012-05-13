@@ -7,7 +7,7 @@ import net.hyperadapt.pxweave.aspects.ast.AdviceLocator;
 /**
  * A simple, named, programmatic joinpoint.
  * 
- * @author skarol
+ * @author skarol,Martin Lehmann
  *
  */
 public interface IProgrammaticJoinpoint {
@@ -25,6 +25,11 @@ public interface IProgrammaticJoinpoint {
 	 */
 	public boolean applies(AdviceGroup advices, AdviceLocator adviceLocator);
 	
+	/**
+	 * Extended check of applies. 
+	 * @param aspect - The advice group containing a joinpoint reference.
+	 * @return - True, if the group's advices have to be applied at this joinpoint.
+	 */
 	public boolean containsApplicableAdvices(Aspect aspect, AdviceLocator adviceLocator);
 	
 }

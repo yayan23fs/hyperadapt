@@ -162,40 +162,40 @@ public class ConflictMatrix extends Logable implements IConflictMatrix{
 		return false;
 	}
 
-//	public String getReasonFor(String firstAdvice, String secondAdvice) {
-//		if (Primitive.Name.checkForEnum(firstAdvice) && Primitive.Name.checkForEnum(secondAdvice)) {
-//			Primitive p = patternList.get(Primitive.Name.valueOf(firstAdvice));
-//			if (p.hasConflictWith(secondAdvice)) {
-//				return p.getReasonForPattern(secondAdvice);
-//			} else
-//				return null;
-//		}
-//		return null;
-//	}
-//
-//	public String getSolutionFor(String firstAdvice, String secondAdvice) {
-//		if (Primitive.Name.checkForEnum(firstAdvice) && Primitive.Name.checkForEnum(secondAdvice)) {
-//			Primitive p = patternList.get(Primitive.Name.valueOf(firstAdvice));
-//			if (p.hasConflictWith(secondAdvice))
-//				return p.getSolutionForPattern(secondAdvice);
-//			else
-//				return null;
-//		}
-//		return null;
-//	}
+	public String getReasonFor(String firstAdvice, String secondAdvice) {
+		if (Primitive.Name.checkForEnum(firstAdvice) && Primitive.Name.checkForEnum(secondAdvice)) {
+			Primitive p = patternList.get(Primitive.Name.valueOf(firstAdvice));
+			if (p.hasConflictWith(secondAdvice)) {
+				return p.getReasonForPattern(secondAdvice);
+			} else
+				return null;
+		}
+		return null;
+	}
+
+	public String getSolutionFor(String firstAdvice, String secondAdvice) {
+		if (Primitive.Name.checkForEnum(firstAdvice) && Primitive.Name.checkForEnum(secondAdvice)) {
+			Primitive p = patternList.get(Primitive.Name.valueOf(firstAdvice));
+			if (p.hasConflictWith(secondAdvice))
+				return p.getSolutionForPattern(secondAdvice);
+			else
+				return null;
+		}
+		return null;
+	}
 
 	
 
-//	public String getStatusFor(String firstAdvice, String secondAdvice) {
-//		if (Primitive.Name.checkForEnum(firstAdvice) && Primitive.Name.checkForEnum(secondAdvice)) {
-//			Primitive p = patternList.get(Primitive.Name.valueOf(firstAdvice));
-//			if (p.hasConflictWith(secondAdvice))
-//				return p.getStatusForPattern(secondAdvice);
-//			else
-//				return null;
-//		}
-//		return null;
-//	}
+	public String getStatusFor(String firstAdvice, String secondAdvice) {
+		if (Primitive.Name.checkForEnum(firstAdvice) && Primitive.Name.checkForEnum(secondAdvice)) {
+			Primitive p = patternList.get(Primitive.Name.valueOf(firstAdvice));
+			if (p.hasConflictWith(secondAdvice))
+				return p.getStatusForPattern(secondAdvice);
+			else
+				return null;
+		}
+		return null;
+	}
 	
 	public boolean isEmpty(){
 		return patternList.isEmpty();

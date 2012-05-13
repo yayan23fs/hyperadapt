@@ -44,7 +44,7 @@ public class AspectInterpreter extends Logable implements IAspectInterpreter {
 	private IEnvironment environment;
 
 	private IDynamicAnalysis da;
-	
+
 	public static Map<String, Boolean> boolExpressionMap = new HashMap<String, Boolean>();
 
 	/**
@@ -90,8 +90,7 @@ public class AspectInterpreter extends Logable implements IAspectInterpreter {
 	 *             same core is declared in multiple aspects with different
 	 *             type.
 	 */
-
-	private HashMap<String, IInterpreterArgument> initialiseArguments(
+	public HashMap<String, IInterpreterArgument> initialiseArguments(
 			final List<IInterpreterArgument> interpreterArguments,
 			final List<Aspect> aspects) throws XMLWeaverException {
 		final HashMap<String, IInterpreterArgument> arguments = new HashMap<String, IInterpreterArgument>();
@@ -211,7 +210,7 @@ public class AspectInterpreter extends Logable implements IAspectInterpreter {
 		return xqArgument;
 	}
 
-	private void loadAndValidateArguments(
+	public void loadAndValidateArguments(
 			HashMap<String, IInterpreterArgument> arguments)
 			throws XMLWeaverException {
 
@@ -281,11 +280,6 @@ public class AspectInterpreter extends Logable implements IAspectInterpreter {
 		if (environment.reportConflicts()) {
 			da.setPPC(executionState.getCurrentJoinpoint(), adviceLocator);
 		}
-
-		// Map<AdviceGroup, Boolean> evaluatedConditions = ContextModelHelper
-		// .evaluateAdviceConditions(environment.getConfiguration()
-		// .getContextModelEndpoint(), environment.getAspects(),
-		// environment.getContextModel());
 
 		for (final Aspect aspect : environment.getAspects()) {
 			if (!executionState.getCurrentJoinpoint()
@@ -372,6 +366,15 @@ public class AspectInterpreter extends Logable implements IAspectInterpreter {
 		return outputArguments(iArguments);
 	}
 
+	/**
+	 * The Method evaluates the sequence of the "evaluation modes" as well as
+	 * the result of the aspect interpretations.
+	 * 
+	 * @param xqContext
+	 * @param adviceGroup
+	 * @return
+	 * @throws XMLWeaverException
+	 */
 	private boolean isActive(IXQAbstractArgument xqContext,
 			AdviceGroup adviceGroup) throws XMLWeaverException {
 
@@ -383,7 +386,8 @@ public class AspectInterpreter extends Logable implements IAspectInterpreter {
 			EvaluationType evaluationMode = dependencies.getEvaluationMode();
 
 			String boolExpr = ContextModelHelper.replaceContextParams(
-					dependencies.getBoolExpr(), environment.getExecutionState().getContextModel(), false);
+					dependencies.getBoolExpr(), environment.getExecutionState()
+							.getContextModel(), false);
 
 			boolean firstSparQL = boolExpr == null ? true : false;
 
@@ -420,15 +424,17 @@ public class AspectInterpreter extends Logable implements IAspectInterpreter {
 								.getContextModelEndpoint(), adviceGroup,
 						environment.getExecutionState().getContextModel());
 				if (evaluationMode == EvaluationType.ALL && isActive) {
-					
+
 					if (boolExpr == null) {
-					boolExpr = ContextModelHelper.replaceContextParams(
-							dependencies.getBoolExpr(), environment.getExecutionState().getContextModel(), false);
+						boolExpr = ContextModelHelper.replaceContextParams(
+								dependencies.getBoolExpr(), environment
+										.getExecutionState().getContextModel(),
+								false);
 					}
 					if (boolExpr == null) {
 						return false;
 					}
-					
+
 					isActive = evaluateDependency(boolExpr, xqContext);
 				}
 				return isActive;
@@ -454,7 +460,7 @@ public class AspectInterpreter extends Logable implements IAspectInterpreter {
 	 * @throws XMLWeaverException
 	 *             if any error occurred during the evaluation.
 	 */
-	private static boolean evaluateDependency(final String boolExpr,
+	public boolean evaluateDependency(final String boolExpr,
 			final IXQAbstractArgument xqArgument) throws XMLWeaverException {
 		// test if advice group should be activated according to context
 		// parameter values and dependencies expression
@@ -464,7 +470,7 @@ public class AspectInterpreter extends Logable implements IAspectInterpreter {
 			final ArrayList<Text> result = XQEvaluator
 					.evaluateToTextNodes(xqArgument);
 			isActive = Boolean.valueOf(result.get(0).getNodeValue());
-			
+
 			boolExpressionMap.put(boolExpr, isActive);
 		} catch (final Exception e) {
 			throw new XMLWeaverException("Evaluation of expression \""
@@ -509,7 +515,7 @@ public class AspectInterpreter extends Logable implements IAspectInterpreter {
 	 *             if any error occurred during validation, i.e. if the document
 	 *             is invalid or the validation could not take place.
 	 */
-	private List<IInterpreterArgument> outputArguments(
+	public List<IInterpreterArgument> outputArguments(
 			HashMap<String, IInterpreterArgument> arguments)
 			throws XMLWeaverException {
 		ArrayList<IInterpreterArgument> arrayList = new ArrayList<IInterpreterArgument>();

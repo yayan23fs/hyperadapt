@@ -11,7 +11,7 @@
 		</scope>
 		<advices>
 			<changeOrder>
-				<pointcut>books:book[3]/books:author</pointcut>
+				<pointcut>/books:book[3]/books:author</pointcut>
 				<permutation>(3 1 2)</permutation>
 			</changeOrder>
 		</advices>
