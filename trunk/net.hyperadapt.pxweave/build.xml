@@ -4,7 +4,8 @@
 	<property name="dest_dir" value="${base_dir}/dist"/>
 	<property name="dest_file" value="${dest_dir}/pxweave.jar" />
 	<property name="build_dir" value="${base_dir}/bin_temp" />
-	<property name="src_dir" value="${base_dir}/src" />
+	<property name="src_dir_api" value="${base_dir}/pxweave-api/src" />
+	<property name="src_dir_impl" value="${base_dir}/pxweave-impl/src" />
 	<property name="src_gen_dir" value="${base_dir}/src-gen" />	
 	<property name="lib_dir" value="${base_dir}/lib"/>
 	<property name="schema_dir" value="${base_dir}/schemas"/>
@@ -59,7 +60,8 @@
 	<target name="compile">
 		<mkdir dir="${build_dir}" />
 		<javac destdir="${build_dir}" debug="on" source="1.6" target="1.6">
-			<src path="${src_dir}"/>
+			<src path="${src_dir_api}"/>
+			<src path="${src_dir_impl}"/>
     		<src path="${src_gen_dir}"/>
 			<classpath>
 				<fileset dir="${lib_dir}">

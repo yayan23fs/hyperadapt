@@ -18,6 +18,7 @@
 			<element name="dateParameter" type="tns:DateParameter"/>
 			<element name="dateTimeParameter" type="tns:DateTimeParameter"/>
 			<element name="durationParameter" type="tns:DurationParameter"/>
+			<element name="listParameter" type="tns:ListParameter"/>
 		</choice>
 	</complexType>
 </element>
@@ -162,5 +163,15 @@
 	<restriction base="string">
 		<pattern value="[a-zA-Z]\w*"/>	
 	</restriction>		
-</simpleType>	
+</simpleType>
+
+<complexType name="ListParameter">
+	<complexContent>
+		<extension base= "tns:Parameter">
+			<sequence>
+				<element name="value" type="string" maxOccurs="unbounded"/>		
+			</sequence>
+		</extension>
+	</complexContent>
+</complexType>
 </schema>
