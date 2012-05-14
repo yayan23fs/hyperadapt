@@ -1,0 +1,18 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>net.hyperadapt.pxweave</groupId>
+	<artifactId>net.hyperadapt.pxweave.integration.testsuite</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>pxweave-applicationintegration-testsuite</name>
+	<url>http://maven.apache.org</url>
+
+	<modules>
+		<module>../../net.hyperadapt.pxweave.integration.application</module>
+		<module>../../net.hyperadapt.pxweave</module>
+		<module>TestApplication</module>
+		<module>SeleniumTest</module>
+	</modules>	
+</project>
