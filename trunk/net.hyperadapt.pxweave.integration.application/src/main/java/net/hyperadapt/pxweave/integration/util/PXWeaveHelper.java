@@ -240,7 +240,7 @@ public class PXWeaveHelper {
 			 */
 			if (fileStart.startsWith(IntegrationConstraints.FILE_PREFIX_XML)
 					|| fileStart
-							.startsWith(IntegrationConstraints.FILE_PREFIX_DOCTYPE) /*|| fileStart.startsWith("\r")*/) {
+							.startsWith(IntegrationConstraints.FILE_PREFIX_DOCTYPE) || fileStart.contains("<h")) {
 				WeavingCache cache = getWeavingCache(session);
 				IEnvironment environment = getEnvironment(cache);
 				environment.getExecutionState().setCurrentJoinpoint(
