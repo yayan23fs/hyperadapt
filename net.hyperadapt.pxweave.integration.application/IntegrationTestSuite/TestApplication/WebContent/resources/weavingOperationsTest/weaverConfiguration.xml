@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<weaverConfiguration
+	xsi:schemaLocation="http://www.hyperadapt.net/pxweave/config ../schemas/weaverConfig.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.net/pxweave/config">
+	<aspectFiles>
+		<!-- PostProcessing -->
+		<aspectFile>AspectChangeOrder.xml</aspectFile>
+		<aspectFile>AspectChangeValue.xml</aspectFile>
+	</aspectFiles>
+	<namespaces>
+		<namespace prefix="h" name="http://java.sun.com/jsf/html"/>
+		<namespace prefix="xhtml" name="http://www.w3.org/1999/xhtml"/>
+	</namespaces>
+	<validationMode validateBeforeWeaving="false"
+		validateAfterWeaving="false">none</validationMode>
+	<contextModelEndpoint name="croco" url="http://localhost:8081/CroCoWS/services/ContextQueryWS" targetNamespace="http://webservice.croco.inf.tudresden.de" operation="queryContext"/>
+</weaverConfiguration>

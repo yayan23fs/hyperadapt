@@ -121,7 +121,7 @@
 						<classpathContainer>org.eclipse.ajdt.core.ASPECTJRT_CONTAINER</classpathContainer>
 					</classpathContainers>
 				</configuration>
-			</plugin>		
+			</plugin>
 		</plugins>
 	</build>	
 	<pluginRepositories>
