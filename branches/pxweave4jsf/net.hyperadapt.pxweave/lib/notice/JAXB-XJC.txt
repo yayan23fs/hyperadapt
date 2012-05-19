@@ -1,0 +1,9 @@
+This folder contains jar files of libraries used by PXWeave:
+
+-----------------------------------
+jaxb-xjc.jar, jaxb-impl.jar, relaxngDatatype.jar Version 2.0
+-----------------------------------
+
+JAXB is part of metro and licensed under CDDL (http://www.sun.com/cddl/cddl.html).
+
+JAXB is developed by SUN Microsystems and can be downloaded at https://jaxb.dev.java.net/.

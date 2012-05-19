@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:sitemap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://apache.org/cocoon/sitemap/1.0 http://cocoon.apache.org/schema/sitemap/cocoon-sitemap-1.0.xsd" xmlns:map="http://apache.org/cocoon/sitemap/1.0">
+	<!-- This sitemap basically shows how use the coocon integration of pxweave-->
+	<map:components>	
+		<map:matchers default="wildcard">
+			<map:matcher name="wildcard" src="org.apache.cocoon.matching.WildcardURIMatcher" />
+			<map:matcher name="wildcardrequestparam" src="org.apache.cocoon.matching.WildcardRequestParameterMatcher" />
+		</map:matchers>
+
+		<map:actions>
+			<map:action name="AspectWeaverSetupAction" src="net.hyperadapt.pxweave.integration.cocoon.AspectWeaverSetupAction" />
+		</map:actions>
+
+		<map:transformers>
+			<!-- Your transformers here -->
+		</map:transformers>
+
+		<map:readers default="resource">
+			<!-- Your readers here. -->
+		</map:readers>
+	</map:components>
+	
+	<map:resources>
+		<map:resource name="pipeline">
+			<map:act type="AspectWeaverSetupAction"/>
+			<!-- Define other pipeline elements -->
+		</map:resource>
+	</map:resources>
+
+	<map:pipelines>
+		<map:pipeline id="core_pipeline">
+			<map:match type="wildcard" pattern="**.xml">
+				<map:call resource="pipeline" />
+				<!-- Your transformer calls here -->
+			</map:match>
+		</map:pipeline>
+
+		<map:handle-errors>
+			<map:read src="resource/internal/pages/errors/404.xhtml"/>
+		</map:handle-errors>
+	</map:pipelines>
+
+</map:sitemap>

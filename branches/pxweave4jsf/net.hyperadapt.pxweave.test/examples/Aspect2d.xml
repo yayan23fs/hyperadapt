@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<aspect name="d" xsi:schemaLocation="http://www.hyperadapt.org/aspects ../schemas/aspectE2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.org/aspects">
+	<interface>		
+		<core id="core" type="examples/catalogSalamiSlice.xsd"/>
+		<aspectOrder absolutePosition="asLast">
+		</aspectOrder>
+	</interface>
+	<adviceGroup>
+		<depends>
+			<boolExpr>1+1=2</boolExpr>	
+		</depends>
+		<scope>
+			<xpath>//journal</xpath>	
+		</scope>
+		<advices>		
+			<delete>
+				<pointcut>article[1]</pointcut>		
+			</delete>
+		</advices>
+	</adviceGroup>
+</aspect>

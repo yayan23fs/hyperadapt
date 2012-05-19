@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<aspect name="a" xsi:schemaLocation="http://www.hyperadapt.org/aspects ../schemas/aspectE2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.org/aspects">
+	<interface>		
+		<core id="core" type="examples/catalogSalamiSlice.xsd"/>
+		<documentParameters>
+			<documentParameter>
+				<name>ad</name>
+				<uri>file:examples/container.xml</uri>		
+			</documentParameter>	
+		</documentParameters>
+	</interface>
+	<adviceGroup>
+		<scope>
+			<xpath>//journal</xpath>	
+		</scope>
+		<advices>		
+			<fillComponentById>
+				<pointcut>/article[4]//textFrame</pointcut>
+				<identifyingAttribute>number</identifyingAttribute>		
+				<source document="ad">
+					<sourceComponents>//textFrame</sourceComponents>
+					<identifyingAttribute>number</identifyingAttribute>		
+				</source>
+			</fillComponentById>
+		</advices>
+	</adviceGroup>
+</aspect>

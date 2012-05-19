@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="catalog">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="journal" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType mixed="false">
+                        <xs:sequence>
+                            <xs:element name="article" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="title" type="xs:string"/>
+                                        <xs:element name="author" type="xs:string"/>
+                                        <xs:element name="text">
+                                            <xs:complexType mixed="false">
+                                                <xs:sequence>
+                                                    <xs:element name="textFrame" maxOccurs="unbounded">
+                                                        <xs:complexType mixed="true">
+                                                            <xs:attribute name="number" use="required" type="xs:integer"/>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="imageVariants" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="image" maxOccurs="unbounded">
+                                                        <xs:complexType mixed="false">
+                                                            <xs:sequence>
+                                                                <xs:element name="height" type="xs:integer"/>
+                                                                <xs:element name="width" type="xs:integer"/>
+                                                                <xs:element name="url" type="xs:string"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="section">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Features"/>
+                                                <xs:enumeration value="SQL"/>
+                                                <xs:enumeration value="PL/SQL"/>
+                                                <xs:enumeration value="JSP"/>
+                                                <xs:enumeration value="XML"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="date" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="title" type="xs:string"/>
+            <xs:attribute name="publisher" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

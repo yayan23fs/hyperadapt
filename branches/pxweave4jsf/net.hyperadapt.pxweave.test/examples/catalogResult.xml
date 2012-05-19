@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?><catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="catalogSalamiSlice.xsd" title="Oracle Magazine" publisher="Oracle Publishing">
+
+
+	<journal date="November-December 2003">
+		
+		<article section="XML">
+			<title>Dom+Xquery</title>
+			<author>Jason Hunter</author>
+			<text><textFrame number="0">cellPhone</textFrame><textFrame number="1">DOM parsing creates an in-memory tree that mirrors the structure of  the parsed
+						XML document. Subsequently, you can navigate the tree using the DOM
+						API. In this  case, you'll see how to iterate over the parsed XML document
+						and output element and  attribute node values. 
+				</textFrame><textFrame number="2">You can obtain an element's text by first  retrieving the text node from the
+						element node and then requesting the value of the text node.
+				</textFrame><textFrame number="3">...and do fancy stuff with it.
+				</textFrame><textFrame number="4">The DOM parsing API classes
+						are in the oracle.xml.parser.v2 package  and the DOM parser factory
+						and parser classes are in the oracle.xml.jaxp package.
+				</textFrame><textFrame number="5">JSP</textFrame></text>
+		</article>
+		<article section="JSP">
+			<title>Servlets and JSP Step Up</title>
+			<author>Budi Kurniawan</author>
+			<text><textFrame number="0">cellPhone</textFrame><textFrame number="1">Article coming soon</textFrame></text><imageVariants>someTextReplacingTheImages</imageVariants>
+		</article>
+		<article>
+		<title>someTitle</title>	
+		<author>unknown</author>
+		<text><textFrame number="0">cellPhonetextAgaintextAgaintextAgaintextAgaintextAgain</textFrame><textFrame number="0">textAgaintextAgaintextAgaintextAgaintextAgain</textFrame><textFrame number="1">someTextsomeTextsomeTextsomeTextsomeTextsomeTextsomeTextsomeTextsomeTextsomeTextsomeText</textFrame><textFrame number="2">textText  textText  textText  textText  textText  textText  textText  </textFrame></text>	
+		</article>
+	</journal>
+</catalog>

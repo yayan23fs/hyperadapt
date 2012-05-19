@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"> 
+    <xsd:element name="PatternConflicts">
+        <xsd:complexType>
+            <xsd:all>
+                <xsd:element minOccurs="0" maxOccurs="1" name="ChangeOrder" type="AllSecondPatterns"/>
+                <xsd:element minOccurs="0" maxOccurs="1" name="ChangeValue" type="AllSecondPatterns"/>
+                <xsd:element minOccurs="0" maxOccurs="1" name="ChooseVariant" type="AllSecondPatterns"/>
+                <xsd:element minOccurs="0" maxOccurs="1" name="CollapseElement" type="AllSecondPatterns"/>
+                <xsd:element minOccurs="0" maxOccurs="1" name="DeleteElement" type="AllSecondPatterns"/>
+                <xsd:element minOccurs="0" maxOccurs="1" name="EnrichContent" type="AllSecondPatterns"/>
+                <xsd:element minOccurs="0" maxOccurs="1" name="ExpandElement" type="AllSecondPatterns"/>
+                <xsd:element minOccurs="0" maxOccurs="1" name="MoveElement" type="AllSecondPatterns"/>
+                <xsd:element minOccurs="0" maxOccurs="1" name="ReduceContent" type="AllSecondPatterns"/>
+                <xsd:element minOccurs="0" maxOccurs="1" name="InsertElement" type="AllSecondPatterns"/>
+            </xsd:all>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="AllSecondPatterns">
+        <xsd:all>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ChangeOrder" type="SecondPattern"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ChangeValue" type="SecondPattern"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ChooseVariant" type="SecondPattern"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="CollapseElement" type="SecondPattern"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="DeleteElement" type="SecondPattern"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ExpandElement" type="SecondPattern"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="EnrichContent" type="SecondPattern"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="MoveElement" type="SecondPattern"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ReduceContent" type="SecondPattern"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="InsertElement" type="SecondPattern"/>
+        </xsd:all>    
+    </xsd:complexType>
+    <xsd:complexType name="SecondPattern">
+        <xsd:sequence>
+            <xsd:element name="status" type="status"/>
+            <xsd:element name="reason" type="xsd:string"/>
+            <xsd:element name="solution" type="xsd:string" default="no solution yet"/>
+        </xsd:sequence>    
+    </xsd:complexType>
+    <xsd:simpleType name="status">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="warning"/>
+            <xsd:enumeration value="error"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

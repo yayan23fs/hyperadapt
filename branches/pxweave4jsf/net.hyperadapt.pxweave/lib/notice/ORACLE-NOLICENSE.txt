@@ -1,0 +1,3 @@
+xmlparserv2.jar belongs to the Oracle XDK 10g and cannot be distributed by a third party. Please
+obtain a developers license for testing purposes from http://www.oracle.com/technology/tech/xml/xdkhome.html
+or http://www.oracle.com/technetwork/database/features/xmldb/downloads/index-100632.html. 

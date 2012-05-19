@@ -1,0 +1,14 @@
+This folder contains jar files of libraries used by PXWeave:
+
+-----------------------------------
+jgraph-jdk16.jar Version 0.8.1
+-----------------------------------
+
+The runtime library of the JGraph project. The JGraph library is licensed under
+the terms of the GNU Lesser General Public License (LGPL), as with JGraphT.
+
+You can find out more about JGraph and/or download the latest version from 
+http://www.jgraph.com. You will also find there the source code of the
+JGraph library.
+
+Note: the JGraph jar in this folder is the build for Java 1.6.

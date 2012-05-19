@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<aspect name="aspectMove"
+	xsi:schemaLocation="http://www.hyperadapt.net/pxweave/aspects ../../../net.hyperadapt.pxweave/schemas/aspectE2.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.net/pxweave/aspects">
+	<interface>
+		<core id="core" type="http://books" />
+	</interface>
+	<adviceGroup>
+		<scope>
+			<xpath>/books:bookList</xpath>
+		</scope>
+		<advices>
+			<moveElement position="1">
+				<pointcut>/books:book[2]/books:title</pointcut>
+				<to>//books:book[1]</to>
+			</moveElement>
+		</advices>
+	</adviceGroup>
+</aspect>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<aspect name="aspectDelete"
+	xsi:schemaLocation="http://www.hyperadapt.net/pxweave/aspects ../schemas/aspectE2.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.net/pxweave/aspects">
+	<interface>
+		<core id="core" type="http://www.w3.org/1999/xhtml"/>
+	</interface>
+	<adviceGroup>
+		<depends evaluationMode="sparql">
+			<boolExpr>${resolutionX} &lt; 800</boolExpr>
+			<sparql>SELECT ?resolutionX WHERE {&lt;http://mmt.inf.tu-dresden.de/crocoon/Resolution#${sessionId}&gt; &lt;http://mmt.inf.tu-dresden.de/crocoon/context-person.owl#resolutionX&gt; ?resolutionX . Filter (?resolutionX &lt; 800)}</sparql>
+		</depends>
+		<scope>
+			<xpath>/</xpath>
+			<joinpoint locator="before" name="PreProcessing"/>
+		</scope>
+		<advices>
+			<delete>
+				<pointcut>h:panelGrid[@id='chartsTable']</pointcut>
+			</delete>
+		</advices>
+	</adviceGroup>
+</aspect>

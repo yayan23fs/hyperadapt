@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<music-database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://music music.xsd" xmlns="http://music">
+	<album inStock="Yes">
+		<title>How to Be a Megastar-Live!</title>
+		<artist>
+			<pseudonym>Blue Man Group</pseudonym>
+		</artist>
+		<id>B00166GLVO</id>
+		<edition>First</edition>
+		<publisher>Rhino (Warner)</publisher>
+		<image size="SMALL" url="http://www.amazon.de/gp/product/images/B001S1ZBC2/ref=dp_image_0?ie=UTF8&amp;n=77195031&amp;s=dmusic"/>
+		<image size="LARGE" url="http://ecx.images-amazon.com/images/I/51jalkEVvCL._SS500_.jpg"/>	
+		<image size="TINY" url="http://ecx.images-amazon.com/images/I/51jalkEVvCL._SS500_tiny.jpg"/>	
+		<media>
+			<medium kind="CD">
+				<tracks>
+					<song name="Above" length="3.30" />
+					<song name="Drumbone" length="3.25" />
+					<song name="Time To Start" length="4.22" />
+					<song name="Up To The Roof" length="4.16" />
+					<song name="Altering Appearances" length="2.23" />
+					<song name="Persona" length="4.12" />
+					<song name="Your Attention" length="4.04" />
+					<song name="Piano Smasher " length="6.01" />
+					<song name="Shirts And Hats" length="4.40" />
+					<song name="Sing Along" length="3.10" />
+				</tracks>
+			</medium>
+		</media>
+	</album>
+</music-database>

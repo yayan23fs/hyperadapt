@@ -1,0 +1,3 @@
+The original algorithm was implemented by Khaled Haj-Yahya (khaled.h@gmx.de). The 
+original source can be found under "http://www.ifis.uni-luebeck.de/projects/XPathContainment/containmentFrame.htm".
+We have the personal permission of the University of Lübeck to use and extend the code in our research.
