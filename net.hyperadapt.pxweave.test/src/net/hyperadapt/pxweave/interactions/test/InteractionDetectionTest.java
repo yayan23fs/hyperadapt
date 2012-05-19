@@ -23,7 +23,6 @@ import net.hyperadapt.pxweave.aspects.ast.AdviceLocator;
 import net.hyperadapt.pxweave.aspects.ast.Aspect;
 import net.hyperadapt.pxweave.aspects.ast.BasicAdvice;
 import net.hyperadapt.pxweave.interactions.runtime.DynamicAnalysis;
-import net.hyperadapt.pxweave.interactions.runtime.IDynamicAnalysis;
 import net.hyperadapt.pxweave.interpreter.IInterpreterArgument;
 import net.hyperadapt.pxweave.validation.DOML3Parser;
 
@@ -58,10 +57,10 @@ public class InteractionDetectionTest {
 	@Test
 	public void testConflictDetection() throws XMLWeaverException{
 		IEnvironment env = Environment.create(baseURI, configURI, contextURI, matrixURI);
-		IDynamicAnalysis analyzer = env.getConflictAnalyser();
+		DynamicAnalysis analyser = env.getConflictAnalyser();
 		
-		Assert.assertTrue("Conflict Matrix ist empty.",!(env.getConflictMatrix() == null));
-		System.out.println(env.getConflictMatrix().toString());
+		Assert.assertTrue("Conflict Matrix ist empty.",!analyser.getConflictMatrix().isEmpty());
+		System.out.println(analyser.getConflictMatrix().toString());
 		Assert.assertTrue("Report conflicts should be true.",env.reportConflicts());
 		List<Aspect> aspects = env.getAspects();
 		Assert.assertTrue("Aspect list should not be empty.",!aspects.isEmpty());
@@ -71,14 +70,16 @@ public class InteractionDetectionTest {
 		List<IInterpreterArgument> arguments = Main.evaluateStringArgs(args); 
 			
 		IProgrammaticJoinpoint jp = new PipeStageJoinpoint(stageName);
-		IExecutionState state = new ExecutionState(jp,env.getExecutionState().getContextModel(),arguments);
+		IExecutionState state = new ExecutionState(jp,env.getContextModel(),arguments);
 		
 		env.beforeExecutionState(state);
 		env.updateExecutionState(state);
 		
 		IInterpreterArgument outArgument = arguments.get(0);
 		
-		XMLWriter.getInstance().write(outArgument, false);
+		XMLWriter.getInstance().writeToFile(outArgument.getDocument(),
+				outArgument.getOutputFile().getAbsolutePath(), outArgument
+		 		.getDocument().getXmlEncoding(), false);
 	}
 	
 

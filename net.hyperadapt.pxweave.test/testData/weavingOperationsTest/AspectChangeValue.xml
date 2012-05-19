@@ -11,7 +11,7 @@
 		</scope>
 		<advices>
 			<changeValue>
-				<pointcut>/books:book/attribute::price</pointcut>
+				<pointcut>books:book/attribute::price</pointcut>
 				<value>
 					<textTemplate>$joinPoint*2</textTemplate>
 				</value>

@@ -3,15 +3,16 @@
  */
 package net.hyperadapt.pxweave.validation.test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.io.File;
 
 import net.hyperadapt.pxweave.XMLWeaverException;
+import net.hyperadapt.pxweave.util.DOMOperations;
+import net.hyperadapt.pxweave.validation.ValidationMode;
 import net.hyperadapt.pxweave.validation.IDOMFactory;
 import net.hyperadapt.pxweave.validation.IDOMParser;
 import net.hyperadapt.pxweave.validation.IDOMValidator;
-import net.hyperadapt.pxweave.validation.ValidationMode;
 
 import org.junit.Before;
 import org.junit.Test;

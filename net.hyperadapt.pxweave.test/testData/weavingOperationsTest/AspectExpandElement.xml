@@ -11,7 +11,7 @@
 		</scope>
 		<advices>
 			<expandElement>
-				<pointcut>/books:book/books:title</pointcut>
+				<pointcut>books:book/books:title</pointcut>
 				<value>
 					<elementTemplate>
 						<img xmlns="http://books">{$joinPoint/text()}-cover.jpg</img>
