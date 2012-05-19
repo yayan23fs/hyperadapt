@@ -17,7 +17,6 @@ import net.hyperadapt.pxweave.aspects.ast.Dependency;
 import net.hyperadapt.pxweave.aspects.ast.ObjectFactory;
 import net.hyperadapt.pxweave.evaluation.XQArgument;
 import net.hyperadapt.pxweave.interpreter.AspectInterpreter;
-import net.hyperadapt.pxweave.interpreter.IAspectInterpreter;
 import net.hyperadapt.pxweave.interpreter.IInterpreterArgument;
 import net.hyperadapt.pxweave.interpreter.InterpreterArgument;
 import net.hyperadapt.pxweave.validation.DOML3Parser;
@@ -182,14 +181,14 @@ public class AspectInterpreterTest {
 		xqA.addVariableAndBindValue("test", new Integer(1));
 		final Dependency dependencies = of.createDependency();
 		dependencies.setBoolExpr("1+1=2");
-		IAspectInterpreter interpreter = new AspectInterpreter(contradictingEnvironment);
-		boolean result = interpreter.evaluateDependency(dependencies.getBoolExpr(), xqA);
+		boolean result = AspectInterpreter
+				.evaluateDependency(dependencies, xqA);
 		assertTrue("the boolExpr must evaluate to TRUE", result);
 		dependencies.setBoolExpr("$test+1=2");
-		result = interpreter.evaluateDependency(dependencies.getBoolExpr(), xqA);
+		result = AspectInterpreter.evaluateDependency(dependencies, xqA);
 		assertTrue("the boolExpr must evaluate to TRUE", result);
 		dependencies.setBoolExpr("1+1=3");
-		result = interpreter.evaluateDependency(dependencies.getBoolExpr(), xqA);
+		result = AspectInterpreter.evaluateDependency(dependencies, xqA);
 		assertFalse("the boolExpr must evaluate to TRUE", result);
 	}
 

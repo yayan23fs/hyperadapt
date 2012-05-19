@@ -68,7 +68,7 @@ public class JoinpointWeavingTest {
 	
 		
 		IProgrammaticJoinpoint jp = new PipeStageJoinpoint(stageName);
-		IWeavingContext context = environment.getExecutionState().getContextModel();
+		IWeavingContext context = environment.getContextModel();
 		
 		IExecutionState state = new ExecutionState(jp,context,arguments);
 		
@@ -91,7 +91,9 @@ public class JoinpointWeavingTest {
 		assertTrue("Book not inserted or inserted in the wrong place. ISBN is "+result2.item(0).getTextContent()+".", 
 				"1444712543".equals(result2.item(0).getTextContent()));
 	
-		XMLWriter.getInstance().write(outArgument, false);
+		XMLWriter.getInstance().writeToFile(outArgument.getDocument(),
+				outArgument.getOutputFile().getAbsolutePath(), outArgument
+		 		.getDocument().getXmlEncoding(), false);
 	}
 	
 }

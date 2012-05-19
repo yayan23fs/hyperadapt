@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://www.hyperadapt.net/pxweave/aspects ../../../net.hyperadapt.pxweave/schemas/aspectE2.xsd"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hyperadapt.net/pxweave/aspects">
 	<interface>
-		<core id="core" type="http://books" />
+		<core id="core" type="http://books"/>
 	</interface>
 	<adviceGroup>
 		<depends>
@@ -14,7 +14,7 @@
 		</scope>
 		<advices>
 			<delete>
-				<pointcut>/books:book[position()>1]</pointcut>
+				<pointcut>books:book[position()>1]</pointcut>
 			</delete>
 		</advices>
 	</adviceGroup>

@@ -26,7 +26,7 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
 /**
- * @author msteinfeldt 
+ * @author msteinfeldt
  * 
  */
 public class OperationInterpreterTest {

@@ -315,13 +315,14 @@
 			<!--Tupelschreibweise der Permutation: (1 4 3 2 5) -->
 			<pattern value="\(([1-9][0-9]*\s)+(([1-9][0-9]*))+\)" />
 		</restriction>
+
 	</simpleType>
 
 	<complexType name="Parameter">
 		<attribute name="id" type="string" use="required" />
 		<attribute name="type" type="string" use="required" />
 	</complexType>
-	
+
 	<complexType name="Dependency">
 		<sequence>
 			<element name="boolExpr" type="string">
@@ -329,30 +330,8 @@
 					<documentation xml:lang="de">boolscher Ausdruck über ausgewählte Parameter</documentation>
 				</annotation>
 			</element>
-			<element name="sparql" type="tns:Sparql">
-				<annotation>
-					<documentation xml:lang="de">sparql Ausdruck</documentation>
-				</annotation>
-			</element>
 		</sequence>
-		<attribute name="evaluationMode" type="tns:EvaluationType"/>
 	</complexType>
-
-	<complexType name="Sparql">
-		<simpleContent>
-			<extension base="string">				
-				<attribute name="endpoint" type="string" use="required"/>
-			</extension>
-		</simpleContent>
-	</complexType>
-
-	<simpleType name="EvaluationType">
-		<restriction base="string">
-			<enumeration value="all"/>
-			<enumeration value="expression"/>
-			<enumeration value="sparql"/>
-		</restriction>
-	</simpleType>
 
 	<complexType name="SimpleValue">
 		<annotation>
